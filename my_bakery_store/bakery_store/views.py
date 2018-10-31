@@ -68,3 +68,6 @@ def add_product(request):
             return render(request, "admin/add_product.html",{'form':f})
     else:
         return render(request,"admin/add_product.html",{"form":form})
+
+def child1(request):
+    return render(request,'bakery_store/child1.html')

@@ -1,10 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Store Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+	 {% load static %}
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'bakery_store/css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'bakery_store/css/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'bakery_store/css/bootstrap.css' %}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static 'bakery_store/css/magnific-popup.css' %}">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{% static 'bakery_store/css/flexslider.css' %}">
+
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="{% static 'bakery_store/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'bakery_store/css/owl.theme.default.min.css' %}">
+	
+	<!-- Date Picker -->
+	<link rel="stylesheet" href="{% static 'bakery_store/css/bootstrap-datepicker.css'%}">
+	<!-- Flaticons  -->
+	<link rel="stylesheet" href="{% static 'bakery_store/fonts/flaticon/font/flaticon.css' %}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'bakery_store/css/style.css' %}">
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'bakery_store/js/modernizr-2.6.2.min.js'%}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
 </head>
 <body>
+<div class="colorlib-loader"></div>
 
+	<div id="page">
+		{%include "bakery_store/navbar.html" %}
+	
+		<div class="colorlib-shop">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-push-2">
+					{%block content %}{% endblock %}
+					</div>
+					<div class="col-md-2 col-md-pull-10">
+					{%include "bakery_store/sidebar.html" %}
+					</div>
+				</div>
+			</div>
+		</div>
+		{%include "bakery_store/subcribe.html" %}
+
+		{%include "bakery_store/footer.html" %}
+	</div>
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+	</div>
+	<!-- jQuery -->
+	<script src="{% static 'bakery_store/js/jquery.min.js'%}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static 'bakery_store/js/jquery.easing.1.3.js'%}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static 'bakery_store/js/bootstrap.min.js'%}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'bakery_store/js/jquery.waypoints.min.js'%}"></script>
+	<!-- Flexslider -->
+	<script src="{% static 'bakery_store/js/jquery.flexslider-min.js'%}"></script>
+	<!-- Owl carousel -->
+	<script src="{% static 'bakery_store/js/owl.carousel.min.js'%}"></script>
+	<!-- Magnific Popup -->
+	<script src="{% static 'bakery_store/js/jquery.magnific-popup.min.js'%}"></script>
+	<script src="{% static 'bakery_store/js/magnific-popup-options.js'%}"></script>
+	<!-- Date Picker -->
+	<script src="{% static 'bakery_store/js/bootstrap-datepicker.js'%}"></script>
+	<!-- Stellar Parallax -->
+	<script src="{% static 'bakery_store/js/jquery.stellar.min.js'%}"></script>
+	<!-- Main -->
+	<script src="{% static 'bakery_store/js/main.js'%}"></script>
 </body>
 </html>

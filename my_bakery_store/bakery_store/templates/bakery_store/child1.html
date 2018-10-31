@@ -1,0 +1,11 @@
+{% extends "bakery_store/base.html" %}
+
+{% block title %}My amazing blog{% endblock %}
+
+{% block content %}
+{% for entry in blog_entries %}
+    <h2>{{ entry.title }}</h2>
+    <p>{{ entry.body }}</p>
+{% endfor %}
+<h3>Hello</h3>
+{% endblock %}
