@@ -9,7 +9,6 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user_name = models.CharField(max_length=30, unique=True)
     full_name = models.CharField(max_length=40)
     email = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=191)
@@ -29,7 +28,7 @@ class User(AbstractUser):
     )
     gender = models.CharField(max_length=2,choices=SEX_CHOICES)
     role = models.CharField(max_length=2,choices=POSITION_CHOICES,default=MEMBER)
-    USERNAME_FIELD = 'user_name'
+    avt = models.ImageField(upload_to="images/user",null=True)
 
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
