@@ -22,9 +22,9 @@ def index(request):
 def register(request):
     form = forms.registerForm()
     if request.method == "POST":
-        f = forms.registerForm(request.POST)
+        f = forms.registerForm(request.POST, request.FILES)
         if f.is_valid():
-            print(f.cleaned_data['user_name'])
+            print(f.cleaned_data['username'])
             print(f.cleaned_data['password'])
             f.save()
             return HttpResponse('success')
@@ -35,7 +35,7 @@ def register(request):
 
 def Logout(request):
     logout(request)
-    return render(request,"bakery_store/shop.html")
+    return index(request)
 
 def loginView(request):
     f = forms.loginForm()
@@ -48,7 +48,7 @@ def loginView(request):
             if user is not None:
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request,user)
-                return render(request,"bakery_store/shop.html")
+                return index(request)
             else:
                 return HttpResponse("Login fail")
         else:
