@@ -69,9 +69,11 @@ def add_product(request):
     else:
         return render(request,"admin/add_product.html",{"form":form})
 
+
 def product_detail(request):
     product = models.Product.objects.get(pk=request.GET['id'])
     context={
         "product":product
     }
     return render(request, "bakery_store/product-detail.html",context)
+
