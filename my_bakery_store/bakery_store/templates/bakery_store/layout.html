@@ -61,19 +61,16 @@
 
 	<div id="page">
 		{%include "bakery_store/navbar.html" %}
-	
+		
 		<div class="colorlib-shop">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-10 col-md-push-2">
 					{%block content %}{% endblock %}
-					</div>
-					<div class="col-md-2 col-md-pull-10">
-					{%include "bakery_store/sidebar.html" %}
-					</div>
 				</div>
 			</div>
 		</div>
+		{%block similar_product %}{% endblock %}
+
 		{%include "bakery_store/subcribe.html" %}
 
 		{%include "bakery_store/footer.html" %}
@@ -102,5 +99,6 @@
 	<script src="{% static 'bakery_store/js/jquery.stellar.min.js'%}"></script>
 	<!-- Main -->
 	<script src="{% static 'bakery_store/js/main.js'%}"></script>
+	{%block script %}{% endblock %}
 </body>
 </html>

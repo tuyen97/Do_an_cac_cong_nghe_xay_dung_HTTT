@@ -1,6 +1,7 @@
 
 {% extends "bakery_store/layout.html" %}
 {% block content %}
+<div class="col-md-10 col-md-push-2">
 	<div class="row row-pb-lg">
 	    {% for product in product_list %}
 		<div class="col-md-4 text-center">
@@ -36,4 +37,8 @@
 			</ul>
 		</div>
 	</div>
+</div>
+<div class="col-md-2 col-md-pull-10">
+	{%include "bakery_store/sidebar.html" %}
+</div>
 {% endblock %}

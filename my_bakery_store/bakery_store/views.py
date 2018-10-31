@@ -71,3 +71,6 @@ def add_product(request):
 
 def child1(request):
     return render(request,'bakery_store/child1.html')
+
+def productDetail(request):
+    return render(request,'bakery_store/product_detail.html')
