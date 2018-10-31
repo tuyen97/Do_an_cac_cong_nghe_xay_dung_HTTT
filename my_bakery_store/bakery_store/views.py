@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth.decorators import login_required
+
+from . import models
 from django.http import HttpResponse
 from django.shortcuts import render
 from . import forms
@@ -10,7 +13,11 @@ from .security.MyBackend import MyBackend
 # Create your views here.
 
 def index(request):
-    return render(request,'bakery_store/shop.html')
+    product_list = models.Product.objects.all()
+    context = {
+        'product_list':product_list
+    }
+    return render(request,'bakery_store/shop.html',context)
 
 def register(request):
     form = forms.registerForm()
@@ -25,6 +32,10 @@ def register(request):
             return render(request,"bakery_store/register.html",{'form':f})
     else:
         return render(request,"bakery_store/register.html",{'form':form})
+
+def Logout(request):
+    logout(request)
+    return render(request,"bakery_store/shop.html")
 
 def loginView(request):
     f = forms.loginForm()
@@ -45,3 +56,15 @@ def loginView(request):
     else:
         return render(request,'bakery_store/login.html',{'form':f})
 
+
+def add_product(request):
+    form = forms.productForm()
+    if request.method == 'POST':
+        f = forms.productForm(data=request.POST, files=request.FILES)
+        if(f.is_valid()):
+            f.save()
+            return HttpResponse("success")
+        else:
+            return render(request, "admin/add_product.html",{'form':f})
+    else:
+        return render(request,"admin/add_product.html",{"form":form})

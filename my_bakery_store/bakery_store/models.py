@@ -31,3 +31,18 @@ class User(AbstractUser):
     role = models.CharField(max_length=2,choices=POSITION_CHOICES,default=MEMBER)
     USERNAME_FIELD = 'user_name'
 
+class Product(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=30, unique=True)
+    available_quantity = models.IntegerField(max_length=9)
+    descript = models.CharField
+    price = models.IntegerField(max_length=11)
+    category = models.CharField(max_length=30)
+    image = models.ImageField(upload_to="images")
+    is_deleted = models.BooleanField(default=True)
+
+class Lot(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    exp_date = models.DateField
+    mfg_date = models.DateField
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
