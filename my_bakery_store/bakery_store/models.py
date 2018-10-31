@@ -13,8 +13,8 @@ class User(AbstractUser):
     full_name = models.CharField(max_length=40)
     email = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=191)
-    birth_day = models.DateTimeField
-    address = models.CharField
+    birth_day = models.DateTimeField(null=False, default= "")
+    address = models.CharField(max_length=1000,default="")
     ADMIN = 'ad'
     MEMBER = 'mem'
     POSITION_CHOICES = (
@@ -34,9 +34,9 @@ class User(AbstractUser):
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=30, unique=True)
-    available_quantity = models.IntegerField(max_length=9)
-    descript = models.CharField
-    price = models.IntegerField(max_length=11)
+    available_quantity = models.IntegerField()
+    descript = models.CharField(max_length=10000000, default="")
+    price = models.IntegerField()
     category = models.CharField(max_length=30)
     image = models.ImageField(upload_to="images")
     is_deleted = models.BooleanField(default=True)
