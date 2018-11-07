@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'bakery_store',
+    'bakery_store.apps.BakeryStoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,9 +72,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'my_bakery_store.wsgi.application'
 
-LOGIN_URL = 'bakery_store/login/'
+LOGIN_URL = '/bakery_store/login'
 
 AUTHENTICATION_BACKENDS = {
+'django.contrib.auth.backends.ModelBackend',
     'bakery_store.security.MyBackend'
 }
 

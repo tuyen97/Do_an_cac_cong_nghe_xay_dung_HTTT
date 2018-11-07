@@ -3,12 +3,13 @@ from __future__ import unicode_literals
 
 from django.db import models
 import uuid
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser
 
 # Create your models here.
 
-class User(AbstractUser):
+class User(AbstractBaseUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user_name = models.CharField(max_length=100,unique=True, default="")
     full_name = models.CharField(max_length=40)
     email = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=191)
@@ -29,6 +30,7 @@ class User(AbstractUser):
     gender = models.CharField(max_length=2,choices=SEX_CHOICES)
     role = models.CharField(max_length=2,choices=POSITION_CHOICES,default=MEMBER)
     avt = models.ImageField(upload_to="images/user",null=True)
+    USERNAME_FIELD = 'user_name'
 
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

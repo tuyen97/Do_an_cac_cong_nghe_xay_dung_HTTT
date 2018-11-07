@@ -4,7 +4,7 @@ class MyBackend:
 
     def authenticate(self, user_name=None, password=None):
         try:
-            user = User.objects.get(username=user_name, password=password)
+            user = User.objects.get(user_name=user_name, password=password)
             return user
         except User.DoesNotExist:
             return None

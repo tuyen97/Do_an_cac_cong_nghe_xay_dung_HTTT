@@ -12,7 +12,7 @@ def add_attrs(placeholder='', display=True):
     return attrs
 
 class registerForm(forms.ModelForm):
-    username = forms.CharField(label='User Name',widget=forms.TextInput(attrs=add_attrs('Enter user name')))
+    user_name = forms.CharField(label='User Name',widget=forms.TextInput(attrs=add_attrs('Enter user name')))
     full_name = forms.CharField(label='Full Name',widget=forms.TextInput(attrs=add_attrs('Enter name')))
     email = forms.EmailField(label='Email',widget=forms.TextInput(attrs=add_attrs('Enter email')))
     password = forms.CharField(label='Password',widget=forms.PasswordInput(attrs=add_attrs('Enter password')))
@@ -22,7 +22,7 @@ class registerForm(forms.ModelForm):
     avt = forms.ImageField(label='Chọn ảnh', widget=forms.FileInput(add_attrs('')))
     class Meta:
         model = models.User
-        fields = ['username','full_name','email','password','birth_day','address','gender','avt']
+        fields = ['user_name','full_name','email','password','birth_day','address','gender','avt']
 
 class loginForm(forms.Form):
     user_name = forms.CharField(label='User Name',widget=forms.TextInput(attrs=add_attrs('Enter user name')))

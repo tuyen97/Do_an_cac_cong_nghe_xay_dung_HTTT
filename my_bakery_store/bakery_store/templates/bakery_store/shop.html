@@ -28,13 +28,38 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="pagination">
-				<li class="disabled"><a href="#">&laquo;</a></li>
-				<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">&raquo;</a></li>
+            {% if product_list.has_previous %}
+                <li> <a href="?page=1">&laquo; First</a></li>
+				<li><a href="?page={{product_list.previous_page_number}}">&laquo;</a></li>
+            {% endif %}
+            {% for i in paginator.page_range %}
+                {% if i == product_list.number %}
+				<li  class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% elif i > product_list.number %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+                {% if product_list.has_next %}
+				<li><a href="?page={{ product_list.paginator.num_pages }}">&raquo;</a></li>
+                {% endif %}
 			</ul>
+{#            <div class="pagination">#}
+{#    <span class="step-links">#}
+{#        {% if product_list.has_previous %}#}
+{#            <a href="?page=1">&laquo; first</a>#}
+{#            <a href="?page={{ product_list.previous_page_number }}">previous</a>#}
+{#        {% endif %}#}
+{##}
+{#        <span class="current">#}
+{#            Page {{ product_list.number }} of {{ product_list.paginator.num_pages }}.#}
+{#        </span>#}
+{##}
+{#        {% if product_list.has_next %}#}
+{#            <a href="?page={{ product_list.next_page_number }}">next</a>#}
+{#            <a href="?page={{ product_list.paginator.num_pages }}">last &raquo;</a>#}
+{#        {% endif %}#}
+{#    </span>#}
+{#</div>#}
 		</div>
 	</div>
 </div>
