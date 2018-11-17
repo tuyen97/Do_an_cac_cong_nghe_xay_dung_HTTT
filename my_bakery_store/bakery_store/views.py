@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 
 from . import models
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render,redirect
 from . import forms
 from django.contrib.auth import logout
@@ -75,27 +75,6 @@ def loginView(request):
                 return HttpResponse("Login fail")
         else:
             return render(request,'bakery_store/login.html',{'form':f})
-    # f = f
-    # if request.method == "POST":
-    #     f = forms.loginForm(request.POST)
-    #     if(f.is_valid()):
-    #         user_name = f.cleaned_data['user_name']
-    #         password = f.cleaned_data['password']
-    #         user = MyBackend().authenticate(user_name=user_name,password=password)
-    #         if user is not None:
-    #             user.backend = 'django.contrib.auth.backends.ModelBackend'
-    #             login(request, user)
-    #             print("user is logged in")
-    #             # request.session['user_name']=user.user_name
-    #             # request.session['user_avt'] = user.avt.url
-    #
-    #             return redirect('/bakery_store')
-    #         else:
-    #             return HttpResponse("Login fail")
-    #     else:
-    #         return render(request,'bakery_store/login.html',{'form':f})
-    # else:
-    #     return render(request,'bakery_store/login.html',{'form':f})
 
 @login_required()
 def add_product(request):
@@ -118,6 +97,29 @@ def product_detail(request):
         "product":product
     }
     return render(request, "bakery_store/product_detail.html",context)
+
+def add_to_cart(request):
+    product_id = request.POST['id']
+    if not 'cart' in request.session or not request.session['cart']:
+        request.session['cart'] = [product_id]
+    else:
+        cart_list = request.session['cart']
+        cart_list.append(product_id)
+        request.session['cart'] = cart_list
+    print(set(request.session['cart']))
+    http_response = {
+        'status':'success',
+        'message':'Thêm vào giỏ hàng thành công'
+    }
+    return JsonResponse(http_response)
+
+def view_cart(request):
+    product_list = []
+    cart_list = set(request.session["cart"])
+    for id in cart_list:
+        product = models.Product.objects.get(pk=id)
+        product_list.append(product)
+    return HttpResponse(product_list)
 
 @login_required()
 def admin_index(request):
