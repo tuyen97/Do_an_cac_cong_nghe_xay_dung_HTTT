@@ -115,11 +115,25 @@ def add_to_cart(request):
 
 def view_cart(request):
     product_list = []
+    if not 'cart' in request.session or not request.session['cart']:
+        return HttpResponse('You don\'t have any item in cart')
     cart_list = set(request.session["cart"])
     for id in cart_list:
         product = models.Product.objects.get(pk=id)
         product_list.append(product)
-    return HttpResponse(product_list)
+    context = {
+        'product_list':product_list
+    }
+    return render(request,'bakery_store/cart.html',context)
+
+def delete_product_on_cart(request):
+    id = request.POST['id']
+    request.session['cart'].remove(id)
+    http_response = {
+        'status':'success',
+        'message':'Xóa sản phẩm thành công'
+    }
+    return JsonResponse(http_response)
 
 @login_required()
 def admin_index(request):
