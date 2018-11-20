@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -54,11 +54,11 @@
     {% include 'admin/footer.html' %}
 </div>
 <!-- ./wrapper -->
-{% block script%}
+
 <!-- jQuery 3 -->
 <script src="{% static 'admin/bower_components/jquery/dist/jquery.min.js'%}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{% static 'bower_components/jquery-ui/jquery-ui.min.js'%}"></script>
+<script src="{% static 'admin/bower_components/jquery-ui/jquery-ui.min.js'%}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -92,6 +92,6 @@
 <script src="{% static 'admin/dist/js/pages/dashboard.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{% static 'admin/dist/js/demo.js' %}"></script>
-{% endblock%}
+{% block script%}{% endblock%}
 </body>
 </html>
