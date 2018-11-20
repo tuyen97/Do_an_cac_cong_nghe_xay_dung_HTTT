@@ -10,7 +10,7 @@
 					<p class="tag"><span class="new">New</span></p>
 					<div class="cart">
 						<p>
-							<span class="addtocart"><a href="{% url 'view_cart' %}"><i class="icon-shopping-cart"></i></a></span>
+							<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
 							<span><a href="product_detail?id={{ product.id }}"><i class="icon-eye"></i></a></span>
 							<span><a href="#"><i class="icon-heart3"></i></a></span>
 							<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -43,23 +43,7 @@
 				<li><a href="?page={{ product_list.paginator.num_pages }}">&raquo;</a></li>
                 {% endif %}
 			</ul>
-{#            <div class="pagination">#}
-{#    <span class="step-links">#}
-{#        {% if product_list.has_previous %}#}
-{#            <a href="?page=1">&laquo; first</a>#}
-{#            <a href="?page={{ product_list.previous_page_number }}">previous</a>#}
-{#        {% endif %}#}
-{##}
-{#        <span class="current">#}
-{#            Page {{ product_list.number }} of {{ product_list.paginator.num_pages }}.#}
-{#        </span>#}
-{##}
-{#        {% if product_list.has_next %}#}
-{#            <a href="?page={{ product_list.next_page_number }}">next</a>#}
-{#            <a href="?page={{ product_list.paginator.num_pages }}">last &raquo;</a>#}
-{#        {% endif %}#}
-{#    </span>#}
-{#</div>#}
+            
 		</div>
 	</div>
 </div>
