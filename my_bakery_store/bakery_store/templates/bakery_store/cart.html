@@ -40,7 +40,7 @@
 								<span>Remove</span>
 							</div>
 						</div>
-                        {% for product in product_list %}
+                        {% for product,count in product_list %}
 						<div class="product-cart">
 							<div class="one-forth">
 								<div class="product-img" style="background-image: url('static/bakery_store/{{ product.image }}');">
@@ -56,7 +56,7 @@
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<input type="number" name="{{ product.price }}" class="form-control input-number text-center quantity" value="1" min="1" max="{{ product.available_quantity }}">
+									<input type="number" name="{{ product.price }}" class="form-control input-number text-center quantity" value="{{ count }}" min="1" max="{{ product.available_quantity }}">
 								</div>
 							</div>
 							<div class="one-eight text-center">
@@ -66,7 +66,7 @@
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<a href="javascript:void(0)"  class="closed" id="{{ product.id }}"></a>
+									<a href="javascript:void(0)"  class="closed xoa_sp" id="{{ product.id }}"></a>
 								</div>
 							</div>
 						</div>

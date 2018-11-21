@@ -38,8 +38,9 @@ $(document).ready(function () {
         };
         console.log(data);
         $.post(
-            'delete_produt_on_cart', data,function (data,status) {
+            'delete_product_on_cart', data,function (data,status) {
                 alert(data['message']);
+                location.reload();
 
             }
         )

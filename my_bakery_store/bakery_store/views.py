@@ -21,7 +21,7 @@ def index(request):
             return redirect('/admin')
 
     products = models.Product.objects.all()
-    paginator = Paginator(products, 3)  # Show 25 contacts per page
+    paginator = Paginator(products, 8)  # Show 25 contacts per page
     page = request.GET.get('page')
     product_list = paginator.get_page(page)
     context = {
@@ -101,12 +101,18 @@ def product_detail(request):
 def add_to_cart(request):
     product_id = request.POST['id']
     if not 'cart' in request.session or not request.session['cart']:
-        request.session['cart'] = [product_id]
+        l = {
+            product_id:1
+        }
+        request.session['cart'] = l
     else:
         cart_list = request.session['cart']
-        cart_list.append(product_id)
+        if product_id in cart_list.keys():
+            cart_list[product_id]+=1
+        else:
+            cart_list[product_id] = 1
         request.session['cart'] = cart_list
-    print(set(request.session['cart']))
+    print(request.session['cart'])
     http_response = {
         'status':'success',
         'message':'Thêm vào giỏ hàng thành công'
@@ -117,12 +123,16 @@ def view_cart(request):
     product_list = []
     if not 'cart' in request.session or not request.session['cart']:
         return HttpResponse('You don\'t have any item in cart')
-    cart_list = set(request.session["cart"])
-    for id in cart_list:
-        product = models.Product.objects.get(pk=id)
-        product_list.append(product)
+    cart_list = request.session["cart"]
+    cart_list_id = request.session["cart"].keys()
+    items = []
+    count_item = []
+    for i in cart_list_id:
+        product = models.Product.objects.get(pk=i)
+        count_item.append(cart_list[i])
+        items.append(product)
     context = {
-        'product_list':product_list
+        'product_list':zip(items,count_item)
     }
     return render(request,'bakery_store/cart.html',context)
 

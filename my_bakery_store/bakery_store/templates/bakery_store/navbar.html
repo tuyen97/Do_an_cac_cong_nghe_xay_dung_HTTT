@@ -13,7 +13,7 @@
 									<a href="{% url 'index' %}">Shop</a>
 									<ul class="dropdown">
 										<li><a href="product-detail.html">Product Detail</a></li>
-										<li><a href="cart.html">Shipping Cart</a></li>
+										<li><a href="{%  url 'view_cart' %}">Shipping Cart</a></li>
 										<li><a href="checkout.html">Checkout</a></li>
 										<li><a href="order-complete.html">Order Complete</a></li>
 										<li><a href="add-to-wishlist.html">Wishlist</a></li>
@@ -45,7 +45,7 @@
 								</li>
                                 {% endif %}
 							<!--Giỏ hàng-->
-								<li><a href="cart.html"><i class="icon-shopping-cart"></i> Giỏ hàng [0]</a></li>
+								<li><a href="{% url 'view_cart' %}"><i class="icon-shopping-cart"></i> Giỏ hàng</a></li>
 							</ul>
 						</div>
 					</div>
