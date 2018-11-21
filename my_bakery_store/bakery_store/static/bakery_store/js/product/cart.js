@@ -26,11 +26,28 @@ $.ajaxSetup({
 });
 $(document).ready(function () {
     $('.quantity').on('change',function () {
-        var count = $(this).val();
-        var price = $(this).attr('name');
-        var total = count * price;
-        $(this).closest('.product-cart').find('span.tonggia').text(total);
-
+        var count = parseInt($(this).val());
+        console.log(count);
+        if(count > parseInt($(this).attr('max')) || count < parseInt($(this).attr('min')) || !Number.isInteger(count)){
+            alert('Invalid');
+        }else {
+            count = parseInt(count);
+            var price = $(this).attr('name');
+            var total = count * price;
+            $(this).closest('.product-cart').find('span.tonggia').text(total);
+            var id = $(this).closest('div').attr('name');
+            var data = {
+                id:id,
+                count:count
+            }
+            $.post('change_quantity_on_cart',data,function (data, status) {
+                console.log(data['message']);
+                var t = data['total'];
+                t = t.toLocaleString();
+                console.log(t);
+                $('#thanh_tien').text(t);
+            })
+        }
     });
     $('.xoa_sp').on('click',function () {
         var data={
@@ -41,7 +58,6 @@ $(document).ready(function () {
             'delete_product_on_cart', data,function (data,status) {
                 alert(data['message']);
                 location.reload();
-
             }
         )
         ;

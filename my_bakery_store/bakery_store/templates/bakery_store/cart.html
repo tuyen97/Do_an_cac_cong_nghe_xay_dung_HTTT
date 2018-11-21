@@ -40,7 +40,8 @@
 								<span>Remove</span>
 							</div>
 						</div>
-                        {% for product,count in product_list %}
+                        {% for product,count,sub_total in product_list %}
+                            {% load humanize %}
 						<div class="product-cart">
 							<div class="one-forth">
 								<div class="product-img" style="background-image: url('static/bakery_store/{{ product.image }}');">
@@ -51,17 +52,17 @@
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<span class="price">{{ product.price }}</span>
+									<span class="price">{{ product.price|intcomma }}</span>
 								</div>
 							</div>
 							<div class="one-eight text-center">
-								<div class="display-tc">
+								<div class="display-tc" name="{{ product.id }}">
 									<input type="number" name="{{ product.price }}" class="form-control input-number text-center quantity" value="{{ count }}" min="1" max="{{ product.available_quantity }}">
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<span class="price tonggia" name="giasp">{{ product.price }}</span>
+									<span class="price tonggia" name="giasp">{{ sub_total|intcomma }}</span>
 								</div>
 							</div>
 							<div class="one-eight text-center">
@@ -84,7 +85,7 @@
 												<input type="text" name="quantity" class="form-control input-number" placeholder="Your Coupon Number...">
 											</div>
 											<div class="col-md-3">
-												<input type="submit" value="Apply Coupon" class="btn btn-primary">
+                                                <a href="{% url 'checkout' %}" class="btn btn-primary">Apply</a>
 											</div>
 										</div>
 									</form>
@@ -97,7 +98,7 @@
 {#											<p><span>Discount:</span> <span>$45.00</span></p>#}
 {#										</div>#}
 										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span id="thanh_tien">$450.00</span></p>
+											<p><span><strong>Total:</strong></span> <span id="thanh_tien">{{ total|intcomma }}</span></p>
 										</div>
 									</div>
 								</div>

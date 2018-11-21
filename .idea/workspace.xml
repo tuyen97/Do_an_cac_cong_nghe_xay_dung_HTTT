@@ -3,11 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="ffea55d6-73b6-4a98-a4f0-dffc24bc51e3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/product_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_bakery_store/bakery_store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/bakery_store/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_bakery_store/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_bakery_store/my_bakery_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_bakery_store/my_bakery_store/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,55 +22,54 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="23250968">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="16" />
-          <entry key="project.open.time.14" value="3" />
-          <entry key="project.open.time.16" value="1" />
-          <entry key="project.open.time.17" value="2" />
-          <entry key="project.open.time.18" value="2" />
-          <entry key="project.open.time.21" value="1" />
-          <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.24" value="2" />
-          <entry key="project.open.time.25" value="1" />
-          <entry key="project.open.time.26" value="1" />
-          <entry key="project.open.time.33" value="2" />
-          <entry key="project.open.time.37" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="18" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="html" value="9" />
-          <entry key="js" value="6" />
-          <entry key="py" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="HTML" value="9" />
-          <entry key="JavaScript" value="6" />
-          <entry key="Python" value="4" />
-        </counts>
-      </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="410" />
-          <entry key="js" value="1098" />
-          <entry key="py" value="1181" />
+          <entry key="html" value="459" />
+          <entry key="js" value="94" />
+          <entry key="py" value="742" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="410" />
-          <entry key="JavaScript" value="1098" />
-          <entry key="Python" value="1181" />
+          <entry key="HTML" value="459" />
+          <entry key="JavaScript" value="94" />
+          <entry key="Python" value="742" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="3" />
+          <entry key="py" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="3" />
+          <entry key="Python" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -71,71 +77,75 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_bakery_store/my_bakery_store/settings.py">
+        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+            <state relative-caret-position="374">
+              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+              <folding>
+                <element signature="e#24#63#0" expanded="true" />
+                <marker date="1542818773485" expanded="true" signature="3313:6525" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/detail.js">
+        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/admin/add_product.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="578">
+              <caret line="52" column="73" selection-start-line="52" selection-start-column="73" selection-end-line="52" selection-end-column="73" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="23" selection-start-line="23" selection-end-line="28" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/checkout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1105">
+              <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#2;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/views.py">
+        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-                <marker date="1542782801247" expanded="true" signature="3406:4831" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/navbar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="47" column="111" selection-start-line="47" selection-start-column="111" selection-end-line="47" selection-end-column="111" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/product_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="126" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="126" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/cart.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="205" column="14" lean-forward="true" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
+            <state relative-caret-position="68">
+              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/shop.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/cart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="79" selection-start-line="13" selection-start-column="79" selection-end-line="13" selection-end-column="79" />
+            <state relative-caret-position="200">
+              <caret line="64" column="89" selection-start-line="64" selection-start-column="89" selection-end-line="64" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -143,8 +153,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/cart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+            <state relative-caret-position="251">
+              <caret line="45" column="39" lean-forward="true" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -152,8 +162,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="13" column="93" selection-start-line="13" selection-start-column="93" selection-end-line="13" selection-end-column="93" />
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -176,6 +186,9 @@
       <find>foote</find>
       <find>product-car</find>
       <find>total</find>
+      <find>over</find>
+      <find>thanh</find>
+      <find>cart</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,16 +197,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/product_detail.html" />
         <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/ajax_setup.js" />
         <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/detail.js" />
-        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/shop.html" />
         <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/bakery_store/cart.js" />
-        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/urls.py" />
-        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/cart.js" />
-        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/cart.html" />
+        <option value="$PROJECT_DIR$/my_bakery_store/my_bakery_store/settings.py" />
+        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/shop.html" />
+        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/product_detail.html" />
         <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/navbar.html" />
+        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/cart.html" />
+        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/cart.js" />
+        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/urls.py" />
+        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/forms.py" />
+        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/checkout.html" />
         <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/views.py" />
+        <option value="$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/layout.html" />
       </list>
     </option>
   </component>
@@ -202,23 +219,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/Flot/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/bootstrap-datepicker/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/bootstrap-daterangepicker/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/bootstrap/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/chart.js/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/ckeditor/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/eve-raphael/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/ion.rangeSlider/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/jquery-knob/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/jquery-slimscroll/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/jquery-ui/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/morris.js/package.json" />
-      <path value="$PROJECT_DIR$/my_bakery_store/bakery_store/static/admin/bower_components/select2/package.json" />
-    </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
@@ -231,6 +231,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -254,40 +255,6 @@
               <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="462c0819:PsiDirectoryNode" />
               <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
               <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="462c0819:PsiDirectoryNode" />
-              <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="462c0819:PsiDirectoryNode" />
-              <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="462c0819:PsiDirectoryNode" />
-              <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="product" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="462c0819:PsiDirectoryNode" />
-              <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -296,27 +263,12 @@
               <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
               <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="462c0819:PsiDirectoryNode" />
-              <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
               <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="bakery_store" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Do_an_cac_cong_nghe_xay_dung_HTTT" type="462c0819:PsiDirectoryNode" />
-              <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
-              <item name="my_bakery_store" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -397,20 +349,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541745576100</updated>
+      <workItem from="1542811931326" duration="16000" />
+      <workItem from="1542812084877" duration="15000" />
+      <workItem from="1542812542688" duration="7000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="38000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1373" height="875" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15562649" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25923136" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.17839608" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.47106326" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -423,8 +380,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32931423" />
+      <window_info anchor="right" id="SciView" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,18 +402,18 @@
     <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/register.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/layout.html">
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/bakery_store/cart.js" />
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/order-complete.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="77" column="32" lean-forward="true" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+        <state relative-caret-position="184">
+          <caret line="38" column="4" lean-forward="true" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/bakery_store/cart.js" />
     <entry file="file://$PROJECT_DIR$/my_bakery_store/my_bakery_store/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        <state relative-caret-position="714">
+          <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -467,34 +424,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/cart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="93" selection-start-line="13" selection-start-column="93" selection-end-line="13" selection-end-column="93" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/shop.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="79" selection-start-line="13" selection-start-column="79" selection-end-line="13" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/product_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="126" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="126" />
+        <state relative-caret-position="391">
+          <caret line="23" column="63" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -503,26 +436,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="47" column="111" selection-start-line="47" selection-start-column="111" selection-end-line="47" selection-end-column="111" />
+        <state relative-caret-position="68">
+          <caret line="13" column="57" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/shop.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/cart.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="64" column="89" selection-start-line="64" selection-start-column="89" selection-end-line="64" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/static/bakery_store/js/product/cart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="45" column="39" lean-forward="true" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/login.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="205" column="14" lean-forward="true" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
+          <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="23" selection-start-line="23" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/admin/add_product.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="52" column="73" selection-start-line="52" selection-start-column="73" selection-end-line="52" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        <state relative-caret-position="374">
+          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
-            <marker date="1542782801247" expanded="true" signature="3406:4831" ph="..." />
+            <marker date="1542818773485" expanded="true" signature="3313:6525" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/checkout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_bakery_store/bakery_store/templates/bakery_store/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
         </state>
       </provider>
     </entry>

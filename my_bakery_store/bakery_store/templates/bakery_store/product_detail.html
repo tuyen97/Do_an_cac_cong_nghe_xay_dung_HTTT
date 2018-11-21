@@ -1,5 +1,6 @@
 {% extends "bakery_store/layout.html" %}
 {% block content %}
+    {% load humanize %}
 	<div class="row row-pb-lg">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="product-detail-wrap">
@@ -20,7 +21,7 @@
 						<div class="desc">
 							<h3>{{ product.name }}</h3>
 							<p class="price">
-								<span>{{ product.price }}</span>
+								<span>{{ product.price|intcomma }}</span>
 							</p>
 							 <p>{{ product.descript }}</p>
 							<div class="row row-pb-sm">

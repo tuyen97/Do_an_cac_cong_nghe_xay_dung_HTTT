@@ -35,8 +35,6 @@ def register(request):
     if request.method == "POST":
         f = forms.registerForm(request.POST, request.FILES)
         if f.is_valid():
-            print(f.cleaned_data['user_name'])
-            print(f.cleaned_data['password'])
             f.save()
             return HttpResponse('success')
         else:
@@ -120,30 +118,85 @@ def add_to_cart(request):
     return JsonResponse(http_response)
 
 def view_cart(request):
-    product_list = []
     if not 'cart' in request.session or not request.session['cart']:
         return HttpResponse('You don\'t have any item in cart')
     cart_list = request.session["cart"]
     cart_list_id = request.session["cart"].keys()
     items = []
     count_item = []
+    sub_total = []
     for i in cart_list_id:
         product = models.Product.objects.get(pk=i)
         count_item.append(cart_list[i])
         items.append(product)
+        sub_total.append(cart_list[i]*product.price)
     context = {
-        'product_list':zip(items,count_item)
+        'product_list': zip(items, count_item, sub_total),
+        'total': sum(sub_total)
     }
     return render(request,'bakery_store/cart.html',context)
 
 def delete_product_on_cart(request):
     id = request.POST['id']
-    request.session['cart'].remove(id)
+    cart_list = request.session['cart']
+    del cart_list[id]
+    request.session['cart'] = cart_list
     http_response = {
         'status':'success',
         'message':'Xóa sản phẩm thành công'
     }
     return JsonResponse(http_response)
+
+def change_quantity_on_cart(request):
+    id = request.POST['id']
+    count = request.POST['count']
+    cart_list_id = request.session["cart"].keys()
+    cart_list = request.session['cart']
+    cart_list[id] = int(count)
+    request.session['cart'] = cart_list
+    sub_total = []
+    for i in cart_list_id:
+        product = models.Product.objects.get(pk=i)
+        sub_total.append(cart_list[i] * product.price)
+    http_response={
+        'message':'Sửa số lượng thành công',
+        'total':sum(sub_total)
+    }
+    return JsonResponse(http_response)
+
+def checkout(request):
+    form = forms.checkoutForm()
+    cart_list = request.session["cart"]
+    cart_list_id = request.session["cart"].keys()
+    items = []
+    count_item = []
+    sub_total = []
+    for i in cart_list_id:
+        product = models.Product.objects.get(pk=i)
+        count_item.append(cart_list[i])
+        items.append(product)
+        sub_total.append(cart_list[i]*product.price)
+    context = {
+        'product_list': zip(items, count_item, sub_total),
+        'total': sum(sub_total)
+    }
+    if request.method == 'POST':
+        f = forms.checkoutForm(request.POST)
+        if f.is_valid():
+            return HttpResponse('Order successful')
+        else:
+            context['form'] = f
+            return render(request,'bakery_store/checkout.html',context)
+    context['form'] = form
+    return render(request,'bakery_store/checkout.html',context)
+
+def order(request):
+    name = request.POST['hoten']
+    addr = request.POST['diachi']
+    phone = request.POST['sdt']
+    method = request.POST['pay_method']
+
+    return HttpResponse('in pay')
 
 @login_required()
 def admin_index(request):
