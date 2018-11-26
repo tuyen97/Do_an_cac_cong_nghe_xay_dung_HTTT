@@ -34,7 +34,7 @@ $(document).ready(function () {
             count = parseInt(count);
             var price = $(this).attr('name');
             var total = count * price;
-            $(this).closest('.product-cart').find('span.tonggia').text(total);
+            $(this).closest('.product-cart').find('span.tonggia').text(total.toLocaleString());
             var id = $(this).closest('div').attr('name');
             var data = {
                 id:id,

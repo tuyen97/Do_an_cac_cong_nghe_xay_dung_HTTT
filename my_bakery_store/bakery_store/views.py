@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
+from django.utils import timezone
 
 from . import models
 from django.http import HttpResponse,JsonResponse
@@ -12,6 +12,8 @@ from django.contrib.auth import logout
 from django.contrib.auth import login
 from .security.MyBackend import MyBackend
 from django.core.paginator import Paginator
+from paypal.standard.forms import PayPalPaymentsForm
+from django.urls import reverse
 # Create your views here.
 
 def index(request):
@@ -171,8 +173,10 @@ def checkout(request):
     items = []
     count_item = []
     sub_total = []
+    product_list=[]
     for i in cart_list_id:
         product = models.Product.objects.get(pk=i)
+        product_list.append(product)
         count_item.append(cart_list[i])
         items.append(product)
         sub_total.append(cart_list[i]*product.price)
@@ -180,23 +184,55 @@ def checkout(request):
         'product_list': zip(items, count_item, sub_total),
         'total': sum(sub_total)
     }
+    paypal_dict = {
+        "business": "nguyentrongtuyen15197-facilitator@gmail.com",
+        "amount": sum(sub_total)/100000,
+        "item_name": "Thanh toán",
+        "invoice": "ạbcd",
+        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
+        "return": request.build_absolute_uri(reverse('order_complete')),
+        # "cancel_return": request.build_absolute_uri(reverse('your-cancel-view')),
+        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
+    }
+
+    # Create the instance.
+    paypalform = PayPalPaymentsForm(initial=paypal_dict)
     if request.method == 'POST':
         f = forms.checkoutForm(request.POST)
         if f.is_valid():
-            return HttpResponse('Order successful')
+            hoten = f.cleaned_data['hoten']
+            diachi = f.cleaned_data['diachi']
+            sdt = f.cleaned_data['sdt']
+            created_date = timezone.now()
+            total = sum(sub_total)
+            bill = models.Bill(
+                created_date=created_date,
+                total=total,
+                receiver_name=hoten,
+                receiver_address=diachi,
+                receiver_phone=sdt
+            )
+            bill.save()
+            for i in range(len(product_list)):
+                billdetail = models.BillDetail(
+                    product_id=product_list[i],
+                    quantity=count_item[i],
+                    total=sub_total[i],
+                    bill_id =bill
+                )
+                billdetail.save()
+            request.session.pop("cart")
+            return redirect('order_complete')
         else:
             context['form'] = f
+            context['paypal'] = paypalform
             return render(request,'bakery_store/checkout.html',context)
     context['form'] = form
+    context['paypal'] = paypalform
     return render(request,'bakery_store/checkout.html',context)
 
-def order(request):
-    name = request.POST['hoten']
-    addr = request.POST['diachi']
-    phone = request.POST['sdt']
-    method = request.POST['pay_method']
-
-    return HttpResponse('in pay')
+def order_complete(request):
+    return render(request, 'bakery_store/order-complete.html')
 
 @login_required()
 def admin_index(request):
