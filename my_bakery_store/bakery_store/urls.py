@@ -1,7 +1,9 @@
 from . import views
 from django.urls import path
+from django.conf.urls import url, include
 
 urlpatterns = [
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
     path("",views.index,name='index'),
     path('register', views.register, name='register'),
     path('login/', views.loginView, name='loginView'),
@@ -16,5 +18,8 @@ urlpatterns = [
     path('admin/product/list', views.GetListProducts, name='list_products'),
     path('admin/product/edit', views.edit_product, name='edit_product'),
     # path('admin/product/delete', views.delete, name='delete_product')
+    path('change_quantity_on_cart', views.change_quantity_on_cart, name='change_quantity_on_cart'),
+    path('checkout',views.checkout,name='checkout'),
+    path('order_complete', views.order_complete, name ='order_complete')
 
 ]

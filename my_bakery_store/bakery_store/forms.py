@@ -39,3 +39,15 @@ class productForm(forms.ModelForm):
     class Meta:
         model = models.Product
         fields = ['name','available_quantity','descript','price','category','image']
+
+class checkoutForm(forms.Form):
+    PAYPAL = 'pp'
+    TIEN_MAT = 'tm'
+    PAY_METHOD_CHOICES =(
+        (PAYPAL,'paypal'),
+        (TIEN_MAT,'tiền mặt')
+    )
+    hoten = forms.CharField(label="Họ tên", widget=forms.TextInput(attrs=add_attrs('Họ tên')))
+    diachi = forms.CharField(label='Địa chỉ',widget=forms.TextInput(attrs=add_attrs('Địa chỉ')))
+    sdt = forms.IntegerField(label='Số điện thoại',widget=forms.TextInput(attrs=add_attrs('Số điện thoại')))
+    # pay_method = forms.ChoiceField(label='Phương thức thanh toán',choices=PAY_METHOD_CHOICES,widget=forms.Select({'class':'form-control'}))

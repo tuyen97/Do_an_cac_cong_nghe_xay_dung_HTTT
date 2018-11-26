@@ -21,4 +21,5 @@ urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     path('bakery_store/', include('bakery_store.urls')),
     path('', include('bakery_store.urls')),
+url(r'^paypal/', include('paypal.standard.ipn.urls')),
 ]
