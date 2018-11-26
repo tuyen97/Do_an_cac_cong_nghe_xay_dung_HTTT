@@ -1,0 +1,75 @@
+{% extends 'admin/layout.html' %}
+{% block content %}
+	<section class="content-header">
+      <h1>
+        San Pham/Cap nhat
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Product</li>
+      </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-md-12">
+          	<div class="box">
+	            <div class="box-header with-border">
+	              <h3 class="box-title">{{product.name}}</h3>
+	            </div>
+            <!-- /.box-header -->
+            	<div class="box-body">
+            		<div class="col-md-6">
+			            <div class="form-group">
+		                  <label for="product_id">Ma</label>
+		                  <input type="text" class="form-control" id="product_id" placeholder="nhap ma san pham" value="{{product.id}}">
+		                </div>
+		                <div class="form-group">
+		                  <label for="product_name">Ten</label>
+		                  <input type="text" class="form-control" id="product_name" placeholder="Nhap ten sp" value="{{product.name}}">
+		                </div>
+		                <div class="form-group">
+		                  <label for="product_price">Don gia</label>
+		                  <input type="text" class="form-control" id="product_price" placeholder="Nhap gia sp" value="{{product.price}}">
+		                </div>
+	                </div>
+	                <div class="col-md-6">
+		                <div class="form-group">
+		                  <label for="product_image">Anh minh hoa</label><br>
+		                  <input type="file" id="product_image" style="display:none">
+		                  <img src='/static/bakery_store/{{product.image}}' 
+		                  	class="img-fluid" style="width:150px; height: 150px;">
+		                 
+		                </div>
+		                <div class="form-group">
+		                  <label for="product_quantity">So Luong</label>
+		                  <input type="text" class="form-control" 
+		                  	id="product_quantity" placeholder="Nhap so luong" 
+		                  	value="{{product.available_quantity}}">
+		                </div>
+		                <div class="checkbox">
+	                  		<label>
+	                  			{% if product.is_deleted == 0 %}
+	                    			<input type="checkbox" checked="true"> Xoa
+	                  			{% else %}
+	                  				<input type="checkbox"> Xoa
+	                  			{% endif %}
+	                  		</label>
+	                	</div>
+                	</div>
+      			</div>
+      			<div class="box-footer">
+                	<button id="edit_btn" class="btn btn-primary">Cap nhat</button>
+              	</div>
+            
+      		</div>
+      	</div>
+      </div>
+    </section>
+{% endblock %}
+{% block script %}
+	{% load static %}
+	<script src="{% static 'admin/dist/js/product/edit.js' %}"></script>
+{% endblock %}

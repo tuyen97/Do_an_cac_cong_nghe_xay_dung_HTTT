@@ -12,7 +12,16 @@ from django.contrib.auth import logout
 from django.contrib.auth import login
 from .security.MyBackend import MyBackend
 from django.core.paginator import Paginator
+from django.core.serializers import serialize
 # Create your views here.
+from django.core.serializers.json import DjangoJSONEncoder
+
+class LazyEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, YourCustomType):
+            return str(obj)
+        return super().default(obj)
+
 
 def index(request):
     if request.user.is_authenticated:
@@ -138,3 +147,25 @@ def delete_product_on_cart(request):
 @login_required()
 def admin_index(request):
     return render(request, 'admin/index.html')
+
+def ProductsIndex(request):
+    return render(request, 'admin/product/index.html')
+
+def GetListProducts(request):
+    list_product = models.Product.objects.all()
+    products = serialize('json', list_product, cls=LazyEncoder)
+    return JsonResponse(products, safe=False)
+
+def edit_product(request):
+    if request.method == 'GET':
+        product = models.Product.objects.get(pk=request.GET['id'])
+        context={
+            "product":product
+        }
+        return render(request,"admin/product/edit.html", context)
+    else:
+        http_response = {
+            'status':'success',
+            'message':'Cap nhat thanh cong'
+        }
+        return JsonResponse(http_response)
