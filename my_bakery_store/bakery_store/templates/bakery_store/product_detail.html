@@ -64,6 +64,47 @@
 					   	<div class="row">
 					   		<div class="col-md-7">
 					   			<h3>23 Reviews</h3>
+					   			<!--comment form-->
+					   			<div class="review">
+							   		<div class="user-img" style="background-image: url(images/person2.jpg)"></div>
+							   		<div class="desc">
+							   			<h4>
+							   				<span class="text-left">Jacob Webb</span>
+							   				<span class="text-right">14 March 2018</span>
+							   			</h4>
+							   			
+						   				<div class="col-md-12 rating-star">
+									        <span data-id="100" data-val="1" style="background-image:url('static/bakery_store/images/star-rate.png');">
+									        </span>
+									        <span data-id="100" data-val="2" style="background-image:url('static/bakery_store/images/star-rate.png');"></span>
+									        <span data-id="100" data-val="3" style="background-image:url('static/bakery_store/images/star-rate.png');"></span>
+									        <span data-id="100" data-val="4" style="background-image:url('static/bakery_store/images/star-rate.png');"></span>
+									        <span data-id="100" data-val="5" style="background-image:url('static/bakery_store/images/star-rate.png');"></span>
+									    </div>
+							   			<div class="col-md-12 comment-container">
+							   				<form enctype="multipart/form-data">
+							   					<input type="hidden" value="1" id="customer_id">
+							   					<input type="hidden" value="2" id="product_id">
+								   				<textarea rows="3" cols="45" name="text_content" placeholder="Nhận xét của bạn" id="text_content">
+								   				</textarea>
+								   				
+								   				<div class="col-md-7">
+								   				<label for="image_content">Chọn ảnh
+								   				</label>
+								   				</div>
+								   				<input type="file" name="image_content" 
+								   				id="image_content" style="display: none">
+								   				
+								   				<div class="col-md-4 col-md-push-1"> 
+								   					<a href="javascript:void(0)" class="btn btn-primary" id="comment_btn">Bình luận</a>
+								   				</div>
+							   				</form>
+
+							   			</div>
+							   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+							   		</div>
+							   	</div>
+					   			<!--comment-->
 					   			<div class="review">
 							   		<div class="user-img" style="background-image: url(images/person1.jpg)"></div>
 							   		<div class="desc">
@@ -104,26 +145,7 @@
 							   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
 							   		</div>
 							   	</div>
-							   	<div class="review">
-							   		<div class="user-img" style="background-image: url(images/person3.jpg)"></div>
-							   		<div class="desc">
-							   			<h4>
-							   				<span class="text-left">Jacob Webb</span>
-							   				<span class="text-right">14 March 2018</span>
-							   			</h4>
-							   			<p class="star">
-							   				<span>
-							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-half"></i>
-							   					<i class="icon-star-empty"></i>
-						   					</span>
-						   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-							   			</p>
-							   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-							   		</div>
-							   	</div>
+							   	
 					   		</div>
 					   		<div class="col-md-4 col-md-push-1">
 					   			<div class="rating-wrap">
@@ -285,5 +307,7 @@
 {%endblock %}
 {% block script %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'bakery_store/js/ProductRatingArtaraxRatingStar/jquery.artarax.rating.star.css'%}"></script>
+<script src="{% static 'bakery_store/js/ProductRatingArtaraxRatingStar/jquery.artarax.rating.star.js'%}"></script>
 <script src="{% static 'bakery_store/js/product/detail.js'%}"></script>
 {% endblock %}

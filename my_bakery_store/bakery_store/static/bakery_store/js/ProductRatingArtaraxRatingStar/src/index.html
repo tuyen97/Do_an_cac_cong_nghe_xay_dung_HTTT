@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ARTARAX Rating Star Plugin Example</title>
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="artarax-rating-star/jquery.artarax.rating.star.css">
+    <style>
+    body { min-height: 100vh; background-color: #222; }
+    .container { margin: 150px auto; max-width: 640px; text-align: center; color: #fff; }
+</style>
+</head>
+<body>
+    <div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="https://www.jqueryscript.net/other/Product-Rating-ArtaraxRatingStar.html">Download This Plugin</a></li>
+<li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+<div class="container">
+    <h1>ARTARAX Rating Star Plugin Example</h1>
+    <p><img src="https://source.unsplash.com/random/400x250"></p>
+    <!-- data-id can be your ProductId -->
+    <div class="rating-star">
+        <span data-id="100" data-val="1"></span>
+        <span data-id="100" data-val="2"></span>
+        <span data-id="100" data-val="3"></span>
+        <span data-id="100" data-val="4"></span>
+        <span data-id="100" data-val="5"></span>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="artarax-rating-star/jquery.artarax.rating.star.js"></script>
+    <script>
+    $(function () {
+
+        // ---------------------------- page.load() -------------------------
+        var artaraxRatingStar = $.artaraxRatingStar({
+            onClickCallBack: onRatingStar
+        });
+
+        function onRatingStar(rate, id) {
+            alert("data-val(rate)=" + rate + " data-id(ProductId)=" + id);
+        }
+
+    });
+    </script>
+</body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</html>
