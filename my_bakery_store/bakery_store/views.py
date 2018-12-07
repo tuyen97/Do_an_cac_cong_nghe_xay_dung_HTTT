@@ -248,7 +248,7 @@ def admin_index(request):
     return render(request, 'admin/index.html')
 
 def ProductsIndex(request):
-    list_product = models.Product.objects.all()
+    list_product = models.Product.objects.filter(is_deleted=False)
     return render(request, 'admin/product/index.html',{'product_list':list_product})
 
 def GetListProducts(request):
@@ -283,6 +283,16 @@ def edit_product(request):
         #     'message':'Cap nhat thanh cong'
         # }
         # return JsonResponse(http_response)
+
+def deleteProduct(request):
+    product_id = request.POST['id']
+    product = models.Product.objects.get(pk=product_id)
+    product.is_deleted = True
+    product.save()
+    http_response = {
+        'message':'Xóa sản phẩm thành công'
+    }
+    return JsonResponse(http_response)
 
 def billIndex(request):
     billList = models.Bill.objects.all()

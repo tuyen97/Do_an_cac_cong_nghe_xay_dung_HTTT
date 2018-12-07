@@ -39,8 +39,8 @@ class Product(models.Model):
     descript = models.CharField(max_length=10000000, default="")
     price = models.IntegerField()
     category = models.CharField(max_length=30)
-    image = models.ImageField(upload_to="images")
-    is_deleted = models.BooleanField(default=True)
+    image = models.ImageField(upload_to="images/product")
+    is_deleted = models.BooleanField(default=False)
 
 class Lot(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

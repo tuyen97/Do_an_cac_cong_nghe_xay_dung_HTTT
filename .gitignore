@@ -5,3 +5,4 @@
 *.xml
 bakery_store/__pycache__/
 my_bakery_store/__pycache__/
+my_bakery_store/db.sqlite3

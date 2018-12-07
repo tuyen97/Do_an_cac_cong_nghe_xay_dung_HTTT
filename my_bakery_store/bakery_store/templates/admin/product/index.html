@@ -46,7 +46,7 @@
                             <td>
                                 <a class="btn btn-primary" href="{% url 'edit_product' %}?id={{ product.id }}">Sửa</a>
                                 &nbsp;&nbsp;&nbsp;
-                                <a class="btn btn-primary" href="javascript:void(0)">Xóa</a>
+                                <a class="btn btn-primary xoa-sp" id="{{ product.id }}" href="javascript:void(0)">Xóa</a>
                             </td>
                             </tr>
                         {% endfor %}

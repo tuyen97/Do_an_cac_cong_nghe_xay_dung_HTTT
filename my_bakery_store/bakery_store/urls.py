@@ -17,6 +17,7 @@ urlpatterns = [
     path('admin/product', views.ProductsIndex, name='view_product'),
     path('admin/product/list', views.GetListProducts, name='list_products'),
     path('admin/product/edit', views.edit_product, name='edit_product'),
+    path('admin/product/delete', views.deleteProduct, name = 'delete_product'),
     # path('admin/product/delete', views.delete, name='delete_product')
     path('change_quantity_on_cart', views.change_quantity_on_cart, name='change_quantity_on_cart'),
     path('checkout',views.checkout,name='checkout'),
