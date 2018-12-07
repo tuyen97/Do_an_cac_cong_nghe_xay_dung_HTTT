@@ -20,6 +20,8 @@ urlpatterns = [
     # path('admin/product/delete', views.delete, name='delete_product')
     path('change_quantity_on_cart', views.change_quantity_on_cart, name='change_quantity_on_cart'),
     path('checkout',views.checkout,name='checkout'),
-    path('order_complete', views.order_complete, name ='order_complete')
+    path('order_complete', views.order_complete, name ='order_complete'),
+    path('admin/bill/index',views.billIndex, name = 'billIndex'),
+    path('admin/bill/detail', views.billDetail, name = 'billDetail')
 
 ]

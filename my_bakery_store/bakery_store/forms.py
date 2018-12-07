@@ -30,7 +30,7 @@ class loginForm(forms.Form):
 
 class productForm(forms.ModelForm):
     name = forms.CharField(label='Tên sản phẩm', widget=forms.TextInput(attrs=add_attrs()))
-    available_quantity = forms.IntegerField(label='Số lượng',widget=forms.NumberInput(add_attrs('Nhập số lượng')))
+    available_quantity = forms.IntegerField(label='Số lượng',widget=forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Nhập số lượng','min':1}))
     descript = forms.CharField(label='Mô tả', widget=forms.TextInput(add_attrs('Mô tả')))
     price = forms.IntegerField(label='Giá', widget=forms.NumberInput(add_attrs('Nhập giá')))
     category = forms.CharField(label='Loại', widget=forms.TextInput(add_attrs('Nhập loại')))
@@ -51,3 +51,14 @@ class checkoutForm(forms.Form):
     diachi = forms.CharField(label='Địa chỉ',widget=forms.TextInput(attrs=add_attrs('Địa chỉ')))
     sdt = forms.IntegerField(label='Số điện thoại',widget=forms.TextInput(attrs=add_attrs('Số điện thoại')))
     # pay_method = forms.ChoiceField(label='Phương thức thanh toán',choices=PAY_METHOD_CHOICES,widget=forms.Select({'class':'form-control'}))
+
+class editProduct(forms.ModelForm):
+    name = forms.CharField(label='Tên sản phẩm', widget=forms.TextInput(attrs=add_attrs()))
+    available_quantity = forms.IntegerField(label='Số lượng',widget=forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Nhập số lượng','min':1}))
+    descript = forms.CharField(label='Mô tả', widget=forms.TextInput(add_attrs('Mô tả')))
+    price = forms.IntegerField(label='Giá', widget=forms.NumberInput(add_attrs('Nhập giá')))
+    category = forms.CharField(label='Loại', widget=forms.TextInput(add_attrs('Nhập loại')))
+    image = forms.ImageField(required=False,label='Chọn ảnh', widget=forms.FileInput(add_attrs('')))
+    class Meta:
+        model = models.Product
+        fields = ['name','available_quantity','descript','price','category','image']

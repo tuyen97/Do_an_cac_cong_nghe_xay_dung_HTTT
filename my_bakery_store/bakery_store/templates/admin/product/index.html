@@ -1,8 +1,9 @@
 {% extends 'admin/layout.html' %}
+{% load humanize %}
 {% block content %}
 	<section class="content-header">
       <h1>
-        Danh sach san pham
+        Danh sách sản phẩm
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
@@ -13,39 +14,74 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-md-12">
-          	<div class="box">
-	            <div class="box-header with-border">
-	              <h3 class="box-title">List products</h3>
-	            </div>
-            <!-- /.box-header -->
-            	<div class="box-body">
-	              	<table class="table table-bordered" id="productTable">
-		              	<thead>
-			                <tr>
-			                  <th style="text-align: center;">STT</th>
-			      				<th style="text-align: center;">Ma san pham</th>
-			      				<th style="text-align: center;">Ten san pham</th>
-			      				<th style="text-align: center;">Don gia</th>
-			      				<th style="text-align: center;">So luong</th>
-			      				<th style="text-align: center;">Anh minh hoa</th>
-			      				<th style="text-align: center;">Hanh dong</th>
-			                </tr>
-		                
-		      			</thead>
-			      		<tbody>
-			                <tr class="hidden no-data">
-			                    <td colspan="7">
-			                        Không có dữ liệu
-			                    </td>
-			                </tr>
-			            </tbody>
-	      			</table>
-      			</div>
-      		</div>
-      	</div>
-      </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Members info table</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table id="pas_datatables_members_info" class="table table-bordered table-hover" width="100%">
+                        <thead>
+                        <tr>
+			      				<th style="text-align: center;">Mã sản phẩm</th>
+			      				<th style="text-align: center;">Tên sản phẩm</th>
+			      				<th style="text-align: center;">Đơn giá</th>
+			      				<th style="text-align: center;">Số lượng</th>
+			      				<th style="text-align: center;">Ảnh minh họa</th>
+			      				<th style="text-align: center;">Hành động</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        {% for product in product_list %}
+                            <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.price|intcomma }}</td>
+                            <td>{{ product.available_quantity }}</td>
+                            <td><img src="/static/bakery_store/{{ product.image }}" class="img-fluid" style="width:150px; height: 150px;"></td>
+                            <td>
+                                <a class="btn btn-primary" href="{% url 'edit_product' %}?id={{ product.id }}">Sửa</a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-primary" href="javascript:void(0)">Xóa</a>
+                            </td>
+                            </tr>
+                        {% endfor %}
+{#                        {% for u in member_list %}#}
+{#                            <tr>#}
+{#                                <td>#}
+{#                                    <a href="{% url 'member-profile' %}?id={{ u.id }}">{{ u.name }}</a>#}
+{#                                </td>#}
+{#                                <td>{{ u.email }}</td>#}
+{#                                <td>{{ u.card_id }}</td>#}
+{#                                <td>{{ u.course }}</td>#}
+{#                                <td>{{ u.research_about }}</td>#}
+{#                                <td>{{ u.registered_day }}</td>#}
+{#                                <td class="actions_column">#}
+{#                                    <a id="btn_edit_member" class="btn memberBtn btn-xs btn-info" href="{% url 'member-profile' %}?id={{ u.id }}">#}
+{#                                        <i class="fa fa-edit"></i>#}
+{#                                    </a>#}
+{#                                    <button type="button" class="btn memberBtn btn-xs btn-danger btn_delete_member"#}
+{#                                            data-id="{{ u.id }}" data-toggle="modal" data-target="#modal-delete-user">#}
+{#                                        <i class="fa fa-trash"></i>#}
+{#                                    </button>#}
+{#                                </td>#}
+{#                            </tr>#}
+{#                        {% endfor %}#}
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
     </section>
 {% verbatim %}
 <script type="text/x-jquery-tmpl" id="productTemplate">
@@ -56,7 +92,7 @@
         <td>${fields.name}</td>
         <td>${fields.price}</td>
         <td>${fields.available_quantity}</td>
-        <td><img src='/static/bakery_store/${fields.image}' class="img-fluid" 
+        <td><img src='/static/bakery_store/${fields.image}' class="img-fluid"
         		style="width:150px; height: 150px;"></td>
         <td>
         	<a class="btn btn-primary" href="/admin/product/edit?id=${pk}">Sua</a>
@@ -71,5 +107,7 @@
 {% endblock %}
 {% block script %}
 	{% load static %}
-  <script src="{% static 'admin/dist/js/product/index.js' %}"></script>
+    <script src="{% static 'admin/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/product.js' %}"></script>
 {% endblock %}

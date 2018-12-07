@@ -248,7 +248,8 @@ def admin_index(request):
     return render(request, 'admin/index.html')
 
 def ProductsIndex(request):
-    return render(request, 'admin/product/index.html')
+    list_product = models.Product.objects.all()
+    return render(request, 'admin/product/index.html',{'product_list':list_product})
 
 def GetListProducts(request):
     list_product = models.Product.objects.all()
@@ -258,13 +259,42 @@ def GetListProducts(request):
 def edit_product(request):
     if request.method == 'GET':
         product = models.Product.objects.get(pk=request.GET['id'])
+        form = forms.editProduct(instance=product)
         context={
-            "product":product
+            "product":product,
+            'form':form
         }
         return render(request,"admin/product/edit.html", context)
     else:
-        http_response = {
-            'status':'success',
-            'message':'Cap nhat thanh cong'
-        }
-        return JsonResponse(http_response)
+        if request.method == 'POST':
+            product = models.Product.objects.get(pk=request.POST['product_id'])
+            form = forms.editProduct(request.POST,files=request.FILES,instance=product)
+            if form.is_valid():
+                form.save()
+                return redirect('/admin/product')
+            else:
+                context = {
+                    "product": product,
+                    'form': form
+                }
+                return render(request, "admin/product/edit.html", context)
+        # http_response = {
+        #     'status':'success',
+        #     'message':'Cap nhat thanh cong'
+        # }
+        # return JsonResponse(http_response)
+
+def billIndex(request):
+    billList = models.Bill.objects.all()
+    return render(request,'admin/bill/index.html',{'billList':billList})
+
+def billDetail(request):
+    bill_id = request.GET['bill_id']
+    bill = models.Bill.objects.get(pk=bill_id)
+    bill_detail = models.BillDetail.objects.filter(bill_id=bill_id)
+    context = {
+        'bill':bill,
+        'entries':bill_detail
+    }
+    print("ok")
+    return render(request, 'admin/bill/detail.html',context)

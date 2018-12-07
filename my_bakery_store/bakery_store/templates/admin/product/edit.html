@@ -2,7 +2,7 @@
 {% block content %}
 	<section class="content-header">
       <h1>
-        San Pham/Cap nhat
+        Sản phẩm/ Cập nhật
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
@@ -22,47 +22,67 @@
             <!-- /.box-header -->
             	<div class="box-body">
             		<div class="col-md-6">
-			            <div class="form-group">
-		                  <label for="product_id">Ma</label>
-		                  <input type="text" class="form-control" id="product_id" placeholder="nhap ma san pham" value="{{product.id}}">
-		                </div>
-		                <div class="form-group">
-		                  <label for="product_name">Ten</label>
-		                  <input type="text" class="form-control" id="product_name" placeholder="Nhap ten sp" value="{{product.name}}">
-		                </div>
-		                <div class="form-group">
-		                  <label for="product_price">Don gia</label>
-		                  <input type="text" class="form-control" id="product_price" placeholder="Nhap gia sp" value="{{product.price}}">
-		                </div>
+{#			            <div class="form-group">#}
+{#		                  <label for="product_id">Mã số</label>#}
+{#		                  <input type="text" class="form-control" id="product_id" placeholder="nhap ma san pham" value="{{product.id}}" readonly>#}
+{#		                </div>#}
+{#		                <div class="form-group">#}
+{#		                  <label for="product_name">Tên</label>#}
+{#		                  <input type="text" class="form-control" id="product_name" placeholder="Nhap ten sp" value="{{product.name}}">#}
+{#		                </div>#}
+{#		                <div class="form-group">#}
+{#		                  <label for="product_price">Đơn giá</label>#}
+{#		                  <input type="text" class="form-control" id="product_price" placeholder="Nhap gia sp" value="{{product.price}}">#}
+{#		                </div>#}
+{#                        <div class="form-group">#}
+{#		                  <label for="product_description">Đơn giá</label>#}
+{#		                  <input type="text" class="form-control" id="product_description" placeholder="Nhap mo ta" value="{{product.descript}}">#}
+{#		                </div>#}
+{#                        <div class="form-group">#}
+{#		                  <label for="product_quantity">Số lượng</label>#}
+{#		                  <input type="text" class="form-control"#}
+{#		                  	id="product_quantity" placeholder="Nhap so luong"#}
+{#		                  	value="{{product.available_quantity}}">#}
+{#		                </div>#}
+                        <form method="post" action="{% url 'edit_product' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <p>
+                                <label for="product_id">Mã số</label>
+                                <input type="text" class="form-control" name="product_id" id="product_id" placeholder="nhap ma san pham" value="{{product.id}}" readonly>
+                            </p>
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                        </form>
 	                </div>
+
 	                <div class="col-md-6">
 		                <div class="form-group">
-		                  <label for="product_image">Anh minh hoa</label><br>
+		                  <label for="product_image">Ảnh minh họa</label><br>
 		                  <input type="file" id="product_image" style="display:none">
 		                  <img src='/static/bakery_store/{{product.image}}' 
 		                  	class="img-fluid" style="width:150px; height: 150px;">
 		                 
 		                </div>
-		                <div class="form-group">
-		                  <label for="product_quantity">So Luong</label>
-		                  <input type="text" class="form-control" 
-		                  	id="product_quantity" placeholder="Nhap so luong" 
-		                  	value="{{product.available_quantity}}">
-		                </div>
+{#		                <div class="form-group">#}
+{#		                  <label for="product_quantity">Số lượng</label>#}
+{#		                  <input type="text" class="form-control" #}
+{#		                  	id="product_quantity" placeholder="Nhap so luong" #}
+{#		                  	value="{{product.available_quantity}}">#}
+{#		                </div>#}
 		                <div class="checkbox">
 	                  		<label>
 	                  			{% if product.is_deleted == 0 %}
-	                    			<input type="checkbox" checked="true"> Xoa
+	                    			<input type="checkbox" checked="true"> Xóa
 	                  			{% else %}
-	                  				<input type="checkbox"> Xoa
+	                  				<input type="checkbox"> Xóa
 	                  			{% endif %}
 	                  		</label>
 	                	</div>
                 	</div>
       			</div>
-      			<div class="box-footer">
-                	<button id="edit_btn" class="btn btn-primary">Cap nhat</button>
-              	</div>
+{#      			<div class="box-footer">#}
+{##}
+{#              	</div>#}
             
       		</div>
       	</div>
