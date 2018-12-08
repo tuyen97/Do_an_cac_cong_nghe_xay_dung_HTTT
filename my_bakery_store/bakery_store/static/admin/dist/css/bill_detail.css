@@ -1,0 +1,40 @@
+.cart-detail {
+    background: whitesmoke;
+    padding: 2em 3em;
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.cart-detail ul {
+    width: 100%;
+    padding: 0;
+    float: left;
+    margin: 0;
+}
+.cart-detail ul li {
+    font-weight: 400;
+    width: 100%;
+    display: block;
+    float: left;
+}
+.cart-detail ul li {
+    font-weight: 400;
+}
+.cart-detail ul li span:first-child {
+    width: calc(100% - 100px);
+}
+.cart-detail ul li span {
+    margin-bottom: 15px;
+    display: block;
+    float: left;
+    border-bottom: 1px solid #e6e6e6;
+    width: 100px;
+}
+.cart-detail ul li span:last-child {
+    width: 100px;
+}
+.colorlib-form {
+    background: whitesmoke;
+    padding: 2em;
+    margin-bottom: 30px;
+}
