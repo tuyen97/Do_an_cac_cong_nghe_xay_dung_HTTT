@@ -308,3 +308,9 @@ def billDetail(request):
     }
     print("ok")
     return render(request, 'admin/bill/detail.html',context)
+#Register - login form VanAnh
+def registerForm(request):
+    return render(request,'bakery_store/register_form.html')
+
+def loginForm(request):
+    return render(request,'bakery_store/login_form.html')

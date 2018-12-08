@@ -23,6 +23,9 @@ urlpatterns = [
     path('checkout',views.checkout,name='checkout'),
     path('order_complete', views.order_complete, name ='order_complete'),
     path('admin/bill/index',views.billIndex, name = 'billIndex'),
-    path('admin/bill/detail', views.billDetail, name = 'billDetail')
+    path('admin/bill/detail', views.billDetail, name = 'billDetail'),
+    
+    path('VA/register', views.registerForm, name = 'registerForm'),
+    path('VA/login', views.loginForm, name = 'loginForm')
 
 ]

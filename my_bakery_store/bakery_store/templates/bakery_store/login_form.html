@@ -1,0 +1,28 @@
+{% extends "bakery_store/register_layout.html" %}
+{% block content %}
+<form>
+	<h3>Đăng nhập</h3>
+	
+	<div class="form-wrapper">
+		<input type="text" placeholder="Tài khoản" class="form-control"
+			name="user_name" id="user_name">
+		<i class="zmdi zmdi-account"></i>
+	</div>
+	
+	
+	<div class="form-wrapper">
+		<input type="password" placeholder="Nhập khẩu" class="form-control"
+			name="password" id="password">
+		<i class="zmdi zmdi-lock"></i>
+	</div>
+	
+	<button id="submit_btn">Đăng nhập
+		<i class="zmdi zmdi-arrow-right"></i>
+	</button>
+</form>
+{% endblock %}
+{% block script %}
+	{% load static %}
+	<script src="{% static 'bakery_store/js/login.js'%}"></script>
+	
+{% endblock %}
