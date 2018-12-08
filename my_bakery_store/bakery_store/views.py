@@ -359,3 +359,9 @@ def approveBill(request):
     bill.status = bill_status
     bill.save()
     return HttpResponse('ok')
+#Register - login form VanAnh
+def registerForm(request):
+    return render(request,'bakery_store/register_form.html')
+
+def loginForm(request):
+    return render(request,'bakery_store/login_form.html')
