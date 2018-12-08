@@ -62,3 +62,12 @@ class editProduct(forms.ModelForm):
     class Meta:
         model = models.Product
         fields = ['name','available_quantity','descript','price','category','image']
+
+class approveBill(forms.Form):
+    SUCCESS = 'succ'
+    FAIL ='fail'
+    STATUS =(
+        (SUCCESS,'Thành công'),
+        (FAIL,'Thất bại'),
+    )
+    status = forms.ChoiceField(label='Duyệt trạng thái',choices=STATUS,widget=forms.Select({'class':'form-control'}))

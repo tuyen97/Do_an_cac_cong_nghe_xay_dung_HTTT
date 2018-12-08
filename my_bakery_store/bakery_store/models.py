@@ -77,7 +77,7 @@ class Event(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     start_time = models.DateField(null=False,default='')
     finish_time = models.DateField(null=False,default='')
-    sale_off = models.IntegerField(null=False,max_length=2)
+    sale_off = models.IntegerField(null=False)
 
 class BillDetail(models.Model):
     product_id = models.ForeignKey('Product',on_delete=models.CASCADE)
@@ -93,3 +93,4 @@ class Comment(models.Model):
     image = models.ImageField(upload_to="images/comment")
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    rating = models.CharField(max_length=5, default='xxxxx')

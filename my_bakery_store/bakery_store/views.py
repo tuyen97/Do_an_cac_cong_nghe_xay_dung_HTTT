@@ -216,15 +216,29 @@ def checkout(request):
             sdt = f.cleaned_data['sdt']
             created_date = timezone.now()
             total = sum(sub_total)
-            bill = models.Bill(
-                created_date=created_date,
-                total=total,
-                receiver_name=hoten,
-                receiver_address=diachi,
-                receiver_phone=sdt
-            )
-            bill.save()
+            if request.user.is_authenticated:
+                bill = models.Bill(
+                    created_date=created_date,
+                    total=total,
+                    receiver_name=hoten,
+                    receiver_address=diachi,
+                    receiver_phone=sdt,
+                    user_id=request.user
+                )
+                bill.save()
+            else:
+                bill = models.Bill(
+                    created_date=created_date,
+                    total=total,
+                    receiver_name=hoten,
+                    receiver_address=diachi,
+                    receiver_phone=sdt
+                )
+                bill.save()
+
             for i in range(len(product_list)):
+                product_list[i].available_quantity -= count_item[i]
+                product_list[i].save()
                 billdetail = models.BillDetail(
                     product_id=product_list[i],
                     quantity=count_item[i],
@@ -251,12 +265,16 @@ def add_comment(request):
     rating = request.POST['rating']
     text_content = request.POST['text_content']
     image_content = request.FILES['image_content']
+    star = []
     comment = models.Comment()
+    for _ in range(rating):
+        star.append("x")
     comment.user = user
     comment.product = product
     comment.content = text_content
     comment.image = image_content
     comment.created_date = timezone.now()
+    comment.rating=''.join(star)
     comment.save()
     return HttpResponse('ok')
 
@@ -316,12 +334,28 @@ def billIndex(request):
     return render(request,'admin/bill/index.html',{'billList':billList})
 
 def billDetail(request):
+    form = forms.approveBill()
     bill_id = request.GET['bill_id']
     bill = models.Bill.objects.get(pk=bill_id)
     bill_detail = models.BillDetail.objects.filter(bill_id=bill_id)
     context = {
         'bill':bill,
-        'entries':bill_detail
+        'entries':bill_detail,
+        'form':form
     }
     print("ok")
     return render(request, 'admin/bill/detail.html',context)
+
+def approveBill(request):
+    bill_id  =request.POST['id']
+    bill_status = request.POST['status']
+    bill = models.Bill.objects.get(pk = bill_id)
+    if bill_status=='fail':
+        bill_details = models.BillDetail.objects.filter(bill_id=bill_id)
+        for bill_detail in bill_details:
+            product = bill_detail.product_id
+            product.available_quantity += bill_detail.quantity
+            product.save()
+    bill.status = bill_status
+    bill.save()
+    return HttpResponse('ok')

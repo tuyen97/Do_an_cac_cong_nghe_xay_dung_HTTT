@@ -17,7 +17,7 @@
                 <div class="box-header">
                     <!--Them trang thai nua nhe-->
                     <!--VanAnh-->
-                    <h3 class="box-title">{{ bill.id }} - Đang giao</h3>
+                    <h3 class="box-title">{{ bill.id }} - {{ bill.get_status_display }}</h3>
                     <!--end-->
                 </div>
 
@@ -26,7 +26,7 @@
                 <div class="box-body table-responsive">
                 <!--VanAnh-->
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="cart-detail">
                             <h4>Thông tin khách hàng</h4>
                             <div class="row">
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <!-- Null neu khach hang vang lai-->
-                                    <p>ID001 - Van Anh</p>
+                                    <p>{{ bill.user_id.id }} - {{ bill.user_id.full_name }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -44,7 +44,7 @@
                                     <label>Ngày mua</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <p>12/12/2018</p>
+                                    <p>{{ bill.created_date }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -52,7 +52,7 @@
                                     <label>Người nhận</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <p>Van Anh</p>
+                                    <p>{{ bill.receiver_name }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -60,7 +60,7 @@
                                     <label>SĐT</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <p>13484475</p>
+                                    <p>0{{ bill.receiver_phone }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -68,61 +68,74 @@
                                     <label>Địa chỉ</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <p>Hà Nội</p>
+                                    <p>{{ bill.receiver_address }}</p>
                                 </div>
                             </div>
                             </div>
                         </div>
                         <!--Hien thi cac san pham da mua-->
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                            <div class="cart-detail">
                                 <h4>Danh sách sản phẩm</h4>
-                                <ul>
-                                    <li>
 
+                                <ul>
+
+                                    <li>
+                                        {% for entry in entries %}
                                         <ul>
                                             
                                             <li>
-                                                <span>4 x Bánh trà xanh</span> 
-                                                <span>20000</span>
+                                                <span>{{ entry.quantity }} x {{ entry.product_id.name }}</span>
+                                                <span>{{ entry.total|intcomma}}</span>
                                             </li>
                                         </ul>
+                                        {% endfor %}
 
                                     </li>
-                                    <li>
-                                        <span>Mã giảm giá</span>
-                                        <span>SALE01</span>
 
-                                    </li>
+{#                                    <li>#}
+{#                                        <span>Mã giảm giá</span>#}
+{#                                        <span>SALE01</span>#}
+{##}
+{#                                    </li>#}
                                     <li>
                                         <span>Tổng tiền</span> 
-                                        <span>80k</span>
+                                        <span>{{ bill.total|intcomma }}</span>
                                     </li>
                                 </ul>
+
                             </div>
+                         {% if bill.status == 'proc' %}
+                        <form action="{% url 'approveBill' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ bill.id }}">
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Xác nhận </button>
+                        </form>
+                        {% endif %}
                         </div>
                     </div>
                     <!--end-->
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th style="text-align: center;">Tên sản phẩm</th>
-                            <th style="text-align: center;">Số lượng</th>
-                            <th style="text-align: center;">Giảm giá</th>
-                            <th style="text-align: center;">Thành tiền</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for entry in entries %}
-                            <tr>
-                            <td>{{ entry.product_id.name }}</td>
-                            <td>{{ entry.quantity }}</td>
-                            <td>0</td>
-                            <td>{{ entry.total|intcomma }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+{#                    <table class="table table-bordered">#}
+{#                        <thead>#}
+{#                        <tr>#}
+{#                            <th style="text-align: center;">Tên sản phẩm</th>#}
+{#                            <th style="text-align: center;">Số lượng</th>#}
+{#                            <th style="text-align: center;">Giảm giá</th>#}
+{#                            <th style="text-align: center;">Thành tiền</th>#}
+{#                        </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                        {% for entry in entries %}#}
+{#                            <tr>#}
+{#                            <td>{{ entry.product_id.name }}</td>#}
+{#                            <td>{{ entry.quantity }}</td>#}
+{#                            <td>0</td>#}
+{#                            <td>{{ entry.total|intcomma }}</td>#}
+{#                            </tr>#}
+{#                        {% endfor %}#}
+{#                        </tbody>#}
+{#                    </table>#}
                 </div>
             </div>
         </div>
