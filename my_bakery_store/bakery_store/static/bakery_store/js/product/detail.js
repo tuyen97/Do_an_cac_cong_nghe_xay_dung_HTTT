@@ -49,18 +49,27 @@ $(document).ready(function(){
           onClickCallBack: onRatingStar
       });
     function onRatingStar(rate, id) {
-      alert("data-val(rate)=" + rate + " data-id(ProductId)=" + id);
       rating = rate;
-      console.log(rating);
+      $('#rating').val(rate);
     };
-    $("#comment_btn").click(function(){
-        var reqData = {
-            'product_id' : $("#product_id").val(),
-            'customer_id' : $("#customer_id").val(),
-            'rating': rating,
-            'text_content' : $("#text_content").val(),
-            'image_content' : $("#image_content").val()
-        }
-        console.log(reqData);
-    }) 
+    // $("#comment_btn").click(function(){
+    //     var cmt = document.getElementById("comment");
+    //     var fd = new FormData((cmt));
+    //
+    //     var reqData = {
+    //         'product_id' : $("#product_id").val(),
+    //         'customer_id' : $("#customer_id").val(),
+    //         'rating': rating,
+    //         'text_content' : $("#text_content").val(),
+    //
+    //     }
+    //     console.log(fd);
+    //     $.post(
+    //         '/add_comment',
+    //         fd,
+    //         function (data, status) {
+    //             alert(data['message']);
+    //         }
+    //     )
+    // })
 });

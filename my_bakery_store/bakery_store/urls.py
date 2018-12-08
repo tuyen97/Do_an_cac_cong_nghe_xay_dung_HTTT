@@ -14,6 +14,7 @@ urlpatterns = [
     path('add_to_cart',views.add_to_cart, name='add_to_cart'),
     path('view_cart', views.view_cart,name='view_cart'),
     path('delete_product_on_cart', views.delete_product_on_cart, name='delete_product_on_cart'),
+    path('add_comment', views.add_comment, name='add_comment'),
     path('admin/product', views.ProductsIndex, name='view_product'),
     path('admin/product/list', views.GetListProducts, name='list_products'),
     path('admin/product/edit', views.edit_product, name='edit_product'),

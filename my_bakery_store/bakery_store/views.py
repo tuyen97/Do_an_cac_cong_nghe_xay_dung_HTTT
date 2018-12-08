@@ -31,7 +31,7 @@ def index(request):
         if request.user.role == 'ad\n':
             return redirect('/admin')
 
-    products = models.Product.objects.all()
+    products = models.Product.objects.filter(is_deleted=False)
     paginator = Paginator(products, 8)  # Show 25 contacts per page
     page = request.GET.get('page')
     product_list = paginator.get_page(page)
@@ -102,8 +102,10 @@ def add_product(request):
 def product_detail(request):
    # print(request.session['user_avt'])
     product = models.Product.objects.get(pk=request.GET['id'])
+    comment_list = models.Comment.objects.filter(product = product.id)
     context={
-        "product":product
+        "product":product,
+        "comment_list":comment_list
     }
     return render(request, "bakery_store/product_detail.html",context)
 
@@ -242,6 +244,21 @@ def checkout(request):
 
 def order_complete(request):
     return render(request, 'bakery_store/order-complete.html')
+
+def add_comment(request):
+    user = models.User.objects.get(pk=request.POST['customer_id'])
+    product = models.Product.objects.get(pk=request.POST['product_id'])
+    rating = request.POST['rating']
+    text_content = request.POST['text_content']
+    image_content = request.FILES['image_content']
+    comment = models.Comment()
+    comment.user = user
+    comment.product = product
+    comment.content = text_content
+    comment.image = image_content
+    comment.created_date = timezone.now()
+    comment.save()
+    return HttpResponse('ok')
 
 @login_required()
 def admin_index(request):

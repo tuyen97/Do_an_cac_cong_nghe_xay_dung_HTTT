@@ -65,13 +65,18 @@
 					   		<div class="col-md-7">
 					   			<h3>23 Reviews</h3>
 					   			<!--comment form-->
+                                {% if user.is_authenticated %}
 					   			<div class="review">
-							   		<div class="user-img" style="background-image: url(images/person2.jpg)"></div>
+                                <div>
+
+							   		<div class="user-img" style="background-image: url('static/bakery_store/{{ user.avt }}')"></div>
+                                    <h3>
+							   				<span class="text-left">{{ user.full_name }}</span>
+{#							   				<span class="text-right">14 March 2018</span>#}
+							   			</h3>
+                                </div>
 							   		<div class="desc">
-							   			<h4>
-							   				<span class="text-left">Jacob Webb</span>
-							   				<span class="text-right">14 March 2018</span>
-							   			</h4>
+
 							   			
 						   				<div class="col-md-12 rating-star">
 									        <span data-id="100" data-val="1" style="background-image:url('static/bakery_store/images/star-rate.png');">
@@ -82,21 +87,24 @@
 									        <span data-id="100" data-val="5" style="background-image:url('static/bakery_store/images/star-rate.png');"></span>
 									    </div>
 							   			<div class="col-md-12 comment-container">
-							   				<form enctype="multipart/form-data">
-							   					<input type="hidden" value="1" id="customer_id">
-							   					<input type="hidden" value="2" id="product_id">
+							   				<form enctype="multipart/form-data" id="comment" method="post" action="{% url 'add_comment' %}">
+							   					{% csrf_token %}
+                                                <input type="hidden" value="{{ user.id }}" name="customer_id">
+							   					<input type="hidden" value="{{ product.id }}" name="product_id">
+                                                <input type="hidden" value="" id="rating" name="rating">
 								   				<textarea rows="3" cols="45" name="text_content" placeholder="Nhận xét của bạn" id="text_content">
 								   				</textarea>
 								   				
 								   				<div class="col-md-7">
-								   				<label for="image_content">Chọn ảnh
+								   				<label for="image_content" class="btn btn-primary">Chọn ảnh
 								   				</label>
 								   				</div>
 								   				<input type="file" name="image_content" 
 								   				id="image_content" style="display: none">
 								   				
 								   				<div class="col-md-4 col-md-push-1"> 
-								   					<a href="javascript:void(0)" class="btn btn-primary" id="comment_btn">Bình luận</a>
+{#								   					<a href="javascript:void(0)" class="btn btn-primary" id="comment_btn">Bình luận</a>#}
+                                                    <button class="btn btn-primary" type="submit">Bình luận</button>
 								   				</div>
 							   				</form>
 
@@ -104,13 +112,15 @@
 							   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
 							   		</div>
 							   	</div>
+                                {% endif %}
 					   			<!--comment-->
+                            {% for comment in comment_list %}
 					   			<div class="review">
-							   		<div class="user-img" style="background-image: url(images/person1.jpg)"></div>
+							   		<div class="user-img" style="background-image: url('static/bakery_store/{{ comment.user.avt }}')"></div>
 							   		<div class="desc">
 							   			<h4>
-							   				<span class="text-left">Jacob Webb</span>
-							   				<span class="text-right">14 March 2018</span>
+							   				<span class="text-left">{{ comment.user.full_name }}</span>
+							   				<span class="text-right">{{ comment.created_date }}</span>
 							   			</h4>
 							   			<p class="star">
 							   				<span>
@@ -122,30 +132,31 @@
 						   					</span>
 						   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
 							   			</p>
-							   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+							   			<p>{{ comment.content }}</p>
 							   		</div>
 							   	</div>
-							   	<div class="review">
-							   		<div class="user-img" style="background-image: url(images/person2.jpg)"></div>
-							   		<div class="desc">
-							   			<h4>
-							   				<span class="text-left">Jacob Webb</span>
-							   				<span class="text-right">14 March 2018</span>
-							   			</h4>
-							   			<p class="star">
-							   				<span>
-							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-half"></i>
-							   					<i class="icon-star-empty"></i>
-						   					</span>
-						   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-							   			</p>
-							   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-							   		</div>
-							   	</div>
-							   	
+                            {% endfor %}
+{#							   	<div class="review">#}
+{#							   		<div class="user-img" style="background-image: url(images/person2.jpg)"></div>#}
+{#							   		<div class="desc">#}
+{#							   			<h4>#}
+{#							   				<span class="text-left">Jacob Webb</span>#}
+{#							   				<span class="text-right">14 March 2018</span>#}
+{#							   			</h4>#}
+{#							   			<p class="star">#}
+{#							   				<span>#}
+{#							   					<i class="icon-star-full"></i>#}
+{#							   					<i class="icon-star-full"></i>#}
+{#							   					<i class="icon-star-full"></i>#}
+{#							   					<i class="icon-star-half"></i>#}
+{#							   					<i class="icon-star-empty"></i>#}
+{#						   					</span>#}
+{#						   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>#}
+{#							   			</p>#}
+{#							   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>#}
+{#							   		</div>#}
+{#							   	</div>#}
+{#							   	#}
 					   		</div>
 					   		<div class="col-md-4 col-md-push-1">
 					   			<div class="rating-wrap">

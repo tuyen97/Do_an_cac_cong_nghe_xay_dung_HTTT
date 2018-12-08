@@ -85,3 +85,11 @@ class BillDetail(models.Model):
     quantity = models.IntegerField(null=False)
     total = models.IntegerField(null=False)
     bill_id = models.ForeignKey('Bill', on_delete=models.CASCADE)
+
+class Comment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    content = models.CharField(max_length=400)
+    created_date = models.DateTimeField(null=False)
+    image = models.ImageField(upload_to="images/comment")
+    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
