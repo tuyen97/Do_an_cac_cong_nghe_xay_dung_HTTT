@@ -1,0 +1,87 @@
+{% extends 'admin/layout.html' %}
+{% load humanize %}
+{% block content %}
+	<section class="content-header">
+      <h1>
+        Danh sách sự kiện
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Event</li>
+      </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <a href="javascript:void(0)" class="btn btn-primary"><i class="material-icons"></i>Tạo sự kiện</a>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table id="event_table" class="table table-bordered table-hover" width="100%">
+                        <thead>
+                        <tr>
+			      				<th style="text-align: center;">Mã sự kiện</th>
+			      				<th style="text-align: center;">Tên sự kiện</th>
+			      				<th style="text-align: center;">Trạng thái</th>
+			      				<th style="text-align: center;">Ngày bắt đầu</th>
+			      				<th style="text-align: center;">Ngày kết thúc</th>
+			      				<th style="text-align: center;">Hành động</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        
+                            <tr>
+	                            <td>001</td>
+	                            <td>Giáng sinh</td>
+	                            <!--Co 3 trang thai-->
+	                            <td>Sắp diễn ra/Đang diễn ra/Kết thúc</td>
+	                            <td>12/12/2018</td>
+	                            <td>30/12/2018</td>
+	                            <td>
+	                                <a class="btn btn-primary" href="#">
+	                                	<i class="fa fa-edit"></i>
+	                                	Sửa
+	                                </a>
+	                                &nbsp;&nbsp;&nbsp;
+	                                <!--Hien thi khi su kien chua dien ra-->
+	                                <a class="btn btn-primary" href="#">
+	                                	<i class="fa fa-hourglass-start"></i>
+	                                	Kích hoạt
+	                                </a>
+	                                &nbsp;&nbsp;&nbsp;
+	                                <a class="btn btn-primary" href="#">
+	                                	<i class="fa fa-stop-circle"></i>
+	                                	Kết thúc
+	                                </a>
+	                                &nbsp;&nbsp;&nbsp;
+	                                <a class="btn btn-primary xoa-sp" id="001" href="javascript:void(0)">
+	                                	<i class="fa fa-trash"></i>
+										Xóa
+									</a>
+	                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    </section>
+
+{% endblock %}
+{% block script %}
+	{% load static %}
+    <script src="{% static 'admin/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static 'admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+	<script src="{% static 'admin/js/event.js' %}"></script>
+{% endblock %}

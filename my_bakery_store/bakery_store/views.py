@@ -314,3 +314,9 @@ def registerForm(request):
 
 def loginForm(request):
     return render(request,'bakery_store/login_form.html')
+
+def eventIndex(request):
+    return render(request, 'admin/event/index.html')
+
+def editEventForm(request):
+    return render(request, 'admin/event/edit.html')
