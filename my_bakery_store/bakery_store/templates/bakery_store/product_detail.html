@@ -94,14 +94,14 @@
                                                 <input type="hidden" value="" id="rating" name="rating">
 								   				<textarea rows="3" cols="45" name="text_content" placeholder="Nhận xét của bạn" id="text_content">
 								   				</textarea>
-								   				
+
 								   				<div class="col-md-7">
 								   				<label for="image_content" class="btn btn-primary">Chọn ảnh
 								   				</label>
 								   				</div>
-								   				<input type="file" name="image_content" 
+								   				<input type="file" name="image_content"
 								   				id="image_content" style="display: none">
-								   				
+
 								   				<div class="col-md-4 col-md-push-1"> 
 {#								   					<a href="javascript:void(0)" class="btn btn-primary" id="comment_btn">Bình luận</a>#}
                                                     <button class="btn btn-primary" type="submit">Bình luận</button>
@@ -124,11 +124,9 @@
 							   			</h4>
 							   			<p class="star">
 							   				<span>
+                                                {% for _ in comment.rating %}
 							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-full"></i>
-							   					<i class="icon-star-half"></i>
-							   					<i class="icon-star-empty"></i>
+                                                {% endfor %}
 						   					</span>
 						   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
 							   			</p>

@@ -49,9 +49,9 @@ def register(request):
             f.save()
             return HttpResponse('success')
         else:
-            return render(request,"bakery_store/register.html",{'form':f})
+            return render(request,"bakery_store/register_form.html",{'form':f})
     else:
-        return render(request,"bakery_store/register.html",{'form':form})
+        return render(request,"bakery_store/register_form.html",{'form':form})
 
 def Logout(request):
     logout(request)
@@ -63,7 +63,7 @@ def loginView(request):
         context = {
             'form': forms.loginForm()
         }
-        return render(request, 'bakery_store/login.html', context)
+        return render(request, 'bakery_store/login_form.html', context)
     if request.method == 'POST':
         f = forms.loginForm(request.POST)
         if(f.is_valid()):
@@ -83,7 +83,7 @@ def loginView(request):
             else:
                 return HttpResponse("Login fail")
         else:
-            return render(request,'bakery_store/login.html',{'form':f})
+            return render(request,'bakery_store/login_form.html',{'form':f})
 
 @login_required()
 def add_product(request):
@@ -264,15 +264,16 @@ def add_comment(request):
     product = models.Product.objects.get(pk=request.POST['product_id'])
     rating = request.POST['rating']
     text_content = request.POST['text_content']
-    image_content = request.FILES['image_content']
     star = []
     comment = models.Comment()
-    for _ in range(rating):
+    for _ in range(int(rating)):
         star.append("x")
     comment.user = user
     comment.product = product
     comment.content = text_content
-    comment.image = image_content
+    if len(request.FILES):
+        image_content = request.FILES['image_content']
+        comment.image = image_content
     comment.created_date = timezone.now()
     comment.rating=''.join(star)
     comment.save()
@@ -359,9 +360,3 @@ def approveBill(request):
     bill.status = bill_status
     bill.save()
     return HttpResponse('ok')
-#Register - login form VanAnh
-def registerForm(request):
-    return render(request,'bakery_store/register_form.html')
-
-def loginForm(request):
-    return render(request,'bakery_store/login_form.html')

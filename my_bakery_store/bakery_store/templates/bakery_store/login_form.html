@@ -1,22 +1,29 @@
 {% extends "bakery_store/register_layout.html" %}
 {% block content %}
-<form>
+<form action="{% url 'loginView' %}" method="post">
+{% csrf_token %}
 	<h3>Đăng nhập</h3>
+    {% for field in form %}
+        <div class="form-wrapper">
+        <font color="red">{{ field.errors }}</font>
+        {{ field.label_tag }}
+        {{ field }}
+    {% endfor %}
 	
-	<div class="form-wrapper">
-		<input type="text" placeholder="Tài khoản" class="form-control"
-			name="user_name" id="user_name">
-		<i class="zmdi zmdi-account"></i>
-	</div>
+{#	<div class="form-wrapper">#}
+{#		<input type="text" placeholder="Tài khoản" class="form-control"#}
+{#			name="user_name" id="user_name">#}
+{#		<i class="zmdi zmdi-account"></i>#}
+{#	</div>#}
+{#	#}
+{#	#}
+{#	<div class="form-wrapper">#}
+{#		<input type="password" placeholder="Nhập khẩu" class="form-control"#}
+{#			name="password" id="password">#}
+{#		<i class="zmdi zmdi-lock"></i>#}
+{#	</div>#}
 	
-	
-	<div class="form-wrapper">
-		<input type="password" placeholder="Nhập khẩu" class="form-control"
-			name="password" id="password">
-		<i class="zmdi zmdi-lock"></i>
-	</div>
-	
-	<button id="submit_btn">Đăng nhập
+	<button type="submit">Đăng nhập
 		<i class="zmdi zmdi-arrow-right"></i>
 	</button>
 </form>

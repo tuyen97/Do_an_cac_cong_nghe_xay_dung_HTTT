@@ -1,6 +1,9 @@
 from django import forms
 from . import models
 
+class DateTypeInput(forms.DateInput):
+    input_type = 'date'
+
 def add_attrs(placeholder='', display=True):
 
     attrs =  {
@@ -16,7 +19,7 @@ class registerForm(forms.ModelForm):
     full_name = forms.CharField(label='Full Name',widget=forms.TextInput(attrs=add_attrs('Enter name')))
     email = forms.EmailField(label='Email',widget=forms.TextInput(attrs=add_attrs('Enter email')))
     password = forms.CharField(label='Password',widget=forms.PasswordInput(attrs=add_attrs('Enter password')))
-    birth_day = forms.DateTimeField(label='Birth day',widget=forms.DateTimeInput(attrs={'class':'form-control datepicker','id':'datepicker'}))
+    birth_day = forms.DateTimeField(label='Birth day',widget=DateTypeInput(attrs={'class':'form-control datepicker','id':'datepicker'}))
     address = forms.CharField(label='address',widget=forms.TextInput(attrs=add_attrs('Enter address')))
     gender = forms.ChoiceField(label='Gender', choices=models.User.SEX_CHOICES, widget=forms.Select({'class': 'form-control'}))
     avt = forms.ImageField(label='Chọn ảnh', widget=forms.FileInput(add_attrs('')))
@@ -62,6 +65,14 @@ class editProduct(forms.ModelForm):
     class Meta:
         model = models.Product
         fields = ['name','available_quantity','descript','price','category','image']
+
+class addComment(forms.ModelForm):
+    image = forms.ImageField(required=False, label='Chọn ảnh', widget=forms.FileInput(add_attrs('')))
+    content = forms.CharField(label='Nội dung bình luận', widget=forms.Textarea(add_attrs('Bình luận')))
+    class Meta:
+        model = models.Comment
+        fields = ['content','image']
+
 
 class approveBill(forms.Form):
     SUCCESS = 'succ'
