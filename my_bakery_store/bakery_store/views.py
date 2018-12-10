@@ -346,7 +346,6 @@ def billDetail(request):
     }
     print("ok")
     return render(request, 'admin/bill/detail.html',context)
-
 def approveBill(request):
     bill_id  =request.POST['id']
     bill_status = request.POST['status']
@@ -360,3 +359,11 @@ def approveBill(request):
     bill.status = bill_status
     bill.save()
     return HttpResponse('ok')
+def loginForm(request):
+    return render(request,'bakery_store/login_form.html')
+
+def eventIndex(request):
+    return render(request, 'admin/event/index.html')
+
+def editEventForm(request):
+    return render(request, 'admin/event/edit.html')
