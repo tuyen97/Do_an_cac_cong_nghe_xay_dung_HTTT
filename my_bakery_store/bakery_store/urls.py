@@ -28,6 +28,9 @@ urlpatterns = [
     path('VA/register', views.registerForm, name = 'registerForm'),
     path('VA/login', views.loginForm, name = 'loginForm'),
     path('VA/admin/event', views.eventIndex, name= 'eventIndex'),
-    path('VA/admin/event/edit', views.editEventForm, name='editEventForm')
+    path('VA/admin/event/edit', views.editEventForm, name='editEventForm'),
+    path('VA/admin/event/create', views.createEventForm, name='createEventForm'),
+    path('VA/admin/product/statistics', views.statisticsProductForm, name="statisticsProductForm"),
+    path('VA/profile', views.profile, name='profile')
 
 ]

@@ -2,7 +2,7 @@
 {% block content %}
 	<section class="content-header">
       <h1>
-        Sự kiện/Cập nhật
+        Sự kiện/Thêm mới
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -24,28 +24,28 @@
             		<div class="col-md-6">
 			            <div class="form-group">
 		                  <label for="event_id">Mã số</label>
-		                  <input type="text" class="form-control" id="event_id" placeholder="nhap ma san pham" value="" readonly name="event_id">
+		                  <input type="text" class="form-control" id="event_id" placeholder="E001" value="" name="event_id">
 		                </div>
 		                <div class="form-group">
 		                  <label for="name">Tên</label>
-		                  <input type="text" class="form-control" id="name" placeholder="Nhap ten sp" value="" name="name">
+		                  <input type="text" class="form-control" id="name" placeholder="Đón giáng sinh" value="" name="name">
 		                </div>
 		                <div class="form-group">
 		                  <label for="start">Ngày bắt đầu</label>
-		                  <input type="date" class="form-control" id="start" placeholder="Nhap gia sp" value="" name="start">
+		                  <input type="date" class="form-control" id="start" placeholder="15/12/2018" value="" name="start">
 		                </div>
                         <div class="form-group">
 		                  <label for="end">Ngày kết thúc</label>
-		                  <input type="date" class="form-control" id="end" placeholder="Nhap mo ta" value="">
+		                  <input type="date" class="form-control" id="end" placeholder="26/12/2018" value="">
 		                </div>
                         <div class="form-group">
 		                  <label for="sale">Giảm giá(%)</label>
 		                  <input type="text" class="form-control"
-		                  	id="sale" placeholder="Nhap so luong"
+		                  	id="sale" placeholder="15"
 		                  	value="">
 		                </div>
 
-                        <button type="submit" class="btn btn-primary">Cập nhật
+                        <button id="submit_btn"class="btn btn-primary">Cập nhật
                         </button>
                         
 	                </div>
@@ -53,12 +53,17 @@
 	                <div class="col-md-6">
 		                <div class="form-group">
 		                  <label for="products">Sản phẩm áp dụng</label><br>
-		                  <select name="cars" multiple id="products" class="multipleSelect">
+		                  <select name="products[]" multiple id="products" class="multipleSelect">
 							  <option value="volvo">Volvo</option>
 							  <option value="saab">Saab</option>
 							  <option value="opel">Opel</option>
 							  <option value="audi">Audi</option>
 							</select>
+		                </div>
+		                <div class="row">
+		                	<div class="col-md-8" id="error_notify">
+			                	
+		                	</div>
 		                </div>
                 	</div>
       			</div>

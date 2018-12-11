@@ -320,3 +320,12 @@ def eventIndex(request):
 
 def editEventForm(request):
     return render(request, 'admin/event/edit.html')
+
+def createEventForm(request):
+    return render(request, 'admin/event/create.html')
+
+def statisticsProductForm(request):
+    return render(request, 'admin/product/statistics.html')
+
+def profile(request):
+    return render(request, 'bakery_store/customer/profile.html')
