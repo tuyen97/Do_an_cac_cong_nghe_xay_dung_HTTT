@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
@@ -28,7 +29,7 @@ class LazyEncoder(DjangoJSONEncoder):
 def index(request):
     if request.user.is_authenticated:
         print(request.user.role)
-        if request.user.role == 'ad\n':
+        if request.user.role == 'ad':
             return redirect('/admin')
 
     products = models.Product.objects.filter(is_deleted=False)
@@ -92,7 +93,7 @@ def add_product(request):
         f = forms.productForm(data=request.POST, files=request.FILES)
         if(f.is_valid()):
             f.save()
-            return HttpResponse("success")
+            return redirect(ProductsIndex())
         else:
             return render(request, "admin/add_product.html",{'form':f})
     else:
@@ -366,4 +367,15 @@ def eventIndex(request):
     return render(request, 'admin/event/index.html')
 
 def editEventForm(request):
-    return render(request, 'admin/event/edit.html')
+    products = models.Product.objects.filter(is_deleted=False)
+    context = {
+        'products':products
+    }
+    if request.method == 'POST':
+        product_list = request.POST.getlist("products[]")
+        print(datetime.datetime.today())
+        start = datetime.datetime.strptime(request.POST['start'], '%Y-%m-%d')
+        end = datetime.datetime.strptime(request.POST['end'], '%Y-%m-%d')
+        print(start<datetime.datetime.today())
+        print(start)
+    return render(request, 'admin/event/edit.html',context)

@@ -79,6 +79,10 @@ class Event(models.Model):
     finish_time = models.DateField(null=False,default='')
     sale_off = models.IntegerField(null=False)
 
+class AppliedProduct(models.Model):
+    event = models.ForeignKey('Event', on_delete=models.CASCADE)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+
 class BillDetail(models.Model):
     product_id = models.ForeignKey('Product',on_delete=models.CASCADE)
     event_id = models.ForeignKey('Event',on_delete=models.CASCADE,null=True)
