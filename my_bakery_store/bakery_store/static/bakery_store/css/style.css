@@ -13,9 +13,9 @@
 body {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
-  color: #595959;
+  color: #1a1717;
   background: #fff; }
 
 #page {
@@ -2114,3 +2114,12 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+
+.order-detail-container{
+  border: solid 1px #0006;
+}

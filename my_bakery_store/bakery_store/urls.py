@@ -31,6 +31,9 @@ urlpatterns = [
     path('VA/admin/event/edit', views.editEventForm, name='editEventForm'),
     path('VA/admin/event/create', views.createEventForm, name='createEventForm'),
     path('VA/admin/product/statistics', views.statisticsProductForm, name="statisticsProductForm"),
-    path('VA/profile', views.profile, name='profile')
+    path('VA/profile', views.profile, name='profile'),
+    path('VA/orders', views.customerOrders, name='customerOrders'),
+    path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
+
 
 ]
