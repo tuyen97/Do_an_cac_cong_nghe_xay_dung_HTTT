@@ -18,7 +18,7 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.urls import reverse
 # Create your views here.
 from django.core.serializers.json import DjangoJSONEncoder
-
+from django.views.decorators.csrf import csrf_exempt
 class LazyEncoder(DjangoJSONEncoder):
     def default(self, obj):
         if isinstance(obj, YourCustomType):
@@ -364,25 +364,144 @@ def loginForm(request):
     return render(request,'bakery_store/login_form.html')
 
 def eventIndex(request):
-    return render(request, 'admin/event/index.html')
+    event_list = models.Event.objects.all()
+    context = {
+        'event_list':event_list
+    }
+    return render(request, 'admin/event/index.html',context)
 
+@csrf_exempt
 def editEventForm(request):
+    if request.method == 'GET':
+        event = models.Event.objects.get(pk = request.GET['id'])
+        products = models.Product.objects.filter(is_deleted=False)
+        applied = models.AppliedProduct.objects.filter(event=request.GET['id'])
+        applied_products = []
+        for i in applied:
+            applied_products.append(i.product)
+        # print(applied_p)
+        print(';ok')
+        context = {
+            'products':products,
+            'event':event,
+            'applied_product':applied_products
+        }
+        return render(request, 'admin/event/edit.html',context)
+    else:
+        http_response = {}
+        id = request.POST['id']
+        product_list = request.POST.getlist("products[]")
+        sale = request.POST['sale']
+        event_id = request.POST['event_id']
+        name = request.POST['name']
+        start = datetime.datetime.strptime(request.POST['start'], '%Y-%m-%d')
+        end = datetime.datetime.strptime(request.POST['end'], '%Y-%m-%d')
+        today = datetime.datetime.today()
+        if start < today:
+            http_response['message'] = 'Vui lòng chọn sự kiện trong tưong lai'
+            return JsonResponse(http_response)
+        if start > end:
+            http_response['message'] = 'Khoảng thời gian không hợp lệ'
+            return JsonResponse(http_response)
+        # if models.Event.objects.filter(event_id=event_id).exists():
+        #     http_response['message'] = 'Trùng mã sự kiện'
+        #     return JsonResponse(http_response)
+        if models.Event.objects.filter(status='act').exists():
+            active_event = models.Event.objects.filter(status='act')[0]
+            active_event_start = active_event.finish_time
+            if start.date() < active_event_start:
+                http_response['message'] = 'Vẫn có sự kiện xảy ra trong thời gian này '
+                return JsonResponse(http_response)
+        event = models.Event.objects.get(pk=id)
+        event.name = name
+        event.event_id = event_id
+        event.start_time = start
+        event.finish_time = end
+        event.sale_off = sale
+        event.save()
+        for id in product_list:
+            product = models.Product.objects.get(pk=id)
+            applied_p = models.AppliedProduct(event=event, product=product)
+            applied_p.save()
+        http_response['message'] = 'Thêm sự kiện thành công'
+        return JsonResponse(http_response)
+
+
+def eventChange(request):
+    http_response = {}
+    if 'ketthuc' in request.POST:
+        event_id = request.POST['id']
+        event = models.Event.objects.get(pk=event_id)
+        event.status = 'fin'
+        event.save()
+        http_response['message']='Kết thúc sự kiện'
+        return JsonResponse(http_response)
+    if 'kichhoat' in request.POST:
+        event_id = request.POST['id']
+        event = models.Event.objects.get(pk=event_id)
+        if models.Event.objects.filter(status='act').exists():
+            # active_event = models.Event.objects.filter(status='act')[0]
+            # active_event_start = active_event.finish_time
+            # if event.start_time < active_event_start:
+            http_response['message'] = 'Đang có sự kiện'
+            return JsonResponse(http_response)
+        event.status = 'act'
+        event.save()
+        http_response['message']= 'Kích hoạt sự kiện'
+        return JsonResponse(http_response)
+    if 'xoask' in request.POST:
+        id = request.POST['id']
+        event = models.Event.objects.get(pk=id)
+        event.delete()
+        http_response['message'] = 'Xóa thành công'
+        return JsonResponse(http_response)
+
+
+@csrf_exempt
+def createEvent(request):
     products = models.Product.objects.filter(is_deleted=False)
     context = {
         'products':products
     }
     if request.method == 'POST':
+        http_response = {}
         product_list = request.POST.getlist("products[]")
-        print(datetime.datetime.today())
+        print(product_list)
+        sale = request.POST['sale']
+        event_id = request.POST['event_id']
+        name = request.POST['name']
         start = datetime.datetime.strptime(request.POST['start'], '%Y-%m-%d')
         end = datetime.datetime.strptime(request.POST['end'], '%Y-%m-%d')
-        print(start<datetime.datetime.today())
-        print(start)
-    return render(request, 'admin/event/edit.html',context)
-
-
-def createEventForm(request):
-    return render(request, 'admin/event/create.html')
+        today = datetime.datetime.today()
+        if start < today:
+            http_response['message'] = 'Vui lòng chọn sự kiện trong tưong lai'
+            return JsonResponse(http_response)
+        if start > end:
+            http_response['message'] = 'Khoảng thời gian không hợp lệ'
+            return JsonResponse(http_response)
+        if models.Event.objects.filter(event_id=event_id).exists():
+            http_response['message'] = 'Trùng mã sự kiện'
+            return JsonResponse(http_response)
+        if models.Event.objects.filter(status='act').exists():
+            active_event = models.Event.objects.filter(status='act')[0]
+            active_event_start = active_event.finish_time
+            if start.date() < active_event_start:
+                http_response['message'] = 'Vẫn có sự kiện xảy ra trong thời gian này '
+                return JsonResponse(http_response)
+        event = models.Event()
+        event.name = name
+        event.event_id = event_id
+        event.start_time = start
+        event.finish_time = end
+        event.sale_off = sale
+        event.save()
+        for id in product_list:
+            product = models.Product.objects.get(pk=id)
+            applied_p = models.AppliedProduct(event=event, product=product)
+            applied_p.save()
+        http_response['message'] = 'Thêm sự kiện thành công'
+        return JsonResponse(http_response)
+    return render(request, 'admin/event/create.html',context)
 
 def statisticsProductForm(request):
     return render(request, 'admin/product/statistics.html')

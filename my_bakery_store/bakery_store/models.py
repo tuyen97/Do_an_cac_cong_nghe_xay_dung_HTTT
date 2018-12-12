@@ -75,9 +75,21 @@ class Bill(models.Model):
 
 class Event(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(null=False, max_length=200, default='')
+    event_id = models.CharField(null=False,max_length=10,unique=True, default=id)
     start_time = models.DateField(null=False,default='')
     finish_time = models.DateField(null=False,default='')
     sale_off = models.IntegerField(null=False)
+    FINISH = 'fin'
+    PENDING = 'pen'
+    ACTIVE = 'act'
+    STATUS =(
+        (FINISH,'Kết thúc'),
+        (PENDING, 'Sắp diễn ra'),
+        (ACTIVE,'Đang diễn ra')
+    )
+    status = models.CharField(choices=STATUS, default=PENDING, max_length=4)
+
 
 class AppliedProduct(models.Model):
     event = models.ForeignKey('Event', on_delete=models.CASCADE)

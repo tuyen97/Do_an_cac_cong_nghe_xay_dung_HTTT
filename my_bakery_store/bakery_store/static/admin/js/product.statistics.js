@@ -5,11 +5,15 @@ $(document).ready(function(){
     //- BAR CHART -
     //-------------
     //Data
+  // A = {
+  // {SP:  A,
+  // SL : 1}
+  // }
     var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : ['Trong ngày'],
       datasets: [
         {
-          label               : 'Electronics',
+          label               : 'SP1',
           fillColor           : 'rgba(210, 214, 222, 1)',
           strokeColor         : 'rgba(210, 214, 222, 1)',
           pointColor          : 'rgba(210, 214, 222, 1)',

@@ -29,5 +29,8 @@ urlpatterns = [
     path('VA/profile', views.profile, name='profile'),
     path('admin/bill/approve', views.approveBill, name = 'approveBill'),
     path('admin/event', views.eventIndex, name= 'eventIndex'),
-    path('admin/event/edit', views.editEventForm, name='editEventForm')
+    path('admin/event/create',views.createEvent, name='createEvent'),
+    path('admin/event/edit', views.editEventForm, name='editEvent'),
+    path('admin/event/change', views.eventChange, name='eventChange')
+
 ]
