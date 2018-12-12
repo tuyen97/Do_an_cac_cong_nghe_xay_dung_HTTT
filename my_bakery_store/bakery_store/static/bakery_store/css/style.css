@@ -261,7 +261,7 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 100%;
   float: left;
   z-index: 0;
-  margin-bottom: 9em; }
+  margin-bottom: 60px; }
   #colorlib-hero .btn {
     font-size: 24px; }
     #colorlib-hero .btn.btn-primary {
@@ -379,7 +379,8 @@ h1, h2, h3, h4, h5, h6, figure {
               width: 100%; } }
 
 .breadcrumbs {
-  height: 300px !important; }
+  height: 300px !important; 
+  margin-bottom: 60px;}
   .breadcrumbs .slides li {
     background-repeat: no-repeat;
     background-size: cover;
@@ -485,7 +486,7 @@ h1, h2, h3, h4, h5, h6, figure {
       top: 10px;
       left: 10px; }
       .product-entry .product-img .tag .new {
-        font-size: 11px;
+        font-size: 15px;
         background: #FFC300;
         color: #fff;
         padding: .3em .5em;
@@ -494,7 +495,7 @@ h1, h2, h3, h4, h5, h6, figure {
         -ms-border-radius: 2px;
         border-radius: 2px; }
       .product-entry .product-img .tag .sale {
-        font-size: 11px;
+        font-size: 15px;
         background: #DD3E3E;
         color: #fff;
         padding: .3em .5em;
@@ -538,7 +539,8 @@ h1, h2, h3, h4, h5, h6, figure {
       color: #000; }
   .product-entry .desc .price span {
     color: #FFC300;
-    font-weight: 400; }
+    font-weight: 400;
+    font-size: 25px;}
   .product-entry .desc .price .sale {
     color: gray;
     text-decoration: line-through;
@@ -797,7 +799,8 @@ h1, h2, h3, h4, h5, h6, figure {
     border-radius: 50%; }
     .process p span {
       display: table-cell;
-      vertical-align: middle; }
+      vertical-align: middle; 
+      font-size: 20px;}
   .process h3 {
     margin-bottom: 0;
     font-size: 12px;
@@ -806,7 +809,8 @@ h1, h2, h3, h4, h5, h6, figure {
   .process.active p {
     border: 2px solid #f0f0f0; }
     .process.active p span {
-      color: #FFC300; }
+      color: #FFC300; 
+    }
 
 .product-cart, .product-name {
   width: 100%;
@@ -1550,8 +1554,8 @@ h1, h2, h3, h4, h5, h6, figure {
   -ms-box-shadow: none;
   -o-box-shadow: none;
   box-shadow: none;
-  border: none !important;
-  font-size: 13px !important;
+  /*border: none !important;*/
+  font-size: 14px !important;
   font-weight: 300;
   background: #fff !important;
   -webkit-border-radius: 0px;
@@ -2122,4 +2126,25 @@ input[type="text"] {
 
 .order-detail-container{
   border: solid 1px #0006;
+}
+
+.search-form-control {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid #e6e6e6 !important;
+  font-size: 15px !important;
+  font-weight: 400;
+  background: #fff !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px; 
+}
+  
+.search{
+  border: 1px solid #e6e6e6 ;
+  padding-bottom: 0px;
 }
