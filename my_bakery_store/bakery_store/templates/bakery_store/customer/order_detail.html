@@ -1,1 +1,89 @@
-order_detail.html
+{% extends "bakery_store/layout.html" %}
+{% block content %}
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="contact-wrap">
+			<h3 class="text-center">Đơn hàng 001</h3>
+			<div class="row contact-info-wrap">
+				<div class="row">
+                    <div class="col-md-6">
+                        <div class="cart-detail order-detail-container">
+                        <h4>Thông tin khách hàng</h4>
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <label>Khách hàng</label>
+                            </div>
+                            <div class="col-md-8">
+                                <!-- Null neu khach hang vang lai-->
+                                <p>ID001 - Van Anh</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Ngày mua</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p>12/12/2018</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Người nhận</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p>Van Anh</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>SĐT</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p>13484475</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Địa chỉ</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p>Hà Nội</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!--Hien thi cac san pham da mua-->
+                    <div class="col-md-6">
+                       <div class="cart-detail order-detail-container">
+                            <h4>Danh sách sản phẩm</h4>
+                            <ul>
+                                <li>
+
+                                    <ul>
+                                        
+                                        <li>
+                                            <span>4 x Bánh trà xanh</span> 
+                                            <span>20000</span>
+                                        </li>
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <span>Mã giảm giá</span>
+                                    <span>SALE01</span>
+
+                                </li>
+                                <li>
+                                    <span>Tổng tiền</span> 
+                                    <span>80k</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

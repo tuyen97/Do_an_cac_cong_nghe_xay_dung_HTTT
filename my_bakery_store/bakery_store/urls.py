@@ -25,12 +25,14 @@ urlpatterns = [
     path('order_complete', views.order_complete, name ='order_complete'),
     path('admin/bill/index',views.billIndex, name = 'billIndex'),
     path('admin/bill/detail', views.billDetail, name = 'billDetail'),
-    path('VA/admin/product/statistics', views.statisticsProductForm, name="statisticsProductForm"),
+    path('admin/product/statistics', views.statisticsProductForm, name="statisticsProduct"),
     path('VA/profile', views.profile, name='profile'),
     path('admin/bill/approve', views.approveBill, name = 'approveBill'),
     path('admin/event', views.eventIndex, name= 'eventIndex'),
     path('admin/event/create',views.createEvent, name='createEvent'),
     path('admin/event/edit', views.editEventForm, name='editEvent'),
-    path('admin/event/change', views.eventChange, name='eventChange')
+    path('admin/event/change', views.eventChange, name='eventChange'),
+    path('VA/orders', views.customerOrders, name='customerOrders'),
+    path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail')
 
 ]

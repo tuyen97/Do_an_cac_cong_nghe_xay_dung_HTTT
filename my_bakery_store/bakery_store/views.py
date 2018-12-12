@@ -508,3 +508,9 @@ def statisticsProductForm(request):
 
 def profile(request):
     return render(request, 'bakery_store/customer/profile.html')
+
+def customerOrders(request):
+    return render(request, 'bakery_store/customer/orders.html')
+
+def customerOrderDetail(request):
+    return render(request, 'bakery_store/customer/order_detail.html')

@@ -1,1 +1,38 @@
-orders.html
+{% extends "bakery_store/layout.html" %}
+{% block content %}
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="contact-wrap">
+			<h3 class="text-center">Đơn hàng của bạn</h3>
+			<div class="row table-responsive">
+				<table id="customer_order" class="table table-bordered table-hover" width="100%">
+	                <thead>
+	                <tr>
+	                    <th>{{ 'Mã hóa đơn' }}
+	                    <th>{{ 'Ngày tạo' }}</th>
+	                    <th>{{ 'Tên người mua' }}</th>
+	                    <th>{{ 'Trạng thái' }}</th>
+	                    <th>{{ 'Tổng tiền' }}</th>
+	                </tr>
+	                </thead>
+	                <tbody>
+	                    <tr>
+	                        <td><a href="javascript:void(0)">ID001</a></td>
+	                        <td>20/12/2018</td>
+	                        <td>Nguyen Trong Tuyen</td>
+	                        <td>Hoan thanh</td>
+	                        <td>200k</td>
+	                    </tr>
+	            </table>
+			</div>
+			
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block script %}
+	{% load static %}
+	 <script src="{% static 'admin/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'bakery_store/js/orders.js' %}"></script>
+{% endblock %}
