@@ -9,6 +9,12 @@ $(document).ready(function(){
   // {SP:  A,
   // SL : 1}
   // }
+      $('#time_range').on('change',function () {
+        console.log($(this).val());
+        $.post(
+            'statisticsProduct'
+        )
+    });
     var areaChartData = {
       labels  : ['Trong ngày'],
       datasets: [
