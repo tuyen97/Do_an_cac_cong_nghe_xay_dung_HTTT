@@ -335,3 +335,6 @@ def customerOrders(request):
 
 def customerOrderDetail(request):
     return render(request, 'bakery_store/customer/order_detail.html')
+
+def statisticsRevenueForm(request):
+    return render(request, 'admin/bill/statistics.html')

@@ -1,0 +1,129 @@
+{% extends 'admin/layout.html' %}
+{% load humanize %}
+{% block content %}
+	<section class="content-header">
+      <h1>
+        Quản lý đơn hàng/Doanh thu
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Bill</li>
+      </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+
+	    <div class="row">
+	        <div class="col-xs-12">
+	            <div class="box">
+	                <div class="box-header">
+						<h3>Thống kê doanh thu</h3>                    
+	                </div>
+	                <!-- /.box-header -->
+	                <div class="box-body">
+	                	<div class="row">
+	                		<div class="col-md-6">
+		                		<div class="form-group">
+				                  	<label class="col-md-3">Thời gian</label>
+				                  	<select class="singleSelect" name="time_range">
+									    <option value="week">Trong tuần</option>
+									    <option value="month">Trong tháng</option>
+									    <option value="quater">Trong quý</option>
+									    <option value="year">Trong năm</option>
+									</select>
+				                </div>
+				                
+			                </div>
+			                <div class="col-md-3">
+	                			<a href="javascript:void(0)" class="btn btn-primary">Thực hiện</a>
+	                		</div>
+
+	                		<!-- <div class="col-md-6">
+	                			<div class="form-group">
+				                  	<label class="col-md-3">Sản phẩm</label>
+				                  	<select class="singleSelect" name="product">
+									    <option value="sold"> Đã bán</option>
+									    <option value="inventory">Tồn kho</option>
+									</select>
+				                </div>
+	                		</div> -->
+	                	</div>
+	                	<!-- <div class="row">
+	                		<div class="col-md-1">
+	                		</div>
+	                		<div class="col-md-4">
+	                			<a href="javascript:void(0)" class="btn btn-primary">Thực hiện</a>
+	                		</div>
+	                	</div> -->
+	                    
+	                </div>
+	                <!-- /.box-body -->
+	            </div>
+	            <!-- /.box -->
+	        </div>
+	        <!-- /.col -->
+	    </div>
+   		<!-- /.row -->
+   		<!--display chart-->
+   		<div class="row">
+        
+       
+	        <div class="col-md-12">
+	          <!-- BAR CHART -->
+		        <div class="box box-success">
+		            <div class="box-header with-border">
+		              <h3 class="box-title">Bar Chart</h3>
+
+		              <div class="box-tools pull-right">
+		                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+		                </button>
+		                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+		              </div>
+		            </div>
+		            <div class="box-body">
+		              <div class="chart">
+		                <canvas id="productChart" style="height:230px"></canvas>
+		              </div>
+		            </div>
+		            <!-- /.box-body -->
+		        </div>
+	          		<!-- /.box -->
+	        </div>
+      	</div>
+      	<!--pie chart -->
+      	<div class="row">
+      		<div class="col-md-12">
+      			<!-- DONUT CHART -->
+		        <div class="box box-danger">
+		            <div class="box-header with-border">
+		              <h3 class="box-title">Donut Chart</h3>
+
+		              <div class="box-tools pull-right">
+		                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+		                </button>
+		                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+		              </div>
+		            </div>
+		            <div class="box-body">
+		            	<div class="col-md-7">
+		            		<canvas id="pieChart" style="height:250px"></canvas>
+		            	</div>
+		              
+		            </div>
+		            <!-- /.box-body -->
+		         </div>
+          		<!-- /.box -->
+      		</div>
+      	</div>
+    </section>
+{% endblock %}
+{% block script %}
+	{% load static %}
+	<!--fast select-->
+	<link rel="stylesheet" href="{% static 'admin/bower_components/fast_select/fastselect.css' %}">
+	<script src="{% static 'admin/bower_components/fast_select/fastselect.standalone.js' %}">
+	</script>
+	<script src="{% static 'admin/bower_components/chart.js/Chart.js' %}"></script>
+    <script src="{% static 'admin/js/revenue.statistics.js' %}"></script>
+{% endblock %}

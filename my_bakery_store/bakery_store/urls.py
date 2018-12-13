@@ -34,6 +34,8 @@ urlpatterns = [
     path('VA/profile', views.profile, name='profile'),
     path('VA/orders', views.customerOrders, name='customerOrders'),
     path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
+    path('VA/admin/bill/statistics', views.statisticsRevenueForm, name="statisticsRevenueForm")
+    
 
 
 ]
