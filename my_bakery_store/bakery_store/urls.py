@@ -14,6 +14,7 @@ urlpatterns = [
     path('add_to_cart',views.add_to_cart, name='add_to_cart'),
     path('view_cart', views.view_cart,name='view_cart'),
     path('delete_product_on_cart', views.delete_product_on_cart, name='delete_product_on_cart'),
+    path('add_comment', views.add_comment, name='add_comment'),
     path('admin/product', views.ProductsIndex, name='view_product'),
     path('admin/product/list', views.GetListProducts, name='list_products'),
     path('admin/product/edit', views.edit_product, name='edit_product'),
@@ -24,18 +25,21 @@ urlpatterns = [
     path('order_complete', views.order_complete, name ='order_complete'),
     path('admin/bill/index',views.billIndex, name = 'billIndex'),
     path('admin/bill/detail', views.billDetail, name = 'billDetail'),
-    
-    path('VA/register', views.registerForm, name = 'registerForm'),
-    path('VA/login', views.loginForm, name = 'loginForm'),
-    path('VA/admin/event', views.eventIndex, name= 'eventIndex'),
-    path('VA/admin/event/edit', views.editEventForm, name='editEventForm'),
-    path('VA/admin/event/create', views.createEventForm, name='createEventForm'),
-    path('VA/admin/product/statistics', views.statisticsProductForm, name="statisticsProductForm"),
+    path('admin/product/statistics', views.statisticsProduct, name="statisticsProduct"),
     path('VA/profile', views.profile, name='profile'),
+    path('admin/bill/approve', views.approveBill, name = 'approveBill'),
+    path('admin/event', views.eventIndex, name= 'eventIndex'),
+    path('admin/event/create',views.createEvent, name='createEvent'),
+    path('admin/event/edit', views.editEventForm, name='editEvent'),
+    path('admin/event/change', views.eventChange, name='eventChange'),
     path('VA/orders', views.customerOrders, name='customerOrders'),
+<<<<<<< HEAD
     path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
     path('VA/admin/bill/statistics', views.statisticsRevenueForm, name="statisticsRevenueForm")
     
 
+=======
+    path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail')
+>>>>>>> c720f9624ca36f502aee6aaf484d3b9d7d1092ce
 
 ]

@@ -18,7 +18,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <a href="javascript:void(0)" class="btn btn-primary"><i class="material-icons"></i>Tạo sự kiện</a>
+                    <a href="{% url 'createEvent' %}" class="btn btn-primary"><i class="material-icons"></i>Tạo sự kiện</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
@@ -35,37 +35,76 @@
 
                         </thead>
                         <tbody>
-                        
+                        {% for event in  event_list %}
                             <tr>
-	                            <td>001</td>
-	                            <td>Giáng sinh</td>
-	                            <!--Co 3 trang thai-->
-	                            <td>Sắp diễn ra/Đang diễn ra/Kết thúc</td>
-	                            <td>12/12/2018</td>
-	                            <td>30/12/2018</td>
-	                            <td>
-	                                <a class="btn btn-primary" href="#">
+                            <td>{{ event.event_id }}</td>
+                            <td>{{ event.name }}</td>
+                            <td>{{ event.get_status_display }}</td>
+                            <td>{{ event.start_time }}</td>
+                            <td>{{ event.finish_time }}</td>
+
+                             <td>
+                                 {% if event.status == 'pen' %}
+	                                <a class="btn btn-primary sua_sk" href="event/edit?id={{ event.id }}" id="{{ event.id }}">
 	                                	<i class="fa fa-edit"></i>
 	                                	Sửa
 	                                </a>
 	                                &nbsp;&nbsp;&nbsp;
 	                                <!--Hien thi khi su kien chua dien ra-->
-	                                <a class="btn btn-primary" href="#">
+	                                <a class="btn btn-primary kichhoat_sk" href="javascript:void(0)" id="{{ event.id }}">
 	                                	<i class="fa fa-hourglass-start"></i>
 	                                	Kích hoạt
 	                                </a>
 	                                &nbsp;&nbsp;&nbsp;
-	                                <a class="btn btn-primary" href="#">
+                                 {% endif %}
+                                 {% if event.status == 'act' %}
+	                                <a class="btn btn-primary ketthuc_sk" href="javascript:void(0)" id="{{ event.id }}">
 	                                	<i class="fa fa-stop-circle"></i>
 	                                	Kết thúc
 	                                </a>
 	                                &nbsp;&nbsp;&nbsp;
-	                                <a class="btn btn-primary xoa-sp" id="001" href="javascript:void(0)">
+                                 {% endif %}
+                                 {% if event.status == 'pen' %}
+	                                <a class="btn btn-primary xoa_sk"  href="javascript:void(0)" id="{{ event.id }}">
 	                                	<i class="fa fa-trash"></i>
 										Xóa
 									</a>
+                                 {% endif %}
 	                            </td>
+
                             </tr>
+                        {% endfor %}
+
+{#                            <tr>#}
+{#	                            <td>001</td>#}
+{#	                            <td>Giáng sinh</td>#}
+{#	                            <!--Co 3 trang thai-->#}
+{#	                            <td>Sắp diễn ra/Đang diễn ra/Kết thúc</td>#}
+{#	                            <td>12/12/2018</td>#}
+{#	                            <td>30/12/2018</td>#}
+{#	                            <td>#}
+{#	                                <a class="btn btn-primary" href="#">#}
+{#	                                	<i class="fa fa-edit"></i>#}
+{#	                                	Sửa#}
+{#	                                </a>#}
+{#	                                &nbsp;&nbsp;&nbsp;#}
+{#	                                <!--Hien thi khi su kien chua dien ra-->#}
+{#	                                <a class="btn btn-primary" href="#">#}
+{#	                                	<i class="fa fa-hourglass-start"></i>#}
+{#	                                	Kích hoạt#}
+{#	                                </a>#}
+{#	                                &nbsp;&nbsp;&nbsp;#}
+{#	                                <a class="btn btn-primary" href="#">#}
+{#	                                	<i class="fa fa-stop-circle"></i>#}
+{#	                                	Kết thúc#}
+{#	                                </a>#}
+{#	                                &nbsp;&nbsp;&nbsp;#}
+{#	                                <a class="btn btn-primary xoa-sp" id="001" href="javascript:void(0)">#}
+{#	                                	<i class="fa fa-trash"></i>#}
+{#										Xóa#}
+{#									</a>#}
+{#	                            </td>#}
+{#                            </tr>#}
                         </tbody>
                     </table>
                 </div>

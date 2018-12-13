@@ -1,3 +1,29 @@
+function getCookie(name)
+{
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+$.ajaxSetup({
+     beforeSend: function(xhr, settings) {
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     }
+});
 $(document).ready(function(){
 	$('.singleSelect').fastselect();
 
@@ -5,11 +31,28 @@ $(document).ready(function(){
     //- BAR CHART -
     //-------------
     //Data
+  // A = {
+  // {SP:  A,
+  // SL : 1}
+  // }
+      $('#time_range').on('change',function () {
+        console.log($(this).val());
+        data = {
+          'range': $(this).val()
+        };
+        $.post(
+            'statistics',
+            data,
+            function (data) {
+              console.log(data)
+            }
+        )
+    });
     var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : ['Trong ngày'],
       datasets: [
         {
-          label               : 'Electronics',
+          label               : 'SP1',
           fillColor           : 'rgba(210, 214, 222, 1)',
           strokeColor         : 'rgba(210, 214, 222, 1)',
           pointColor          : 'rgba(210, 214, 222, 1)',
