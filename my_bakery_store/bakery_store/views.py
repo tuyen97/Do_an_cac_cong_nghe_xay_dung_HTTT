@@ -503,7 +503,82 @@ def createEvent(request):
         return JsonResponse(http_response)
     return render(request, 'admin/event/create.html',context)
 
-def statisticsProductForm(request):
+def statisticsProduct(request):
+    if request.method == 'POST':
+        range = request.POST['range']
+        if range == 'day':
+            product_list = []
+            product_count = {}
+            day = timezone.now().day
+            bills = models.Bill.objects.filter(created_date__day=day)
+            for bill in bills:
+                billdetails = models.BillDetail.objects.filter(bill_id=bill.id)
+                for billdetail in billdetails:
+                    if billdetail.product_id in product_count:
+                        product_count[billdetail.product_id]+= billdetail.quantity
+                    else:
+                        product_count[billdetail.product_id] = billdetail.quantity
+            for key in product_count.keys():
+                product_list.append({key.name:product_count[key]})
+            response = {
+                'static_list':product_list
+            }
+            return JsonResponse(response)
+        if range == 'week':
+            product_list = []
+            product_count = {}
+            week = timezone.now().weekday()
+            print(week)
+            bills = models.Bill.objects.filter(created_date__gte=datetime.datetime.now()-datetime.timedelta(days=7))
+            for bill in bills:
+                billdetails = models.BillDetail.objects.filter(bill_id=bill.id)
+                for billdetail in billdetails:
+                    if billdetail.product_id in product_count:
+                        product_count[billdetail.product_id]+= billdetail.quantity
+                    else:
+                        product_count[billdetail.product_id] = billdetail.quantity
+            for key in product_count.keys():
+                product_list.append({key.name:product_count[key]})
+            response = {
+                'static_list':product_list
+            }
+            return JsonResponse(response)
+        if range == 'month':
+            product_list = []
+            product_count = {}
+            month = timezone.now().month
+            bills = models.Bill.objects.filter(created_date__month=month)
+            for bill in bills:
+                billdetails = models.BillDetail.objects.filter(bill_id=bill.id)
+                for billdetail in billdetails:
+                    if billdetail.product_id in product_count:
+                        product_count[billdetail.product_id]+= billdetail.quantity
+                    else:
+                        product_count[billdetail.product_id] = billdetail.quantity
+            for key in product_count.keys():
+                product_list.append({key.name:product_count[key]})
+            response = {
+                'static_list':product_list
+            }
+            return JsonResponse(response)
+        if range == 'year':
+            product_list = []
+            product_count = {}
+            year = timezone.now().year
+            bills = models.Bill.objects.filter(created_date__year= year)
+            for bill in bills:
+                billdetails = models.BillDetail.objects.filter(bill_id=bill.id)
+                for billdetail in billdetails:
+                    if billdetail.product_id in product_count:
+                        product_count[billdetail.product_id]+= billdetail.quantity
+                    else:
+                        product_count[billdetail.product_id] = billdetail.quantity
+            for key in product_count.keys():
+                product_list.append({key.name:product_count[key]})
+            response = {
+                'static_list':product_list
+            }
+            return JsonResponse(response)
     return render(request, 'admin/product/statistics.html')
 
 def profile(request):
