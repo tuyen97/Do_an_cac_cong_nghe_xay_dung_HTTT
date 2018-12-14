@@ -22,19 +22,19 @@
 					<div class="col-md-6">
 						<div class="row contact-info-wrap">
 							<div class="row col-md-12">
-								<p><span><i class="icon-user"></i></span>198 West 21th Street,Việt Nam</p>
+								<p><span><i class="icon-user"></i></span>{{ user.full_name }}</p>
 							</div>
 							<div class="row col-md-12">
-								<p><span><i class="icon-text-color"></i></span>198 West 21th Street,Việt Nam</p>
+								<p><span><i class="icon-text-color"></i></span>{{ user.address }}</p>
 							</div>
 							<div class="row col-md-12">
-								<p><span><i class="icon-location"></i></span> 198 West 21th Street,Việt Nam</p>
+								<p><span><i class="icon-location"></i></span>{{ user.birth_day }}</p>
 							</div>
 							<div class="row col-md-12">
-								<p><span><i class="icon-phone3"></i></span> <a href="javascript:void(0)">+ 1235 2355 98</a></p>
+								<p><span><i class="icon-phone3"></i></span> <a href="javascript:void(0)">{{ user.get_gender_display }}</a></p>
 							</div>
 							<div class="row col-md-12">
-								<p><span><i class="icon-paperplane"></i></span> <a href="javascript:void(0)">info@yoursite.com</a></p>
+								<p><span><i class="icon-paperplane"></i></span> <a href="javascript:void(0)">{{ user.email }}</a></p>
 							</div>
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 								</div>
 								{% load static %}
 								<div class="col-md-8">
-									<img src="{% static 'bakery_store/images/14.6.jpg' %}" alt="Ảnh đại diện" 
+									<img src="/static/bakery_store/{{user.avt}}" alt="Ảnh đại diện"
 									class="img-fluid" width="300px;">
 								</div>
 							</div>

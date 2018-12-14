@@ -19,6 +19,9 @@ from django.urls import reverse
 # Create your views here.
 from django.core.serializers.json import DjangoJSONEncoder
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q
+from django.db.models.functions import TruncMonth, TruncDate, TruncDay
+from django.db.models import Sum, Count
 class LazyEncoder(DjangoJSONEncoder):
     def default(self, obj):
         if isinstance(obj, YourCustomType):
@@ -33,11 +36,55 @@ def index(request):
             return redirect('/admin')
 
     products = models.Product.objects.filter(is_deleted=False)
-    paginator = Paginator(products, 8)  # Show 25 contacts per page
+    saled_pro = []
+    fil_pr = []
+    event = {}
+    if models.Event.objects.filter(status='act').exists():
+        event = models.Event.objects.filter(status='act')[0]
+        applieds = models.AppliedProduct.objects.filter(event=event.id)
+        for apply in applieds:
+            saled_pro.append(apply.product)
+        for product in products:
+            if product in saled_pro:
+                product.price -= int(product.price * event.sale_off/100)
+                fil_pr.append(product)
+            else:
+                fil_pr.append(product)
+    paginator = Paginator(fil_pr, 8)  # Show 25 contacts per page
     page = request.GET.get('page')
     product_list = paginator.get_page(page)
     context = {
         'product_list':product_list,
+        'saled_pro':saled_pro,
+        'event':event,
+        'paginator': paginator
+    }
+    return render(request,'bakery_store/shop.html',context)
+
+def search(request):
+    query = request.GET['search']
+    products = models.Product.objects.filter(Q(name__contains=query)|Q(descript__contains=query))
+    saled_pro = []
+    fil_pr = []
+    event = {}
+    if models.Event.objects.filter(status='act').exists():
+        event = models.Event.objects.filter(status='act')[0]
+        applieds = models.AppliedProduct.objects.filter(event=event.id)
+        for apply in applieds:
+            saled_pro.append(apply.product)
+        for product in products:
+            if product in saled_pro:
+                product.price -= int(product.price * event.sale_off/100)
+                fil_pr.append(product)
+            else:
+                fil_pr.append(product)
+    paginator = Paginator(fil_pr, 8)  # Show 25 contacts per page
+    page = request.GET.get('page')
+    product_list = paginator.get_page(page)
+    context = {
+        'product_list':product_list,
+        'saled_pro':saled_pro,
+        'event':event,
         'paginator': paginator
     }
     return render(request,'bakery_store/shop.html',context)
@@ -103,6 +150,17 @@ def add_product(request):
 def product_detail(request):
    # print(request.session['user_avt'])
     product = models.Product.objects.get(pk=request.GET['id'])
+    events = product.appliedproduct_set.all()
+    for event in events:
+        if event.event.status == 'act':
+            product.price -= int(product.price * event.event.sale_off/100)
+            comment_list = models.Comment.objects.filter(product=product.id)
+            context = {
+                'sale': event.event.sale_off,
+                "product": product,
+                "comment_list": comment_list
+            }
+            return render(request, "bakery_store/product_detail.html", context)
     comment_list = models.Comment.objects.filter(product = product.id)
     context={
         "product":product,
@@ -141,6 +199,10 @@ def view_cart(request):
     sub_total = []
     for i in cart_list_id:
         product = models.Product.objects.get(pk=i)
+        events = product.appliedproduct_set.all()
+        for event in events:
+            if event.event.status == 'act':
+                product.price -= int(product.price * event.event.sale_off / 100)
         count_item.append(cart_list[i])
         items.append(product)
         sub_total.append(cart_list[i]*product.price)
@@ -171,6 +233,10 @@ def change_quantity_on_cart(request):
     sub_total = []
     for i in cart_list_id:
         product = models.Product.objects.get(pk=i)
+        events = product.appliedproduct_set.all()
+        for event in events:
+            if event.event.status == 'act':
+                product.price -= int(product.price * event.event.sale_off / 100)
         sub_total.append(cart_list[i] * product.price)
     http_response={
         'message':'Sửa số lượng thành công',
@@ -188,6 +254,10 @@ def checkout(request):
     product_list=[]
     for i in cart_list_id:
         product = models.Product.objects.get(pk=i)
+        events = product.appliedproduct_set.all()
+        for event in events:
+            if event.event.status == 'act':
+                product.price -= int(product.price * event.event.sale_off / 100)
         product_list.append(product)
         count_item.append(cart_list[i])
         items.append(product)
@@ -196,19 +266,6 @@ def checkout(request):
         'product_list': zip(items, count_item, sub_total),
         'total': sum(sub_total)
     }
-    paypal_dict = {
-        "business": "nguyentrongtuyen15197-facilitator@gmail.com",
-        "amount": sum(sub_total)/100000,
-        "item_name": "Thanh toán",
-        "invoice": "ạbcd",
-        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
-        "return": request.build_absolute_uri(reverse('order_complete')),
-        # "cancel_return": request.build_absolute_uri(reverse('your-cancel-view')),
-        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
-    }
-
-    # Create the instance.
-    paypalform = PayPalPaymentsForm(initial=paypal_dict)
     if request.method == 'POST':
         f = forms.checkoutForm(request.POST)
         if f.is_valid():
@@ -239,22 +296,37 @@ def checkout(request):
 
             for i in range(len(product_list)):
                 product_list[i].available_quantity -= count_item[i]
-                product_list[i].save()
-                billdetail = models.BillDetail(
-                    product_id=product_list[i],
-                    quantity=count_item[i],
-                    total=sub_total[i],
-                    bill_id =bill
-                )
+                events = product_list[i].appliedproduct_set.all()
+                e = None
+                for event in events:
+                    if event.event.status == 'act':
+                        product_list[i].price = int(product_list[i].price *100 /(100-event.event.sale_off))
+                        product_list[i].save()
+                        e = event.event
+                if e is not None:
+                    billdetail = models.BillDetail(
+                        product_id=product_list[i],
+                        quantity=count_item[i],
+                        total=sub_total[i],
+                        bill_id=bill,
+                        event_id=e
+                    )
+                else:
+                    product_list[i].save()
+                    billdetail = models.BillDetail(
+                        product_id=product_list[i],
+                        quantity=count_item[i],
+                        total=sub_total[i],
+                        bill_id=bill
+                    )
+
                 billdetail.save()
             request.session.pop("cart")
             return redirect('order_complete')
         else:
             context['form'] = f
-            context['paypal'] = paypalform
             return render(request,'bakery_store/checkout.html',context)
     context['form'] = form
-    context['paypal'] = paypalform
     return render(request,'bakery_store/checkout.html',context)
 
 def order_complete(request):
@@ -585,10 +657,66 @@ def profile(request):
     return render(request, 'bakery_store/customer/profile.html')
 
 def customerOrders(request):
-    return render(request, 'bakery_store/customer/orders.html')
+    bills = models.Bill.objects.filter(user_id=request.user)
+    context ={
+        'bills':bills
+    }
+    return render(request, 'bakery_store/customer/orders.html', context)
 
 def customerOrderDetail(request):
-    return render(request, 'bakery_store/customer/order_detail.html')
+    bill_id = request.GET['id']
+    bill = models.Bill.objects.get(pk=bill_id)
+    bill_detail = models.BillDetail.objects.filter(bill_id=bill_id)
+    context = {
+        'bill': bill,
+        'entries': bill_detail
+    }
+    # print("ok")
+    return render(request, 'bakery_store/customer/order_detail.html',context)
 
+@csrf_exempt
 def statisticsRevenueForm(request):
+    if request.method == 'POST':
+        range = request.POST['range']
+        if range == 'week':
+            stat = models.Bill.objects.\
+                filter(created_date__gte=datetime.datetime.now()-datetime.timedelta(days=7)). \
+                annotate(date=TruncDay('created_date')).\
+                values('date').annotate(count = Sum('total')).all()
+            resp = []
+            for i in stat.iterator():
+                # print(i)
+                resp.append({
+                    'date': i['date'],
+                    'total': i['count']
+                })
+            return JsonResponse({'this_week':resp})
+        if range == 'month':
+            month = timezone.now().month
+            stat = models.Bill.objects. \
+                filter(created_date__month=month). \
+                annotate(date=TruncDay('created_date')). \
+                values('date').annotate(count=Sum('total'))
+            resp = []
+            for i in stat.iterator():
+                # print(i)
+                resp.append({
+                    'date': i['date'],
+                    'total': i['count']
+                })
+            return JsonResponse({'this_month':resp})
+        if range == 'year':
+            year = timezone.now().year
+            stat = models.Bill.objects. \
+                filter(created_date__year=year). \
+                annotate(month=TruncMonth('created_date')). \
+                values('month').annotate(count=Sum('total'))
+            resp = []
+            for i in stat.iterator():
+                print(i)
+                resp.append({
+                    'month': i['month'].month,
+                    'total': i['count']
+                })
+            return JsonResponse({'this_year':resp})
     return render(request, 'admin/bill/statistics.html')

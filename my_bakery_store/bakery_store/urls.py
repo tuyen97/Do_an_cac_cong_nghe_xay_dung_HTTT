@@ -5,6 +5,7 @@ from django.conf.urls import url, include
 urlpatterns = [
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
     path("",views.index,name='index'),
+    path('search',views.search, name = 'search'),
     path('register', views.register, name='register'),
     path('login', views.loginView, name='loginView'),
     path('logout/', views.Logout,name = 'logout'),
@@ -25,13 +26,15 @@ urlpatterns = [
     path('order_complete', views.order_complete, name ='order_complete'),
     path('admin/bill/index',views.billIndex, name = 'billIndex'),
     path('admin/bill/detail', views.billDetail, name = 'billDetail'),
+    path('admin/bill/statstics', views.statisticsRevenueForm, name='statisticRevenue'),
     path('admin/product/statistics', views.statisticsProduct, name="statisticsProduct"),
-    path('VA/profile', views.profile, name='profile'),
+    path('profile', views.profile, name='profile'),
     path('admin/bill/approve', views.approveBill, name = 'approveBill'),
     path('admin/event', views.eventIndex, name= 'eventIndex'),
     path('admin/event/create',views.createEvent, name='createEvent'),
     path('admin/event/edit', views.editEventForm, name='editEvent'),
     path('admin/event/change', views.eventChange, name='eventChange'),
+
     path('VA/orders', views.customerOrders, name='customerOrders'),
 
     path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
@@ -40,6 +43,10 @@ urlpatterns = [
 
 
     path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail')
+
+
+    path('orders', views.customerOrders, name='customerOrders'),
+    path('order/detail', views.customerOrderDetail, name='customerOrderDetail')
 
 
 ]

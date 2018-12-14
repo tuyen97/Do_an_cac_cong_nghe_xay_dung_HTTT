@@ -7,6 +7,7 @@
 							<div id="colorlib-logo"><a href="/">Tiệm bánh IT</a></div>
 						</div>
 						<div class="col-xs-6 text-left menu-1">
+<<<<<<< HEAD
 							<div class="row">
 								<div class="search-container">
 								<form>
@@ -25,6 +26,25 @@
 								</div>
 							</div>
 							
+=======
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li class="has-dropdown active">
+									<a href="{% url 'index' %}">Shop</a>
+									<ul class="dropdown">
+										<li><a href="{%  url 'view_cart' %}">Shipping Cart</a></li>
+										<li><a href="{% url 'checkout' %}">Checkout</a></li>
+										<li><a href="order-comple
+te.html">Order Complete</a></li>
+										<li><a href="add-to-wishlist.html">Wishlist</a></li>
+									</ul>
+								</li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="about.html">About</a></li>
+								<li><a href="contact.html">Contact</a></li>
+
+							</ul>
+>>>>>>> 95639dd9add3e049fd72d71f78fb6def6894fcf3
 						</div>
 						<div class="col-xs-4 text-right menu-1">
 							<ul>
@@ -37,8 +57,8 @@
 										<span>{{user.username}}</span>
 									</a>
 									<ul class="dropdown">
-										<li><a href="product-detail.html">Tài khoản</a></li>
-										<li><a href="cart.html">Đơn hàng</a></li>
+										<li><a href="{% url 'profile' %}">Tài khoản</a></li>
+										<li><a href="{% url 'customerOrders' %}">Đơn hàng</a></li>
 										<li><a href="{% url 'logout' %}">Đăng xuất</a></li>
 									</ul>
 								</li>
@@ -58,7 +78,7 @@
 				<div class="col-md-3">
 				</div>
 				<div class="col-md-6">
-					<form>
+					<form method="get" action="{% url 'search' %}">
 						<div class="col-md-9">
 						<div class="form-group">
 							<input type="text" name="search" class="form-control" placeholder="Sản phẩm">
