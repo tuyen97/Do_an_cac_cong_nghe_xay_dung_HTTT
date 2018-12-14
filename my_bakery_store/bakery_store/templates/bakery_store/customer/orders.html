@@ -1,4 +1,5 @@
 {% extends "bakery_store/layout.html" %}
+{% load humanize %}
 {% block content %}
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
@@ -16,13 +17,15 @@
 	                </tr>
 	                </thead>
 	                <tbody>
+                    {% for bill in bills %}
 	                    <tr>
-	                        <td><a href="javascript:void(0)">ID001</a></td>
-	                        <td>20/12/2018</td>
-	                        <td>Nguyen Trong Tuyen</td>
-	                        <td>Hoan thanh</td>
-	                        <td>200k</td>
+	                        <td><a href="{% url 'customerOrderDetail' %}?id={{ bill.id }}">I{{ bill.id }}</a></td>
+	                        <td>{{ bill.created_date }}</td>
+	                        <td>{{ bill.receiver_name }}</td>
+	                        <td>{{ bill.get_status_display}}</td>
+	                        <td>{{ bill.total|intcomma }}</td>
 	                    </tr>
+                    {% endfor %}
 	            </table>
 			</div>
 			

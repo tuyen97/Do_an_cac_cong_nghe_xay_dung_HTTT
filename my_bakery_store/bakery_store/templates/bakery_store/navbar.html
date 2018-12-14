@@ -14,7 +14,8 @@
 									<ul class="dropdown">
 										<li><a href="{%  url 'view_cart' %}">Shipping Cart</a></li>
 										<li><a href="{% url 'checkout' %}">Checkout</a></li>
-										<li><a href="order-complete.html">Order Complete</a></li>
+										<li><a href="order-comple
+te.html">Order Complete</a></li>
 										<li><a href="add-to-wishlist.html">Wishlist</a></li>
 									</ul>
 								</li>
@@ -37,8 +38,8 @@
 										<span>{{user.username}}</span>
 									</a>
 									<ul class="dropdown">
-										<li><a href="product-detail.html">Tài khoản</a></li>
-										<li><a href="cart.html">Đơn hàng</a></li>
+										<li><a href="{% url 'profile' %}">Tài khoản</a></li>
+										<li><a href="{% url 'customerOrders' %}">Đơn hàng</a></li>
 										<li><a href="{% url 'logout' %}">Đăng xuất</a></li>
 									</ul>
 								</li>
@@ -54,7 +55,7 @@
 				<div class="col-md-3">
 				</div>
 				<div class="col-md-6">
-					<form>
+					<form method="get" action="{% url 'search' %}">
 						<div class="col-md-9">
 						<div class="form-group">
 							<input type="text" name="search" class="form-control" placeholder="Sản phẩm">

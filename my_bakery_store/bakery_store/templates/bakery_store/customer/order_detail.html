@@ -1,89 +1,169 @@
 {% extends "bakery_store/layout.html" %}
 {% block content %}
+    {% load humanize %}
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="contact-wrap">
 			<h3 class="text-center">Đơn hàng 001</h3>
 			<div class="row contact-info-wrap">
 				<div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="cart-detail order-detail-container">
                         <h4>Thông tin khách hàng</h4>
-                        <div class="row">
-
-                            <div class="col-md-4">
-                                <label>Khách hàng</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Khách hàng</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <!-- Null neu khach hang vang lai-->
+                                    <p>{{ bill.user_id.full_name }}</p>
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                                <!-- Null neu khach hang vang lai-->
-                                <p>ID001 - Van Anh</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Ngày mua</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{ bill.created_date }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>Ngày mua</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Người nhận</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{ bill.receiver_name }}</p>
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                                <p>12/12/2018</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>SĐT</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>0{{ bill.receiver_phone }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>Người nhận</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Địa chỉ</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{ bill.receiver_address }}</p>
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                                <p>Van Anh</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>SĐT</label>
-                            </div>
-                            <div class="col-md-8">
-                                <p>13484475</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>Địa chỉ</label>
-                            </div>
-                            <div class="col-md-8">
-                                <p>Hà Nội</p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <!--Hien thi cac san pham da mua-->
-                    <div class="col-md-6">
-                       <div class="cart-detail order-detail-container">
-                            <h4>Danh sách sản phẩm</h4>
-                            <ul>
-                                <li>
-
-                                    <ul>
-                                        
-                                        <li>
-                                            <span>4 x Bánh trà xanh</span> 
-                                            <span>20000</span>
-                                        </li>
-                                    </ul>
-
-                                </li>
-                                <li>
-                                    <span>Mã giảm giá</span>
-                                    <span>SALE01</span>
-
-                                </li>
-                                <li>
-                                    <span>Tổng tiền</span> 
-                                    <span>80k</span>
-                                </li>
-                            </ul>
                         </div>
                     </div>
-                </div>
-			</div>
-		</div>
-	</div>
+                        <!--Hien thi cac san pham da mua-->
+                        <div class="col-md-7">
+                           <div class="cart-detail">
+                                <h4>Danh sách sản phẩm</h4>
+
+                                <ul>
+
+                                    <li>
+                                        {% for entry in entries %}
+                                        <ul>
+
+                                            <li>
+                                                {% if entry.event_id.sale_off %}
+                                                <span>{{ entry.quantity }} x {{ entry.product_id.name }} - Mã sự kiện {{entry.event_id.event_id  }}- {{ entry.event_id.sale_off }}%</span>
+                                                {% else%}
+                                                    <span>{{ entry.quantity }} x {{ entry.product_id.name }} </span>
+                                                {% endif %}
+                                                <span>{{ entry.total|intcomma}}</span>
+                                            </li>
+                                        </ul>
+                                        {% endfor %}
+
+                                    </li>
+
+                                    <li>
+                                        <span>Tổng tiền</span>
+                                        <span>{{ bill.total|intcomma }}</span>
+                                    </li>
+                                </ul>
+                           </div>
+                           </div>
+            </div>
+        </div>
+    </div>
 </div>
+{#                        <div class="row">#}
+{##}
+{#                            <div class="col-md-4">#}
+{#                                <label>Khách hàng</label>#}
+{#                            </div>#}
+{#                            <div class="col-md-8">#}
+{#                                <!-- Null neu khach hang vang lai-->#}
+{#                                 }}#}
+{#                                <p>ID001 - Van Anh</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="row">#}
+{#                            <div class="col-md-4">#}
+{#                                <label>Ngày mua</label>#}
+{#                            </div>#}
+{#                            <div class="col-md-8">#}
+{#                                <p>12/12/2018</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="row">#}
+{#                            <div class="col-md-4">#}
+{#                                <label>Người nhận</label>#}
+{#                            </div>#}
+{#                            <div class="col-md-8">#}
+{#                                <p>Van Anh</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="row">#}
+{#                            <div class="col-md-4">#}
+{#                                <label>SĐT</label>#}
+{#                            </div>#}
+{#                            <div class="col-md-8">#}
+{#                                <p>13484475</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="row">#}
+{#                            <div class="col-md-4">#}
+{#                                <label>Địa chỉ</label>#}
+{#                            </div>#}
+{#                            <div class="col-md-8">#}
+{#                                <p>Hà Nội</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <!--Hien thi cac san pham da mua-->#}
+{#                    <div class="col-md-6">#}
+{#                       <div class="cart-detail order-detail-container">#}
+{#                            <h4>Danh sách sản phẩm</h4>#}
+{#                            <ul>#}
+{#                                <li>#}
+{##}
+{#                                    <ul>#}
+{##}
+{#                                        <li>#}
+{#                                            <span>4 x Bánh trà xanh</span> #}
+{#                                            <span>20000</span>#}
+{#                                        </li>#}
+{#                                    </ul>#}
+{##}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <span>Mã giảm giá</span>#}
+{#                                    <span>SALE01</span>#}
+{##}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <span>Tổng tiền</span> #}
+{#                                    <span>80k</span>#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
+{#</div>#}
 {% endblock %}

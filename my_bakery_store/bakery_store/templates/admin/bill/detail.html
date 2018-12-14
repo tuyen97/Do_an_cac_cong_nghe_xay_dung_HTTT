@@ -85,7 +85,11 @@
                                         <ul>
                                             
                                             <li>
-                                                <span>{{ entry.quantity }} x {{ entry.product_id.name }}</span>
+                                                {% if entry.event_id.sale_off %}
+                                                <span>{{ entry.quantity }} x {{ entry.product_id.name }} - Mã sự kiện {{entry.event_id.event_id  }}- {{ entry.event_id.sale_off }}%</span>
+                                                {% else%}
+                                                    <span>{{ entry.quantity }} x {{ entry.product_id.name }} </span>
+                                                {% endif %}
                                                 <span>{{ entry.total|intcomma}}</span>
                                             </li>
                                         </ul>
