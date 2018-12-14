@@ -711,7 +711,7 @@ def statisticsRevenueForm(request):
                     'date': i['date'],
                     'total': i['count']
                 })
-            return JsonResponse({'this_week':resp})
+            return JsonResponse({'static_list':resp})
         if range == 'month':
             month = timezone.now().month
             stat = models.Bill.objects. \
@@ -725,7 +725,7 @@ def statisticsRevenueForm(request):
                     'date': i['date'],
                     'total': i['count']
                 })
-            return JsonResponse({'this_month':resp})
+            return JsonResponse({'static_list':resp})
         if range == 'year':
             year = timezone.now().year
             stat = models.Bill.objects. \
@@ -739,5 +739,5 @@ def statisticsRevenueForm(request):
                     'month': i['month'].month,
                     'total': i['count']
                 })
-            return JsonResponse({'this_year':resp})
+            return JsonResponse({'static_list':resp})
     return render(request, 'admin/bill/statistics.html')
