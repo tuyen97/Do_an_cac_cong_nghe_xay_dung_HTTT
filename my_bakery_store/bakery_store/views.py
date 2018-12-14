@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 from . import models
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect
 from . import forms
 from django.contrib.auth import logout
@@ -21,13 +21,17 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from django.db.models.functions import TruncMonth, TruncDate, TruncDay
-from django.db.models import Sum, Count
+from django.db.models import Sum
+from django.contrib.auth.decorators import user_passes_test
+
 class LazyEncoder(DjangoJSONEncoder):
     def default(self, obj):
         if isinstance(obj, YourCustomType):
             return str(obj)
         return super().default(obj)
 
+def is_admin(user):
+    return user.role == 'ad'
 
 def index(request):
     if request.user.is_authenticated:
@@ -95,7 +99,7 @@ def register(request):
         f = forms.registerForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
-            return HttpResponse('success')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
         else:
             return render(request,"bakery_store/register_form.html",{'form':f})
     else:
@@ -132,20 +136,6 @@ def loginView(request):
                 return HttpResponse("Login fail")
         else:
             return render(request,'bakery_store/login_form.html',{'form':f})
-
-@login_required()
-def add_product(request):
-    form = forms.productForm()
-    if request.method == 'POST':
-        f = forms.productForm(data=request.POST, files=request.FILES)
-        if(f.is_valid()):
-            f.save()
-            return redirect(ProductsIndex())
-        else:
-            return render(request, "admin/add_product.html",{'form':f})
-    else:
-        return render(request,"admin/add_product.html",{"form":form})
-
 
 def product_detail(request):
    # print(request.session['user_avt'])
@@ -332,6 +322,7 @@ def checkout(request):
 def order_complete(request):
     return render(request, 'bakery_store/order-complete.html')
 
+@login_required
 def add_comment(request):
     user = models.User.objects.get(pk=request.POST['customer_id'])
     product = models.Product.objects.get(pk=request.POST['product_id'])
@@ -350,21 +341,37 @@ def add_comment(request):
     comment.created_date = timezone.now()
     comment.rating=''.join(star)
     comment.save()
-    return HttpResponse('ok')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-@login_required()
+@user_passes_test(is_admin)
 def admin_index(request):
     return render(request, 'admin/index.html')
 
+@user_passes_test(is_admin)
+def add_product(request):
+    form = forms.productForm()
+    if request.method == 'POST':
+        f = forms.productForm(data=request.POST, files=request.FILES)
+        if(f.is_valid()):
+            f.save()
+            return redirect(ProductsIndex())
+        else:
+            return render(request, "admin/add_product.html",{'form':f})
+    else:
+        return render(request,"admin/add_product.html",{"form":form})
+
+@user_passes_test(is_admin)
 def ProductsIndex(request):
     list_product = models.Product.objects.filter(is_deleted=False)
     return render(request, 'admin/product/index.html',{'product_list':list_product})
 
+@user_passes_test(is_admin)
 def GetListProducts(request):
     list_product = models.Product.objects.all()
     products = serialize('json', list_product, cls=LazyEncoder)
     return JsonResponse(products, safe=False)
 
+@user_passes_test(is_admin)
 def edit_product(request):
     if request.method == 'GET':
         product = models.Product.objects.get(pk=request.GET['id'])
@@ -393,6 +400,7 @@ def edit_product(request):
         # }
         # return JsonResponse(http_response)
 
+@user_passes_test(is_admin)
 def deleteProduct(request):
     product_id = request.POST['id']
     product = models.Product.objects.get(pk=product_id)
@@ -403,10 +411,12 @@ def deleteProduct(request):
     }
     return JsonResponse(http_response)
 
+@user_passes_test(is_admin)
 def billIndex(request):
     billList = models.Bill.objects.all()
     return render(request,'admin/bill/index.html',{'billList':billList})
 
+@user_passes_test(is_admin)
 def billDetail(request):
     form = forms.approveBill()
     bill_id = request.GET['bill_id']
@@ -419,6 +429,8 @@ def billDetail(request):
     }
     print("ok")
     return render(request, 'admin/bill/detail.html',context)
+
+@user_passes_test(is_admin)
 def approveBill(request):
     bill_id  =request.POST['id']
     bill_status = request.POST['status']
@@ -431,10 +443,13 @@ def approveBill(request):
             product.save()
     bill.status = bill_status
     bill.save()
-    return HttpResponse('ok')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+
 def loginForm(request):
     return render(request,'bakery_store/login_form.html')
 
+@user_passes_test(is_admin)
 def eventIndex(request):
     event_list = models.Event.objects.all()
     context = {
@@ -442,6 +457,7 @@ def eventIndex(request):
     }
     return render(request, 'admin/event/index.html',context)
 
+@user_passes_test(is_admin)
 @csrf_exempt
 def editEventForm(request):
     if request.method == 'GET':
@@ -498,7 +514,7 @@ def editEventForm(request):
         http_response['message'] = 'Thêm sự kiện thành công'
         return JsonResponse(http_response)
 
-
+@user_passes_test(is_admin)
 def eventChange(request):
     http_response = {}
     if 'ketthuc' in request.POST:
@@ -528,7 +544,7 @@ def eventChange(request):
         http_response['message'] = 'Xóa thành công'
         return JsonResponse(http_response)
 
-
+@user_passes_test(is_admin)
 @csrf_exempt
 def createEvent(request):
     products = models.Product.objects.filter(is_deleted=False)
@@ -575,6 +591,7 @@ def createEvent(request):
         return JsonResponse(http_response)
     return render(request, 'admin/event/create.html',context)
 
+@user_passes_test(is_admin)
 def statisticsProduct(request):
     if request.method == 'POST':
         range = request.POST['range']
@@ -653,9 +670,11 @@ def statisticsProduct(request):
             return JsonResponse(response)
     return render(request, 'admin/product/statistics.html')
 
+@login_required
 def profile(request):
     return render(request, 'bakery_store/customer/profile.html')
 
+@login_required
 def customerOrders(request):
     bills = models.Bill.objects.filter(user_id=request.user)
     context ={
@@ -663,6 +682,7 @@ def customerOrders(request):
     }
     return render(request, 'bakery_store/customer/orders.html', context)
 
+@login_required
 def customerOrderDetail(request):
     bill_id = request.GET['id']
     bill = models.Bill.objects.get(pk=bill_id)
@@ -674,6 +694,7 @@ def customerOrderDetail(request):
     # print("ok")
     return render(request, 'bakery_store/customer/order_detail.html',context)
 
+@user_passes_test(is_admin)
 @csrf_exempt
 def statisticsRevenueForm(request):
     if request.method == 'POST':
