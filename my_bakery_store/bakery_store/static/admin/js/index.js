@@ -26,12 +26,6 @@ $.ajaxSetup({
 });
 $(document).ready(function(){
   init();
-	$('.singleSelect').fastselect();
-  $('#time_range').on('change',function () {
-    /*console.log($(this).val());*/
-   /* $('#time_title').text($(this).val());*/
-    statiscticsProduct();
-  });
   function drawChart(result){
       var i=0;
       var length = result.length;
@@ -64,10 +58,10 @@ $(document).ready(function(){
   }
   function statiscticsProduct(){
     data = {
-      'range': $('#time_range').val()
+      'range': 'day'
     };
     console.log(data);
-    $.post('statistics',data,function (data) {
+    $.post('/admin/product/statistics',data,function (data) {
         $('#product-chart').empty();
         /*console.log(data);*/
         var result = data.static_list;

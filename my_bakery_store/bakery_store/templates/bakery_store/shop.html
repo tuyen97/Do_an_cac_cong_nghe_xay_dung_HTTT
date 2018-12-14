@@ -21,7 +21,11 @@
 					</div>
 				</div>
 				<div class="desc">
-					<h3><a href="product-detail.html">{{ product.name }}</a></h3>
+					<h3>
+						<a href="product_detail?id={{ product.id }}">
+						{{ product.name }}
+						</a>
+					</h3>
 					<p class="price"><span>{{ product.price|intcomma }}</span></p>
 					
 				</div>

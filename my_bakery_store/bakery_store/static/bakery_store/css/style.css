@@ -78,20 +78,23 @@ h1, h2, h3, h4, h5, h6, figure {
     margin: 0; } }
 
 .colorlib-nav .top-menu {
-  padding: 40px 30px; }
+  padding-top: 20px;
+  /*padding: 20px 10px;*/ }
   @media screen and (max-width: 768px) {
     .colorlib-nav .top-menu {
       padding: 28px 1em; } }
 
 .colorlib-nav #colorlib-logo {
-  font-size: 20px;
+  font-size: 23px;
   margin: 0;
   padding: 0;
   text-transform: uppercase;
-  font-weight: 600; }
+  font-weight: 600;
+  font-color: #ffc91a; 
+  padding-top: 10px;}
   .colorlib-nav #colorlib-logo a {
     position: relative;
-    color: #000; }
+    color: #ffc91a; }
 
 @media screen and (max-width: 768px) {
   .colorlib-nav .menu-1 {
@@ -582,7 +585,7 @@ h1, h2, h3, h4, h5, h6, figure {
       width: 49%;
       display: inline-block;
       font-weight: 400;
-      font-size: 18px;
+      font-size: 22px;
       color: #000; }
     .product-detail-wrap .desc .price .rate {
       font-size: 13px;
@@ -726,13 +729,14 @@ h1, h2, h3, h4, h5, h6, figure {
         width: 30%;
         font-size: 10px; } }
     .nav-tabs li a {
+      font-size:15px;
       width: 100%;
       margin: 0 10px 0 0;
       border: none;
       padding: 1.5em 1em !important;
       border: none;
       display: block;
-      color: #4d4d4d;
+      color: #0b0b0b;
       background: #fafafa;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
@@ -1232,7 +1236,7 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 10px 0;
   display: block;
   width: 100%;
-  font-size: 12px;
+  font-size: 15px;
   text-transform: uppercase;
   background: transparent;
   color: #FFC300;
@@ -1274,7 +1278,7 @@ h1, h2, h3, h4, h5, h6, figure {
     margin: 0;
     padding: 0 0 0 20px; }
     .panel-body ul li {
-      font-size: 12px; }
+      font-size: 15px; }
       .panel-body ul li a {
         color: #000; }
         .panel-body ul li a:hover {
@@ -2095,7 +2099,7 @@ input[type="text"] {
     border-color: #FFC300; }
 
 .row-pb-lg {
-  padding-bottom: 6em !important; }
+  /*padding-bottom: 6em !important;*/ }
 
 .row-pb-md {
   padding-bottom: 4em !important; }
@@ -2147,4 +2151,7 @@ input[type="text"] {
 .search{
   border: 1px solid #e6e6e6 ;
   padding-bottom: 0px;
+}
+.search-container{
+  padding-top: 10px;
 }

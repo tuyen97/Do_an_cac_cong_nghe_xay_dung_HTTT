@@ -4,36 +4,36 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.html">Store</a></div>
+							<div id="colorlib-logo"><a href="/">Tiệm bánh IT</a></div>
 						</div>
 						<div class="col-xs-6 text-left menu-1">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li class="has-dropdown active">
-									<a href="{% url 'index' %}">Shop</a>
-									<ul class="dropdown">
-										<li><a href="{%  url 'view_cart' %}">Shipping Cart</a></li>
-										<li><a href="{% url 'checkout' %}">Checkout</a></li>
-										<li><a href="order-complete.html">Order Complete</a></li>
-										<li><a href="add-to-wishlist.html">Wishlist</a></li>
-									</ul>
-								</li>
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
-
-							</ul>
+							<div class="row">
+								<div class="search-container">
+								<form>
+									<div class="col-md-9">
+									<div class="form-group">
+										<input type="text" name="search" class="form-control" placeholder="Sản phẩm">
+									</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary">Tìm kiếm
+											<span><i class="icon-search"></i></span></button>
+										</div>
+									</div>
+								</form>
+								</div>
+							</div>
+							
 						</div>
 						<div class="col-xs-4 text-right menu-1">
 							<ul>
 							<!--Khách vãng lai-->
-							<li><a href="{% url 'loginView' %}">Đăng nhập</a></li>
-							<li><a href="{% url 'register' %}">Đăng kí</a></li>
 							<!--Khách hàng thành viên-->
                                 {% if user.is_authenticated %}
 								<li class="has-dropdown">
 									<a href="#">
-										<img src="/static/bakery_store/{{user.avt}}" class="img-circle" style="width: 50px;">
+										<img src="/static/bakery_store/{{user.avt}}" class="img-circle" style="width: 70px;">
 										<span>{{user.username}}</span>
 									</a>
 									<ul class="dropdown">
@@ -42,6 +42,10 @@
 										<li><a href="{% url 'logout' %}">Đăng xuất</a></li>
 									</ul>
 								</li>
+                                {% else %}
+                                <!--Khách vãng lai-->
+								<li><a href="{% url 'loginView' %}">Đăng nhập</a></li>
+								<li><a href="{% url 'register' %}">Đăng kí</a></li>
                                 {% endif %}
 							<!--Giỏ hàng-->
 								<li><a href="{% url 'view_cart' %}"><i class="icon-shopping-cart"></i> Giỏ hàng</a></li>
@@ -50,7 +54,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-md-3">
 				</div>
 				<div class="col-md-6">
@@ -70,7 +74,7 @@
 				</div>
 				<div class="col-md-3">
 				</div>
-			</div>
+			</div> -->
 		</nav>
 		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
@@ -81,8 +85,8 @@
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h1>Products</h1>
-				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span>Shop</span></h2>
+				   					<!-- <h1>Products</h1>
+				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span>Shop</span></h2> -->
 				   				</div>
 				   			</div>
 				   		</div>

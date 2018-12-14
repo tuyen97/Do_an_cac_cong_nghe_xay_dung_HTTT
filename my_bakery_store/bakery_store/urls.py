@@ -6,7 +6,7 @@ urlpatterns = [
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
     path("",views.index,name='index'),
     path('register', views.register, name='register'),
-    path('login/', views.loginView, name='loginView'),
+    path('login', views.loginView, name='loginView'),
     path('logout/', views.Logout,name = 'logout'),
     path('admin/', views.admin_index, name = 'admin_index'),
     path('admin/add_product', views.add_product, name='add_product'),
@@ -33,13 +33,13 @@ urlpatterns = [
     path('admin/event/edit', views.editEventForm, name='editEvent'),
     path('admin/event/change', views.eventChange, name='eventChange'),
     path('VA/orders', views.customerOrders, name='customerOrders'),
-<<<<<<< HEAD
+
     path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
-    path('VA/admin/bill/statistics', views.statisticsRevenueForm, name="statisticsRevenueForm")
+    path('VA/admin/bill/statistics', views.statisticsRevenueForm, name="statisticsRevenueForm"),
     
 
-=======
+
     path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail')
->>>>>>> c720f9624ca36f502aee6aaf484d3b9d7d1092ce
+
 
 ]
