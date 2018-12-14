@@ -7,7 +7,7 @@ urlpatterns = [
     path("",views.index,name='index'),
     path('search',views.search, name = 'search'),
     path('register', views.register, name='register'),
-    path('login/', views.loginView, name='loginView'),
+    path('login', views.loginView, name='loginView'),
     path('logout/', views.Logout,name = 'logout'),
     path('admin/', views.admin_index, name = 'admin_index'),
     path('admin/add_product', views.add_product, name='add_product'),
@@ -34,7 +34,19 @@ urlpatterns = [
     path('admin/event/create',views.createEvent, name='createEvent'),
     path('admin/event/edit', views.editEventForm, name='editEvent'),
     path('admin/event/change', views.eventChange, name='eventChange'),
+
+    path('VA/orders', views.customerOrders, name='customerOrders'),
+
+    path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
+    path('VA/admin/bill/statistics', views.statisticsRevenueForm, name="statisticsRevenueForm"),
+    
+
+
+    path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail')
+
+
     path('orders', views.customerOrders, name='customerOrders'),
     path('order/detail', views.customerOrderDetail, name='customerOrderDetail')
+
 
 ]
