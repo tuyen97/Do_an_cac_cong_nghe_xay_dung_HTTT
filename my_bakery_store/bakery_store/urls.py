@@ -39,14 +39,7 @@ urlpatterns = [
 
     path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
     path('VA/admin/bill/statistics', views.statisticsRevenueForm, name="statisticsRevenueForm"),
-    
 
-
-    path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail')
-
-
-    path('orders', views.customerOrders, name='customerOrders'),
-    path('order/detail', views.customerOrderDetail, name='customerOrderDetail')
 
 
 ]
