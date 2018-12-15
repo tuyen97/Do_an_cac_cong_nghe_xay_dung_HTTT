@@ -708,8 +708,7 @@ def statisticsRevenueForm(request):
             for i in stat.iterator():
                 # print(i)
                 resp.append({
-                    'date': i['date'],
-                    'total': i['count']
+                    str(i['date']):i['count']
                 })
             return JsonResponse({'static_list':resp})
         if range == 'month':
@@ -722,9 +721,9 @@ def statisticsRevenueForm(request):
             for i in stat.iterator():
                 # print(i)
                 resp.append({
-                    'date': i['date'],
-                    'total': i['count']
+                    str(i['date']) : i['count']
                 })
+            print(resp)
             return JsonResponse({'static_list':resp})
         if range == 'year':
             year = timezone.now().year
@@ -736,8 +735,7 @@ def statisticsRevenueForm(request):
             for i in stat.iterator():
                 print(i)
                 resp.append({
-                    'month': i['month'].month,
-                    'total': i['count']
+                    str(i['month'].month): i['count']
                 })
             return JsonResponse({'static_list':resp})
     return render(request, 'admin/bill/statistics.html')

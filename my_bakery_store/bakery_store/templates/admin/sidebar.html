@@ -38,12 +38,17 @@
              <li><a href="{% url 'statisticsProduct' %}"><i class="fa fa-circle-o"></i>Thống kê</a></li>
           </ul>
         </li>
-        <li>
+        <li class="treeview">
           <a href="{% url 'billIndex' %}">
             <i class="fa fa-th"></i> <span>Đơn hàng</span>
             <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+            <ul class="treeview-menu">
+            <li><a href="{% url 'statisticRevenue' %}"><i class="fa fa-circle-o"></i>Thống kê</a></li>
+            <li><a href="{% url 'billIndex' %}"><i class="fa fa-circle-o"></i>Danh mục</a></li>
+          </ul>
         </li>
         <li class="treeview">
           <a href="{% url 'eventIndex' %}">

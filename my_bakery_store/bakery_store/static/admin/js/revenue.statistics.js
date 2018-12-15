@@ -105,14 +105,16 @@ $(document).ready(function(){
         var element = result[i];
         var name = (Object.keys(element))[0];
         var soldProduct = element[name];
+        // console.log(soldProduct);
         var temp = {
           y : name,
           a : soldProduct
         };
         chartData.push(temp);
+        // console.log(chartData);
       }
       var bar = new Morris.Bar({
-        element: 'product-chart',
+        element: 'revenue-chart',
         resize: true,
         data: chartData,
         barColors: ['#00a65a'],
@@ -131,10 +133,10 @@ $(document).ready(function(){
     data = {
       'range': $('#time_range').val()
     };
-    console.log(data);
+    // console.log(data);
     $.post('',data,function (data) {
-        $('#product-chart').empty();
-        console.log(data);
+        $('#revenue-chart').empty();
+        // console.log(data);
         var result = data.static_list;
         drawChart(result);
     });
