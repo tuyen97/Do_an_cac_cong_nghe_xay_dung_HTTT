@@ -345,7 +345,17 @@ def add_comment(request):
 
 @user_passes_test(is_admin)
 def admin_index(request):
-    return render(request, 'admin/index.html')
+    bill_count = models.Bill.objects.filter(status='proc').count()
+    product_count = models.Product.objects.filter(is_deleted=False).count()
+    event_count = models.Event.objects.filter(status='pen').count()
+    customer_count = models.User.objects.filter(role='mem').count()
+    context = {
+        'bill_count':bill_count,
+        'product_count':product_count,
+        'event_count':event_count,
+        'customer_count':customer_count
+    }
+    return render(request, 'admin/index.html',context)
 
 @user_passes_test(is_admin)
 def add_product(request):
@@ -740,12 +750,28 @@ def statisticsRevenueForm(request):
             return JsonResponse({'static_list':resp})
     return render(request, 'admin/bill/statistics.html')
 
-
+@user_passes_test(is_admin)
 def customerProfile(request):
-    return render(request, 'admin/customer/profile.html')
+    id = request.GET['id']
+    customer = models.User.objects.get(pk = id)
+    context = {
+        'customer':customer
+    }
+    return render(request, 'admin/customer/profile.html',context)
 
+@user_passes_test(is_admin)
 def customerOrdersList(request):
-    return render(request, 'admin/customer/orders.html')
+    id = request.GET['id']
+    bills = models.Bill.objects.filter(user_id=id)
+    context = {
+        'bill_list':bills
+    }
+    return render(request, 'admin/customer/orders.html',context)
 
+@user_passes_test(is_admin)
 def customers(request):
-    return render(request, 'admin/customer/index.html')
+    customer_list = models.User.objects.filter(role='mem')
+    context = {
+        'customer_list':customer_list
+    }
+    return render(request, 'admin/customer/index.html',context)
