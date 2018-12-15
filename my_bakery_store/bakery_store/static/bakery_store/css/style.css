@@ -638,7 +638,7 @@ h1, h2, h3, h4, h5, h6, figure {
   .tab-content .review {
     width: 100%;
     float: left;
-    margin-bottom: 30px; }
+    margin-bottom: 15px; }
     .tab-content .review .user-img {
       width: 80px;
       height: 80px;
@@ -662,6 +662,7 @@ h1, h2, h3, h4, h5, h6, figure {
             font-size: 12px;
             color: #b3b3b3; }
       .tab-content .review .desc .star {
+        margin-bottom: 0px;
         width: 100%; }
         .tab-content .review .desc .star span {
           width: 49%;
@@ -2154,4 +2155,12 @@ input[type="text"] {
 }
 .search-container{
   padding-top: 10px;
+}
+
+.img-fluid{
+  width: 100%;
+  height: auto;
+}
+.comment-text {
+  margin-bottom: 0px;
 }

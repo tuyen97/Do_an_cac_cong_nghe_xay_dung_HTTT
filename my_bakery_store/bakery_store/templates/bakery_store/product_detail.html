@@ -66,17 +66,12 @@
 					   <div id="review" class="tab-pane fade">
 					   	<div class="row">
 					   		<div class="col-md-7">
-					   			<h3>23 Nhận xét</h3>
+					   			<h3>5 Nhận xét</h3>
 					   			<!--comment form-->
                                 {% if user.is_authenticated %}
 					   			<div class="review">
                                 <div>
-
 							   		<div class="user-img" style="background-image: url('static/bakery_store/{{ user.avt }}')"></div>
-                                    <h3>
-							   				<span class="text-left">{{ user.full_name }}</span>
-{#							   				<span class="text-right">14 March 2018</span>#}
-							   			</h3>
                                 </div>
 							   		<div class="desc">
 
@@ -132,7 +127,14 @@
 						   					</span>
 						   					<!-- <span class="text-right"><a href="javascript:void(0)" class="reply"><i class="icon-reply"></i></a></span> -->
 							   			</p>
-							   			<p>{{ comment.content }}</p>
+							   			<p class="comment-text">{{ comment.content }}</p>
+							   			<div class="row">
+							   				<div class="col-md-8">
+							   					{% load static %}
+							   					<img class="img-fluid" 
+							   					src="static/bakery_store/{{ comment.user.avt }}"/>
+							   				</div>
+							   			</div>
 							   		</div>
 							   	</div>
                             {% endfor %}
@@ -160,7 +162,7 @@
 					   		</div>
 					   		<div class="col-md-4 col-md-push-1">
 					   			<div class="rating-wrap">
-						   			<h3>Give a Review</h3>
+						   			<h3>Đánh giá</h3>
 						   			<p class="star">
 						   				<span>
 						   					<i class="icon-star-full"></i>
@@ -168,9 +170,9 @@
 						   					<i class="icon-star-full"></i>
 						   					<i class="icon-star-full"></i>
 						   					<i class="icon-star-full"></i>
-						   					(98%)
+						   					(60%)
 					   					</span>
-					   					<span>20 Reviews</span>
+					   					<span>3 Nhận xét</span>
 						   			</p>
 						   			<p class="star">
 						   				<span>
@@ -179,9 +181,9 @@
 						   					<i class="icon-star-full"></i>
 						   					<i class="icon-star-full"></i>
 						   					<i class="icon-star-empty"></i>
-						   					(85%)
+						   					(20%)
 					   					</span>
-					   					<span>10 Reviews</span>
+					   					<span>1 Nhận xét</span>
 						   			</p>
 						   			<p class="star">
 						   				<span>
@@ -190,9 +192,9 @@
 						   					<i class="icon-star-full"></i>
 						   					<i class="icon-star-empty"></i>
 						   					<i class="icon-star-empty"></i>
-						   					(98%)
+						   					(20%)
 					   					</span>
-					   					<span>5 Reviews</span>
+					   					<span>1 Nhận xét</span>
 						   			</p>
 						   			<p class="star">
 						   				<span>
@@ -201,9 +203,9 @@
 						   					<i class="icon-star-empty"></i>
 						   					<i class="icon-star-empty"></i>
 						   					<i class="icon-star-empty"></i>
-						   					(98%)
+						   					(0%)
 					   					</span>
-					   					<span>0 Reviews</span>
+					   					<span>0 Nhận xét</span>
 						   			</p>
 						   			<p class="star">
 						   				<span>
@@ -212,9 +214,9 @@
 						   					<i class="icon-star-empty"></i>
 						   					<i class="icon-star-empty"></i>
 						   					<i class="icon-star-empty"></i>
-						   					(98%)
+						   					(0%)
 					   					</span>
-					   					<span>0 Reviews</span>
+					   					<span>0 Nhận xét</span>
 						   			</p>
 						   		</div>
 					   		</div>
@@ -227,94 +229,7 @@
 	</div>
 {% endblock %}
 {%block similar_product %}
-<div class="colorlib-shop">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-				<h2><span>Similar Products</span></h2>
-				<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 text-center">
-				<div class="product-entry">
-					<div class="product-img" style="background-image: url(images/item-5.jpg);">
-						<p class="tag"><span class="new">New</span></p>
-						<div class="cart">
-							<p>
-								<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-								<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-								<span><a href="#"><i class="icon-heart3"></i></a></span>
-								<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-							</p>
-						</div>
-					</div>
-					<div class="desc">
-						<h3><a href="shop.html">Floral Dress</a></h3>
-						<p class="price"><span>$300.00</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 text-center">
-				<div class="product-entry">
-					<div class="product-img" style="background-image: url(images/item-6.jpg);">
-						<p class="tag"><span class="new">New</span></p>
-						<div class="cart">
-							<p>
-								<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-								<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-								<span><a href="#"><i class="icon-heart3"></i></a></span>
-								<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-							</p>
-						</div>
-					</div>
-					<div class="desc">
-						<h3><a href="shop.html">Floral Dress</a></h3>
-						<p class="price"><span>$300.00</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 text-center">
-				<div class="product-entry">
-					<div class="product-img" style="background-image: url(images/item-7.jpg);">
-						<p class="tag"><span class="new">New</span></p>
-						<div class="cart">
-							<p>
-								<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-								<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-								<span><a href="#"><i class="icon-heart3"></i></a></span>
-								<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-							</p>
-						</div>
-					</div>
-					<div class="desc">
-						<h3><a href="shop.html">Floral Dress</a></h3>
-						<p class="price"><span>$300.00</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 text-center">
-				<div class="product-entry">
-					<div class="product-img" style="background-image: url(images/item-8.jpg);">
-						<p class="tag"><span class="new">New</span></p>
-						<div class="cart">
-							<p>
-								<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-								<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-								<span><a href="#"><i class="icon-heart3"></i></a></span>
-								<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-							</p>
-						</div>
-					</div>
-					<div class="desc">
-						<h3><a href="shop.html">Floral Dress</a></h3>
-						<p class="price"><span>$300.00</span></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+	{%include "bakery_store/similar-product.html" %}
 {%endblock %}
 {% block script %}
 {% load static %}

@@ -1,22 +1,22 @@
 {% extends "bakery_store/layout.html" %}
 {% block content %}
 	<div id="page">
-		<div class="colorlib-shop">
+		<div class="colorlib-shop" style="padding-bottom: 8px;">
 			<div class="container">
 				<div class="row row-pb-md">
 					<div class="col-md-10 col-md-offset-1">
 						<div class="process-wrap">
 							<div class="process text-center active">
 								<p><span>01</span></p>
-								<h3>Shopping Cart</h3>
+								<h3>Giỏ hàng</h3>
 							</div>
 							<div class="process text-center">
 								<p><span>02</span></p>
-								<h3>Checkout</h3>
+								<h3>Thanh toán</h3>
 							</div>
 							<div class="process text-center">
 								<p><span>03</span></p>
-								<h3>Order Complete</h3>
+								<h3>Hoàn tất</h3>
 							</div>
 						</div>
 					</div>
@@ -25,19 +25,19 @@
 					<div class="col-md-10 col-md-offset-1">
 						<div class="product-name">
 							<div class="one-forth text-center">
-								<span>Product Details</span>
+								<span>Sản phẩm</span>
 							</div>
 							<div class="one-eight text-center">
-								<span>Price</span>
+								<span>Giá</span>
 							</div>
 							<div class="one-eight text-center">
-								<span>Quantity</span>
+								<span>Số lượng</span>
 							</div>
 							<div class="one-eight text-center">
-								<span>Total</span>
+								<span>Thành tiền</span>
 							</div>
 							<div class="one-eight text-center">
-								<span>Remove</span>
+								<span>Mua sau</span>
 							</div>
 						</div>
                         {% for product,count,sub_total in product_list %}
@@ -82,10 +82,10 @@
 									<form action="#">
 										<div class="row form-group">
 											<div class="col-md-9">
-												<input type="text" name="quantity" class="form-control input-number" placeholder="Your Coupon Number...">
+												<input type="text" name="quantity" class="form-control input-number" placeholder="Mã giảm giá">
 											</div>
 											<div class="col-md-3">
-                                                <a href="{% url 'checkout' %}" class="btn btn-primary">Apply</a>
+                                                <a href="{% url 'checkout' %}" class="btn btn-primary">Thanh toán</a>
 											</div>
 										</div>
 									</form>
@@ -98,7 +98,7 @@
 {#											<p><span>Discount:</span> <span>$45.00</span></p>#}
 {#										</div>#}
 										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span id="thanh_tien">{{ total|intcomma }}</span></p>
+											<p><span><strong>Tổng tiền:</strong></span> <span id="thanh_tien">{{ total|intcomma }}</span></p>
 										</div>
 									</div>
 								</div>
@@ -108,98 +108,10 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="colorlib-shop">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-						<h2><span>Recommended Products</span></h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/item-5.jpg);">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop.html">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/item-6.jpg);">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop.html">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/item-7.jpg);">
-								<p class="tag"><span class=a"new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop.html">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-center">
-						<div class="product-entry">
-							<div class="product-img" style="background-image: url(images/item-8.jpg);">
-								<p class="tag"><span class="new">New</span></p>
-								<div class="cart">
-									<p>
-										<span class="addtocart"><a href="#"><i class="icon-shopping-cart"></i></a></span> 
-										<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-										<span><a href="#"><i class="icon-heart3"></i></a></span>
-										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-									</p>
-								</div>
-							</div>
-							<div class="desc">
-								<h3><a href="shop.html">Floral Dress</a></h3>
-								<p class="price"><span>$300.00</span></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-	{%endblock %}
+{%endblock %}
+{%block similar_product %}
+	{%include "bakery_store/similar-product.html" %}
+{%endblock %}
 {% block script %}
 {% load static %}
 	<link rel="stylesheet" href="{% static 'bakery_store/js/ProductRatingArtaraxRatingStar/jquery.artarax.rating.star.css'%}"></script>
