@@ -67,7 +67,7 @@ $(document).ready(function(){
       'range': $('#time_range').val()
     };
     console.log(data);
-    $.post('statistics',data,function (data) {
+    $.post('/admin/product/statistics',data,function (data) {
         $('#product-chart').empty();
         /*console.log(data);*/
         var result = data.static_list;
