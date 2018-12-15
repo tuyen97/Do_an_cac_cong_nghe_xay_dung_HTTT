@@ -1,0 +1,90 @@
+{% extends 'admin/layout.html' %}
+{% load humanize %}
+{% block content %}
+    <section class="content-header">
+      <h1>
+        Thông tin khách hàng
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Customer</li>
+      </ol>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <!--Them trang thai nua nhe-->
+                    <!--VanAnh-->
+                    <h3 class="box-title">ID001 - Ngo Van Anh</h3>
+                    <!--end-->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                <!--VanAnh-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="cart-detail">
+                            <!-- <h4>Thông tin khách hàng</h4> -->
+                            
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Tên đăng nhập</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>VanAnhNgo97</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Họ tên</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>Ngo Van Anh</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Giới tính</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>Nữ</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>vananhngo97@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Địa chỉ</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <!-- Null neu khach hang vang lai-->
+                                        <p>ABC</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Hien thi cac san pham da mua-->
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+            <a href="javascript:void(0)" class="btn btn-primary">Quay lại</a>
+        </div>
+      </div>
+    </section>
+{% endblock %}
+{% block script %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin/dist/css/bill_detail.css' %}">
+{% endblock %}

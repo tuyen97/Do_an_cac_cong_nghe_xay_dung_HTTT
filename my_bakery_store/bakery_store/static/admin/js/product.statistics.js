@@ -72,7 +72,7 @@ $(document).ready(function(){
     console.log(data);
     $.post('/admin/product/statistics',data,function (data) {
 
-    // console.log(data);
+    console.log(data);
     
         $('#product-chart').empty();
         // console.log(data);

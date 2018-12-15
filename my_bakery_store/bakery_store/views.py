@@ -739,3 +739,13 @@ def statisticsRevenueForm(request):
                 })
             return JsonResponse({'static_list':resp})
     return render(request, 'admin/bill/statistics.html')
+
+
+def customerProfile(request):
+    return render(request, 'admin/customer/profile.html')
+
+def customerOrdersList(request):
+    return render(request, 'admin/customer/orders.html')
+
+def customers(request):
+    return render(request, 'admin/customer/index.html')
