@@ -17,9 +17,9 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>10</h3>
+              <h3>{{ bill_count }}</h3>
 
-              <p>Đơn hàng</p>
+              <p>Đơn hàng mới</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -33,7 +33,7 @@
           <div class="small-box bg-green">
             <div class="inner">
              <!--  <h3>53<sup style="font-size: 20px">%</sup></h3> -->
-              <h3>30</h3>
+              <h3>{{ product_count }}</h3>
               <p>Sản phẩm</p>
             </div>
             <div class="icon">
@@ -49,7 +49,7 @@
             <div class="inner">
               <h3>Sắp diễn ra</h3>
 
-              <p>Sự kiện</p>
+              <p>{{ event_count }} Sự kiện</p>
             </div>
             <div class="icon">
               <i class="ion ion-ice-creame"></i>
@@ -62,13 +62,13 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>15</h3>
+              <h3>{{ customer_count }}</h3>
               <p>Khách hàng</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">Chi tiết<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{% url 'customers'%}" class="small-box-footer">Chi tiết<i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

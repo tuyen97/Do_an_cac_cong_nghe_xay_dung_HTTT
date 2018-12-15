@@ -30,16 +30,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        
+                        {% for customer in customer_list %}
                             <tr>
                                 <!--Chuyen sang thong tin ng dung-->
-                                <td><a href="javscript:void(0)">KH001</a></td>
-                                <td>VA</td>
-                                <td>Ngo Van Anh</td>
-                                <td>12/6/1997</td>
-                                <td><a href="javscript:void(0)">Đơn hàng</a></td>
+                                <td><a href="{% url 'customerProfile' %}?id={{ customer.id }}">{{ customer.id }}</a></td>
+                                <td>{{ customer.user_name }}</td>
+                                <td>{{ customer.full_name }}</td>
+                                <td>{{ customer.birth_day }}</td>
+                                <td><a href="{% url 'customerOrderList' %}?id={{ customer.id }}">Đơn hàng</a></td>
                             </tr>
-                       
+                       {% endfor %}
                     </table>
                 </div>
                 <!-- /.box-body -->

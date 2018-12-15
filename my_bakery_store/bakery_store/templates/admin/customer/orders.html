@@ -31,15 +31,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        
+                        {% for bill in bill_list %}
                             <tr>
                                 <!--Chuyen sang chi tiet hoa don-->
-                                <td><a href="javascript:void(0)">001</a> </td>
-                                <td>22/12/2018</td>
-                                <td>VA</td>
-                                <td>Hoan thanh</td>
-                                <td>200k</td>
+                                <td><a href="{% url 'billDetail' %}?bill_id={{ bill.id }}">{{ bill.id }}</a> </td>
+                                <td>{{ bill.created_date }}</td>
+                                <td>{{ bill.receiver_name}}</td>
+                                <td>{{ bill.get_status_display }}</td>
+                                <td>{{ bill.total|intcomma }}</td>
                             </tr>
+                        {% endfor %}
                     </table>
                 </div>
                 <!-- /.box-body -->

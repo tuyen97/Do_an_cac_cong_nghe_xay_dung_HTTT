@@ -17,7 +17,7 @@
                 <div class="box-header">
                     <!--Them trang thai nua nhe-->
                     <!--VanAnh-->
-                    <h3 class="box-title">ID001 - Ngo Van Anh</h3>
+                    <h3 class="box-title">{{ customer.id }} - {{ customer.full_name }}</h3>
                     <!--end-->
                 </div>
                 <!-- /.box-header -->
@@ -33,7 +33,7 @@
                                         <label>Tên đăng nhập</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <p>VanAnhNgo97</p>
+                                        <p>{{ customer.user_name }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -41,7 +41,7 @@
                                         <label>Họ tên</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <p>Ngo Van Anh</p>
+                                        <p>{{ customer.full_name }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -49,7 +49,7 @@
                                         <label>Giới tính</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <p>Nữ</p>
+                                        <p>{{ customer.get_gender_display }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -57,7 +57,7 @@
                                         <label>Email</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <p>vananhngo97@gmail.com</p>
+                                        <p>{{ customer.email }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <!-- Null neu khach hang vang lai-->
-                                        <p>ABC</p>
+                                        <p>{{ customer.address }}</p>
                                     </div>
                                 </div>
                             </div>
