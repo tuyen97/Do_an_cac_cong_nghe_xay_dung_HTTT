@@ -164,7 +164,7 @@ $(document).ready(function(){
     };
 
     console.log(data1);
-    $.post('/admin/bill/statistics',data1,function (data) {
+    $.post('',data1,function (data) {
         console.log("aaa");
         console.log(data);
         $('#revenue-chart').empty();
