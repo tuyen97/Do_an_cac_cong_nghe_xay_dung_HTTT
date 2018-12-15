@@ -46,7 +46,10 @@ urlpatterns = [
 
 
     path('orders', views.customerOrders, name='customerOrders'),
-    path('order/detail', views.customerOrderDetail, name='customerOrderDetail')
-
+    path('order/detail', views.customerOrderDetail, name='customerOrderDetail'),
+    #
+    path('VA/admin/customer', views.customers, name='customers'),
+    path('VA/admin/customer/ordersList', views.customerOrdersList, name='customerOrderList'),
+    path('VA/admin/customer/profile', views.customerProfile, name='customerProfile')
 
 ]

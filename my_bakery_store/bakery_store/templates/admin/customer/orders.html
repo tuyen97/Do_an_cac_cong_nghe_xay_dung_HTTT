@@ -1,0 +1,58 @@
+{% extends 'admin/layout.html' %}
+    {% load humanize %}
+{% block content %}
+    	<section class="content-header">
+      <h1>
+        Danh sách hóa đơn
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Product</li>
+      </ol>
+    </section>
+        <section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <!--Hien thi ten ng-->
+                    <h3 class="box-title">Danh sách đơn hàng của</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table id="customer_orders_table" class="table table-bordered table-hover" width="100%">
+                        <thead>
+                        <tr>
+                            <th>{{ 'Mã hóa đơn' }}
+                            <th>{{ 'Ngày tạo' }}</th>
+                            <th>{{ 'Tên người mua' }}</th>
+                            <th>{{ 'Trạng thái' }}</th>
+                            <th>{{ 'Tổng tiền' }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <tr>
+                                <!--Chuyen sang chi tiet hoa don-->
+                                <td><a href="javascript:void(0)">001</a> </td>
+                                <td>22/12/2018</td>
+                                <td>VA</td>
+                                <td>Hoan thanh</td>
+                                <td>200k</td>
+                            </tr>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+        </section>
+{% endblock %}
+{% block script %}
+	{% load static %}
+    <script src="{% static 'admin/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/customer.orders.js' %}"></script>
+{% endblock %}
