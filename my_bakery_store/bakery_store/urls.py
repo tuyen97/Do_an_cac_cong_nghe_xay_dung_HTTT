@@ -34,12 +34,19 @@ urlpatterns = [
     path('admin/event/create',views.createEvent, name='createEvent'),
     path('admin/event/edit', views.editEventForm, name='editEvent'),
     path('admin/event/change', views.eventChange, name='eventChange'),
+    #
+    # path('VA/orders', views.customerOrders, name='customerOrders'),
+    #
+    # path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
+    # path('VA/admin/bill/statistics', views.statisticsRevenueForm, name="statisticsRevenueForm"),
+    #
+    #
+    #
+    # path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail')
 
-    path('VA/orders', views.customerOrders, name='customerOrders'),
 
-    path('VA/order/detail', views.customerOrderDetail, name='customerOrderDetail'),
-    path('VA/admin/bill/statistics', views.statisticsRevenueForm, name="statisticsRevenueForm"),
-
+    path('orders', views.customerOrders, name='customerOrders'),
+    path('order/detail', views.customerOrderDetail, name='customerOrderDetail')
 
 
 ]
