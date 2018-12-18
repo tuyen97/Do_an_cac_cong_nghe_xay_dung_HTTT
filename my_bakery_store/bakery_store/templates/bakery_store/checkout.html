@@ -58,6 +58,33 @@
 {##}
 {#              </div>#}
 {#           </div>#}
+        {% if user.is_authenticated %}
+            <div class="col-md-12">
+            <div class="form-group">
+                    <label for="id_hoten">Họ tên:</label>
+                    <input type="text" name="hoten" class="form-control" value="{{ user.full_name }}" required id="id_hoten">
+
+                </div>
+
+                </div>
+
+                <div class="col-md-12">
+                <div class="form-group">
+                    <label for="id_diachi">Địa chỉ:</label>
+                    <input type="text" name="diachi" class="form-control" value ="{{ user.address }}" required id="id_diachi">
+
+                </div>
+
+                </div>
+
+                <div class="col-md-12">
+                <div class="form-group">
+                    <label for="id_sdt">Số điện thoại:</label>
+                    <input type="text" name="sdt" class="form-control" placeholder="Số điện thoại" required id="id_sdt">
+
+                </div>
+                </div>
+        {% else %}
             {% for field in form %}
                 <div class="col-md-12">
                 <div class="form-group">
@@ -68,6 +95,7 @@
 
                 </div>
             {% endfor %}
+        {% endif %}
 			<div class="col-md-12">
 				<p><input type="submit" value="Đặt hàng" class="btn btn-primary"></p>
 			</div>

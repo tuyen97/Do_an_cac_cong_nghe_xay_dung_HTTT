@@ -36,7 +36,7 @@ class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=30, unique=True)
     available_quantity = models.IntegerField()
-    descript = models.CharField(max_length=10000000, default="")
+    descript = models.CharField(max_length=10000, default="")
     price = models.IntegerField()
     category = models.CharField(max_length=30)
     image = models.ImageField(upload_to="images/product")

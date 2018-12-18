@@ -181,7 +181,7 @@ def add_to_cart(request):
 
 def view_cart(request):
     if not 'cart' in request.session or not request.session['cart']:
-        return HttpResponse('You don\'t have any item in cart')
+        return render(request,'bakery_store/empty_cart.html')
     cart_list = request.session["cart"]
     cart_list_id = request.session["cart"].keys()
     items = []
