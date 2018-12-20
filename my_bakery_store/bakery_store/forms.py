@@ -36,7 +36,7 @@ class productForm(forms.ModelForm):
     name = forms.CharField(label='Tên sản phẩm', widget=forms.TextInput(attrs=add_attrs()))
     available_quantity = forms.IntegerField(label='Số lượng',widget=forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Nhập số lượng','min':1}))
     descript = forms.CharField(label='Mô tả', widget=forms.Textarea(add_attrs('Mô tả')))
-    price = forms.IntegerField(label='Giá', widget=forms.NumberInput(add_attrs('Nhập giá')))
+    price = forms.IntegerField(label='Giá', widget=forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Nhập giá','min':5000}))
     category = forms.CharField(label='Loại', widget=forms.TextInput(add_attrs('Nhập loại')))
     image = forms.ImageField(label='Chọn ảnh',  widget=forms.FileInput(add_attrs('')))
 

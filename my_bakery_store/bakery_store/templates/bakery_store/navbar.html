@@ -1,4 +1,5 @@
 <!--navbar-->
+{% load static %}
 		<nav class="colorlib-nav" role="navigation">
 			<div class="top-menu">
 				<div class="container">
@@ -58,7 +59,7 @@
 				<div class="col-md-3">
 				</div>
 				<div class="col-md-6">
-					<form method="get" action="{% url 'search' %}">
+{#					<form method="get" action="{% url 'search' %}">#}
 						<div class="col-md-9">
 						<div class="form-group">
 							<input type="text" name="search" class="form-control" placeholder="Sản phẩm">
@@ -79,7 +80,7 @@
 		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(static/bakery_store/images/cover-img-1.jpg);">
+			   	<li style="background-image: url('{% static '/bakery_store/images/cover-img-1.jpg'%}');">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">

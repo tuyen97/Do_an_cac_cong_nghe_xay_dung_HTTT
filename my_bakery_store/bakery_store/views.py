@@ -67,7 +67,7 @@ def index(request):
 
 def search(request):
     query = request.GET['search']
-    products = models.Product.objects.filter(Q(name__contains=query)|Q(descript__contains=query))
+    products = models.Product.objects.filter(Q(name__contains=query)|Q(descript__contains=query), is_deleted=False)
     saled_pro = []
     fil_pr = []
     event = {}
@@ -99,7 +99,7 @@ def register(request):
         f = forms.registerForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+            return HttpResponse('Đăng kí thành công')
         else:
             return render(request,"bakery_store/register_form.html",{'form':f})
     else:
@@ -326,12 +326,15 @@ def order_complete(request):
 def add_comment(request):
     user = models.User.objects.get(pk=request.POST['customer_id'])
     product = models.Product.objects.get(pk=request.POST['product_id'])
-    rating = request.POST['rating']
     text_content = request.POST['text_content']
     star = []
     comment = models.Comment()
-    for _ in range(int(rating)):
-        star.append("x")
+    rating = request.POST['rating']
+    if rating != '':
+        for _ in range(int(rating)):
+            star.append("x")
+    else:
+        star = 'xxxxx'
     comment.user = user
     comment.product = product
     comment.content = text_content
