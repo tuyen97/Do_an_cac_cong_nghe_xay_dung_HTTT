@@ -99,7 +99,16 @@ def register(request):
         f = forms.registerForm(request.POST, request.FILES)
         if f.is_valid():
             f.save()
-            return HttpResponse('Đăng kí thành công')
+            user_name = f.cleaned_data['user_name']
+            password = f.cleaned_data['password']
+            user = MyBackend().authenticate(user_name=user_name, password=password)
+            if user is not None:
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                login(request, user)
+                print("user is logged in")
+                # request.session['user_name']=user.user_name
+                # request.session['user_avt'] = user.avt.url
+                return redirect('/')
         else:
             return render(request,"bakery_store/register_form.html",{'form':f})
     else:
