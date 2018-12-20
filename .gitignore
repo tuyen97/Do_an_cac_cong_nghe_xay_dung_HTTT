@@ -1,7 +1,4 @@
 *.pyc
-*.png
-*.img
-*.jpg
 *.xml
 bakery_store/__pycache__/
 my_bakery_store/__pycache__/

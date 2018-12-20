@@ -54,7 +54,7 @@ def index(request):
                 fil_pr.append(product)
             else:
                 fil_pr.append(product)
-    paginator = Paginator(fil_pr, 8)  # Show 25 contacts per page
+    paginator = Paginator(fil_pr, 6)  # Show 25 contacts per page
     page = request.GET.get('page')
     product_list = paginator.get_page(page)
     context = {
@@ -376,7 +376,7 @@ def add_product(request):
         f = forms.productForm(data=request.POST, files=request.FILES)
         if(f.is_valid()):
             f.save()
-            return redirect(ProductsIndex())
+            return redirect('view_product')
         else:
             return render(request, "admin/add_product.html",{'form':f})
     else:
